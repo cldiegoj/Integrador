@@ -1,16 +1,14 @@
 package vista;
 
 //import controlador.Reportes;
-import ModeloDAO.UsuarioDAO;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
+import modelo.Usuario;
 
 public class FrmMenu extends javax.swing.JFrame {
 
-    
-    
     public static JDesktopPane jDesktopPane_menu;
     
     public FrmMenu() {
@@ -53,18 +51,25 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem_nuevo_usuario = new javax.swing.JMenuItem();
         jMenuItem_gestionar_usuario = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3_nuevo_producto = new javax.swing.JMenuItem();
-        jMenuItem_gestionar_producto = new javax.swing.JMenuItem();
-        jMenuItem_actualizar_stock = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         btnTecnicos = new javax.swing.JMenu();
         jMenuItem_nuevo_tecnico = new javax.swing.JMenuItem();
         jMenuItem_gestionar_tecnicos = new javax.swing.JMenuItem();
+        btnTecnicos1 = new javax.swing.JMenu();
+        jMenuItem_nuevo_tecnico1 = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem_nuevo_tecnico2 = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem_nuevo_cliente = new javax.swing.JMenuItem();
         jMenuItem_gestionar_cliente = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3_nuevo_producto = new javax.swing.JMenuItem();
+        jMenuItem_gestionar_producto = new javax.swing.JMenuItem();
+        jMenuItem_actualizar_stock = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem3_nuevo_producto1 = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem_nueva_categoria = new javax.swing.JMenuItem();
         jMenuItem_gestionar_categorias = new javax.swing.JMenuItem();
@@ -125,6 +130,93 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        btnTecnicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tecnico.png"))); // NOI18N
+        btnTecnicos.setText("Proveedores");
+        btnTecnicos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnTecnicos.setPreferredSize(new java.awt.Dimension(150, 50));
+
+        jMenuItem_nuevo_tecnico.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jMenuItem_nuevo_tecnico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Nuevo Tecnico.png"))); // NOI18N
+        jMenuItem_nuevo_tecnico.setText("Nuevo Proveedor");
+        jMenuItem_nuevo_tecnico.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem_nuevo_tecnico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_nuevo_tecnicoActionPerformed(evt);
+            }
+        });
+        btnTecnicos.add(jMenuItem_nuevo_tecnico);
+
+        jMenuItem_gestionar_tecnicos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jMenuItem_gestionar_tecnicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Gestionar Clientes.png"))); // NOI18N
+        jMenuItem_gestionar_tecnicos.setText("Gestionar Proveedor");
+        jMenuItem_gestionar_tecnicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_gestionar_tecnicosActionPerformed(evt);
+            }
+        });
+        btnTecnicos.add(jMenuItem_gestionar_tecnicos);
+
+        btnTecnicos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/organico.png"))); // NOI18N
+        btnTecnicos1.setText("Insumos");
+        btnTecnicos1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnTecnicos1.setPreferredSize(new java.awt.Dimension(150, 50));
+
+        jMenuItem_nuevo_tecnico1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jMenuItem_nuevo_tecnico1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/harina.png"))); // NOI18N
+        jMenuItem_nuevo_tecnico1.setText("Nuevo insumo");
+        jMenuItem_nuevo_tecnico1.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem_nuevo_tecnico1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_nuevo_tecnico1ActionPerformed(evt);
+            }
+        });
+        btnTecnicos1.add(jMenuItem_nuevo_tecnico1);
+        btnTecnicos1.add(jSeparator5);
+
+        jMenuItem_nuevo_tecnico2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jMenuItem_nuevo_tecnico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/harina.png"))); // NOI18N
+        jMenuItem_nuevo_tecnico2.setText("Gestionar insumo");
+        jMenuItem_nuevo_tecnico2.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem_nuevo_tecnico2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_nuevo_tecnico2ActionPerformed(evt);
+            }
+        });
+        btnTecnicos1.add(jMenuItem_nuevo_tecnico2);
+
+        btnTecnicos.add(btnTecnicos1);
+        btnTecnicos.add(jSeparator4);
+
+        jMenuBar1.add(btnTecnicos);
+
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clientes.png"))); // NOI18N
+        jMenu3.setText("Clientes");
+        jMenu3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jMenu3.setPreferredSize(new java.awt.Dimension(150, 50));
+
+        jMenuItem_nuevo_cliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jMenuItem_nuevo_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Nuevo Cliente.png"))); // NOI18N
+        jMenuItem_nuevo_cliente.setText("Nuevo Cliente");
+        jMenuItem_nuevo_cliente.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenuItem_nuevo_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_nuevo_clienteActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem_nuevo_cliente);
+
+        jMenuItem_gestionar_cliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jMenuItem_gestionar_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Gestionar Clientes.png"))); // NOI18N
+        jMenuItem_gestionar_cliente.setText("Gestionar Clientes");
+        jMenuItem_gestionar_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_gestionar_clienteActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem_gestionar_cliente);
+
+        jMenuBar1.add(jMenu3);
+
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pastel.png"))); // NOI18N
         jMenu2.setText("Productos");
         jMenu2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -162,66 +254,28 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem_actualizar_stock);
+
+        jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/tienda-de-comestibles.png"))); // NOI18N
+        jMenu9.setText("Ingredientes");
+        jMenu9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jMenu9.setPreferredSize(new java.awt.Dimension(150, 50));
+
+        jMenuItem3_nuevo_producto1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jMenuItem3_nuevo_producto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/libro-de-cocina.png"))); // NOI18N
+        jMenuItem3_nuevo_producto1.setText("Gestionar ingredientes");
+        jMenuItem3_nuevo_producto1.setPreferredSize(new java.awt.Dimension(200, 30));
+        jMenuItem3_nuevo_producto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3_nuevo_producto1ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem3_nuevo_producto1);
+        jMenu9.add(jSeparator6);
+
+        jMenu2.add(jMenu9);
         jMenu2.add(jSeparator1);
 
         jMenuBar1.add(jMenu2);
-
-        btnTecnicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tecnico.png"))); // NOI18N
-        btnTecnicos.setText("Proveedores");
-        btnTecnicos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnTecnicos.setPreferredSize(new java.awt.Dimension(150, 50));
-
-        jMenuItem_nuevo_tecnico.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jMenuItem_nuevo_tecnico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Nuevo Tecnico.png"))); // NOI18N
-        jMenuItem_nuevo_tecnico.setText("Nuevo Proveedor");
-        jMenuItem_nuevo_tecnico.setPreferredSize(new java.awt.Dimension(180, 30));
-        jMenuItem_nuevo_tecnico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_nuevo_tecnicoActionPerformed(evt);
-            }
-        });
-        btnTecnicos.add(jMenuItem_nuevo_tecnico);
-
-        jMenuItem_gestionar_tecnicos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jMenuItem_gestionar_tecnicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Gestionar Clientes.png"))); // NOI18N
-        jMenuItem_gestionar_tecnicos.setText("Gestionar Proveedor");
-        jMenuItem_gestionar_tecnicos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_gestionar_tecnicosActionPerformed(evt);
-            }
-        });
-        btnTecnicos.add(jMenuItem_gestionar_tecnicos);
-        btnTecnicos.add(jSeparator4);
-
-        jMenuBar1.add(btnTecnicos);
-
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clientes.png"))); // NOI18N
-        jMenu3.setText("Clientes");
-        jMenu3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jMenu3.setPreferredSize(new java.awt.Dimension(150, 50));
-
-        jMenuItem_nuevo_cliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jMenuItem_nuevo_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Nuevo Cliente.png"))); // NOI18N
-        jMenuItem_nuevo_cliente.setText("Nuevo Cliente");
-        jMenuItem_nuevo_cliente.setPreferredSize(new java.awt.Dimension(180, 30));
-        jMenuItem_nuevo_cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_nuevo_clienteActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem_nuevo_cliente);
-
-        jMenuItem_gestionar_cliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jMenuItem_gestionar_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Gestionar Clientes.png"))); // NOI18N
-        jMenuItem_gestionar_cliente.setText("Gestionar Clientes");
-        jMenuItem_gestionar_cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_gestionar_clienteActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem_gestionar_cliente);
-
-        jMenuBar1.add(jMenu3);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/categorias.png"))); // NOI18N
         jMenu4.setText("Categorias");
@@ -571,6 +625,39 @@ public class FrmMenu extends javax.swing.JFrame {
         interActualizarStock.setVisible(true);
     }//GEN-LAST:event_jMenuItem_actualizar_stockActionPerformed
 
+    private void jMenuItem_nuevo_tecnico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_nuevo_tecnico1ActionPerformed
+        InterInsumo interInsumo = new InterInsumo();
+        int width = jDesktopPane_menu.getWidth();
+        int height = jDesktopPane_menu.getHeight();
+        int x = (width - interInsumo.getWidth()) / 2;
+        int y = (height - interInsumo.getHeight()) / 2;
+        jDesktopPane_menu.add(interInsumo);
+        interInsumo.setBounds(x, y, interInsumo.getWidth(), interInsumo.getHeight());
+        interInsumo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_nuevo_tecnico1ActionPerformed
+
+    private void jMenuItem3_nuevo_producto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3_nuevo_producto1ActionPerformed
+        InterIngredientes InterIngredientes = new InterIngredientes();
+        int width = jDesktopPane_menu.getWidth();
+        int height = jDesktopPane_menu.getHeight();
+        int x = (width - InterIngredientes.getWidth()) / 2;
+        int y = (height - InterIngredientes.getHeight()) / 2;
+        jDesktopPane_menu.add(InterIngredientes);
+        InterIngredientes.setBounds(x, y, InterIngredientes.getWidth(), InterIngredientes.getHeight());
+        InterIngredientes.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3_nuevo_producto1ActionPerformed
+
+    private void jMenuItem_nuevo_tecnico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_nuevo_tecnico2ActionPerformed
+        InterGestionarInsumo interGestionarInsumo = new InterGestionarInsumo();
+        int width = jDesktopPane_menu.getWidth();
+        int height = jDesktopPane_menu.getHeight();
+        int x = (width - interGestionarInsumo.getWidth()) / 2;
+        int y = (height - interGestionarInsumo.getHeight()) / 2;
+        jDesktopPane_menu.add(interGestionarInsumo);
+        interGestionarInsumo.setBounds(x, y, interGestionarInsumo.getWidth(), interGestionarInsumo.getHeight());
+        interGestionarInsumo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_nuevo_tecnico2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -598,6 +685,8 @@ public class FrmMenu extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -609,6 +698,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu btnTecnicos;
+    private javax.swing.JMenu btnTecnicos1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -617,9 +707,11 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem3_nuevo_producto;
+    private javax.swing.JMenuItem jMenuItem3_nuevo_producto1;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem_actualizar_stock;
     private javax.swing.JMenuItem jMenuItem_cerrar_sesion;
@@ -634,6 +726,8 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_nueva_venta1;
     private javax.swing.JMenuItem jMenuItem_nuevo_cliente;
     private javax.swing.JMenuItem jMenuItem_nuevo_tecnico;
+    private javax.swing.JMenuItem jMenuItem_nuevo_tecnico1;
+    private javax.swing.JMenuItem jMenuItem_nuevo_tecnico2;
     private javax.swing.JMenuItem jMenuItem_nuevo_usuario;
     private javax.swing.JMenuItem jMenuItem_reportes_categorias;
     private javax.swing.JMenuItem jMenuItem_reportes_clientes;
@@ -644,5 +738,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
     // End of variables declaration//GEN-END:variables
 }
