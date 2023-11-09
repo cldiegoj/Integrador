@@ -3,7 +3,6 @@ package vista;
 //import controlador.Ctrl_Usuario;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
-import Modelo.Usuario;
 
 /**
  *
@@ -30,120 +29,95 @@ public class InterUsuario extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton_Guardar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txt_apellido = new javax.swing.JTextField();
         txt_nombre = new javax.swing.JTextField();
-        txt_usuario1 = new javax.swing.JTextField();
-        txt_telefono = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txt_contraseña = new javax.swing.JTextField();
+        cbxRol = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(252, 248, 232));
+        jPanel1.setBackground(new java.awt.Color(255, 198, 89));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Menú - Nuevo Producto");
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("NUEVO USUARIO");
         jPanel1.add(jLabel1);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 30));
 
-        jPanel2.setBackground(new java.awt.Color(255, 198, 89));
+        jPanel2.setBackground(new java.awt.Color(252, 248, 232));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton_Guardar.setBackground(new java.awt.Color(255, 255, 255));
-        jButton_Guardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jButton_Guardar.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
-        jButton_Guardar.setText("Guardar");
-        jButton_Guardar.setBorder(null);
-        jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
+        btnGuardar.setContentAreaFilled(false);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_GuardarActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 170, 30));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 170, 30));
 
         btnAtras.setBackground(new java.awt.Color(255, 255, 255));
         btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         btnAtras.setForeground(new java.awt.Color(0, 0, 0));
         btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
         btnAtras.setText("Atrás");
-        btnAtras.setBorder(null);
+        btnAtras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
+        btnAtras.setContentAreaFilled(false);
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtrasActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 170, 30));
+        jPanel2.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 170, 30));
 
         jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Nombre:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 60, -1));
-
-        jLabel9.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("Dni:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 30, -1));
-
-        jLabel10.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Correo:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 50, 20));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 60, -1));
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Rol:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 30, 30));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 30, 30));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Contraseña:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 80, -1));
-
-        txt_apellido.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jPanel2.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 170, 30));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 80, -1));
 
         txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 170, 30));
+        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 170, 30));
 
-        txt_usuario1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jPanel2.add(txt_usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 170, 30));
+        txt_contraseña.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jPanel2.add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 170, 30));
 
-        txt_telefono.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jPanel2.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 170, 30));
-
-        jComboBox1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 170, 30));
+        cbxRol.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        cbxRol.setForeground(new java.awt.Color(0, 0, 0));
+        cbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione rol", "Administrador", "Empleado" }));
+        jPanel2.add(cbxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 170, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 590, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnAtrasActionPerformed
-
-    private void jButton_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         //        if (txt_nombre.getText().isEmpty() || txt_apellido.getText().isEmpty() || txt_usuario.getText().isEmpty()
             //                || txt_password.getText().isEmpty() || txt_telefono.getText().isEmpty()) {
             //            JOptionPane.showMessageDialog(null, "Completa todos los campos");
@@ -170,25 +144,26 @@ public class InterUsuario extends javax.swing.JInternalFrame {
                 //            }
             //        }
         //        this.Limpiar();
-    }//GEN-LAST:event_jButton_GuardarActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton jButton_Guardar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JButton btnGuardar;
+    public javax.swing.JComboBox<String> cbxRol;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txt_apellido;
-    private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_telefono;
-    private javax.swing.JTextField txt_usuario1;
+    public javax.swing.JTextField txt_contraseña;
+    public javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
      /**
      *
@@ -196,8 +171,6 @@ public class InterUsuario extends javax.swing.JInternalFrame {
      */
     private void Limpiar() {
         txt_nombre.setText("");
-        txt_apellido.setText("");
-        txt_telefono.setText("");
     }
     
 }

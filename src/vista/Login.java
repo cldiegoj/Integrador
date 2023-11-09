@@ -5,7 +5,6 @@
 package vista;
 
 import ModeloDAO.UsuarioDAO;
-import Modelo.Usuario;
 
 public class Login extends javax.swing.JFrame {
 

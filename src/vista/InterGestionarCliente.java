@@ -15,8 +15,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import Modelo.Cliente;
-import Modelo.Cliente;
 
 public class InterGestionarCliente extends javax.swing.JInternalFrame {
 
@@ -51,10 +49,13 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         jTable_clientes = new javax.swing.JTable();
         txt_nombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        btnAtras = new javax.swing.JButton();
-        jButton_actualizar = new javax.swing.JButton();
-        jButton_eliminar = new javax.swing.JButton();
+        btnAtras1 = new javax.swing.JButton();
+        jButton_actualizar1 = new javax.swing.JButton();
+        jButton_eliminar1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txt_apellido = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txt_direccion = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -64,11 +65,11 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Menú - Gestionar Clientes");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("MENÚ - ADMINISTRAR CLIENTE");
         jPanel4.add(jLabel1);
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 30));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 30));
 
         jPanel2.setBackground(new java.awt.Color(252, 248, 232));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,25 +78,24 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("DNI:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 30, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 30, -1));
 
         txt_cedula.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         txt_cedula.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, 160, -1));
+        jPanel2.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 190, 30));
 
         txt_telefono.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         txt_telefono.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 30, 120, -1));
+        jPanel2.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 190, 30));
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Teléfono:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 60, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 60, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setForeground(jButton_actualizar.getBackground());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable_clientes.setForeground(new java.awt.Color(0, 102, 102));
@@ -109,131 +109,153 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable_clientes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 820, 240));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 820, 170));
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 840, 260));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 840, 190));
 
         txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         txt_nombre.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 170, -1));
+        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 210, 30));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nombres:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 60, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 60, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 890, 340));
-
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnAtras.setBackground(new java.awt.Color(252, 248, 232));
-        btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        btnAtras.setForeground(new java.awt.Color(0, 0, 0));
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
-        btnAtras.setText("Atrás");
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+        btnAtras1.setBackground(new java.awt.Color(252, 248, 232));
+        btnAtras1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        btnAtras1.setForeground(new java.awt.Color(0, 0, 0));
+        btnAtras1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
+        btnAtras1.setText("Atrás");
+        btnAtras1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
+        btnAtras1.setContentAreaFilled(false);
+        btnAtras1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
+                btnAtras1ActionPerformed(evt);
             }
         });
-        jPanel3.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 120, 30));
+        jPanel2.add(btnAtras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 170, 30));
 
-        jButton_actualizar.setBackground(new java.awt.Color(252, 248, 232));
-        jButton_actualizar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jButton_actualizar.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
-        jButton_actualizar.setText("Guardar");
-        jButton_actualizar.addActionListener(new java.awt.event.ActionListener() {
+        jButton_actualizar1.setBackground(new java.awt.Color(252, 248, 232));
+        jButton_actualizar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jButton_actualizar1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_actualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
+        jButton_actualizar1.setText("Guardar");
+        jButton_actualizar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
+        jButton_actualizar1.setContentAreaFilled(false);
+        jButton_actualizar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_actualizarActionPerformed(evt);
+                jButton_actualizar1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 120, 30));
+        jPanel2.add(jButton_actualizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 170, 30));
 
-        jButton_eliminar.setBackground(new java.awt.Color(252, 248, 232));
-        jButton_eliminar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jButton_eliminar.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/eliminar.png"))); // NOI18N
-        jButton_eliminar.setText("Eliminar");
-        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
+        jButton_eliminar1.setBackground(new java.awt.Color(252, 248, 232));
+        jButton_eliminar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jButton_eliminar1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_eliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/eliminar.png"))); // NOI18N
+        jButton_eliminar1.setText("Eliminar");
+        jButton_eliminar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
+        jButton_eliminar1.setContentAreaFilled(false);
+        jButton_eliminar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_eliminarActionPerformed(evt);
+                jButton_eliminar1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 120, 30));
+        jPanel2.add(jButton_eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 170, 30));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 890, 60));
+        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Apellidos:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 60, -1));
+
+        txt_apellido.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_apellido.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 210, 30));
+
+        jLabel7.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("Dirección:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 60, -1));
+
+        txt_direccion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_direccion.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 210, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 920, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
-
-//        if (txt_nombre.getText().isEmpty() && txt_cedula.getText().isEmpty() && txt_telefono.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "¡Completa todos los campos!");
-//        } else {
-//
-//            Cliente cliente = new Cliente();
-//            ClienteDAO controlCliente = new ClienteDAO();
-//
-//            cliente.setNombre(txt_nombre.getText().trim());
-//            cliente.setCedula(txt_cedula.getText().trim());
-//            cliente.setTelefono(txt_telefono.getText().trim());
-//            cliente.setEstado("Activo");
-//
-//            if (controlCliente.actualizar(cliente, idCliente)) {
-//                JOptionPane.showMessageDialog(null, "¡Datos del cliente actualizados!");
-//                this.CargarTablaClientes();
-//                this.Limpiar();
-//            } else {
-//                JOptionPane.showMessageDialog(null, "¡Error al actualizar!");
-//            }
-//
-//        }
-
-    }//GEN-LAST:event_jButton_actualizarActionPerformed
-
-    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
-
-//        ClienteDAO controlCliente = new ClienteDAO();
-//        if (idCliente == 0) {
-//            JOptionPane.showMessageDialog(null, "¡Seleccione un cliente!");
-//        } else {
-//            if (!controlCliente.eliminar(idCliente)) {
-//                JOptionPane.showMessageDialog(null, "¡Cliente Eliminado!");
-//                this.CargarTablaClientes();
-//                this.Limpiar();
-//            } else {
-//                JOptionPane.showMessageDialog(null, "¡Error al eliminar cliente!");
-//                this.Limpiar();
-//            }
-//        }
-
-    }//GEN-LAST:event_jButton_eliminarActionPerformed
-
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+    private void btnAtras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtras1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_btnAtrasActionPerformed
+    }//GEN-LAST:event_btnAtras1ActionPerformed
+
+    private void jButton_actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizar1ActionPerformed
+
+        //        if (txt_nombre.getText().isEmpty() && txt_cedula.getText().isEmpty() && txt_telefono.getText().isEmpty()) {
+            //            JOptionPane.showMessageDialog(null, "¡Completa todos los campos!");
+            //        } else {
+            //
+            //            Cliente cliente = new Cliente();
+            //            Ctrl_Cliente controlCliente = new Ctrl_Cliente();
+            //
+            //            cliente.setNombre(txt_nombre.getText().trim());
+            //            cliente.setCedula(txt_cedula.getText().trim());
+            //            cliente.setTelefono(txt_telefono.getText().trim());
+            //            cliente.setEstado("Activo");
+            //
+            //            if (controlCliente.actualizar(cliente, idCliente)) {
+                //                JOptionPane.showMessageDialog(null, "¡Datos del cliente actualizados!");
+                //                this.CargarTablaClientes();
+                //                this.Limpiar();
+                //            } else {
+                //                JOptionPane.showMessageDialog(null, "¡Error al actualizar!");
+                //            }
+            //
+            //        }
+    }//GEN-LAST:event_jButton_actualizar1ActionPerformed
+
+    private void jButton_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminar1ActionPerformed
+
+        //        Ctrl_Cliente controlCliente = new Ctrl_Cliente();
+        //        if (idCliente == 0) {
+            //            JOptionPane.showMessageDialog(null, "¡Seleccione un cliente!");
+            //        } else {
+            //            if (!controlCliente.eliminar(idCliente)) {
+                //                JOptionPane.showMessageDialog(null, "¡Cliente Eliminado!");
+                //                this.CargarTablaClientes();
+                //                this.Limpiar();
+                //            } else {
+                //                JOptionPane.showMessageDialog(null, "¡Error al eliminar cliente!");
+                //                this.Limpiar();
+                //            }
+            //        }
+    }//GEN-LAST:event_jButton_eliminar1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAtras;
-    private javax.swing.JButton jButton_actualizar;
-    private javax.swing.JButton jButton_eliminar;
+    private javax.swing.JButton btnAtras1;
+    private javax.swing.JButton jButton_actualizar1;
+    private javax.swing.JButton jButton_eliminar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     public static javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable jTable_clientes;
+    private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_cedula;
+    private javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables

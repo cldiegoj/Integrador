@@ -45,48 +45,47 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_clientes = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txt_nombre = new javax.swing.JTextField();
-        txt_cedula = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txt_telefono = new javax.swing.JTextField();
-        txt_direccion = new javax.swing.JTextField();
-        jButton_actualizar = new javax.swing.JButton();
-        jButton_eliminar = new javax.swing.JButton();
-        btnAtras = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable_clientes1 = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txt_nombre1 = new javax.swing.JTextField();
+        txt_cedula1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txt_telefono1 = new javax.swing.JTextField();
+        txt_direccion1 = new javax.swing.JTextField();
+        jButton_actualizar1 = new javax.swing.JButton();
+        jButton_eliminar1 = new javax.swing.JButton();
+        btnAtras1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBackground(new java.awt.Color(252, 248, 232));
+        jPanel5.setBackground(new java.awt.Color(255, 198, 89));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Menú - Gestionar Proveedor");
-        jPanel4.add(jLabel1);
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("MENÚ - GESTIONAR PROVEEDOR");
+        jPanel5.add(jLabel4);
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 30));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 30));
 
-        jPanel3.setBackground(new java.awt.Color(255, 198, 89));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.setBackground(new java.awt.Color(252, 248, 232));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setForeground(jButton_actualizar.getBackground());
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable_clientes.setForeground(new java.awt.Color(0, 102, 102));
-        jTable_clientes.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_clientes1.setForeground(new java.awt.Color(0, 102, 102));
+        jTable_clientes1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -94,114 +93,95 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable_clientes);
+        jScrollPane2.setViewportView(jTable_clientes1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 660, 230));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 660, 200));
 
-        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 680, 250));
+        jPanel6.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 680, 220));
 
-        jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Id:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 30, -1));
+        jLabel7.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("Id:");
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 30, -1));
 
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Nombre:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 80, -1));
+        jLabel8.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("Nombre:");
+        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 80, -1));
 
-        txt_nombre.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_nombre.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 170, -1));
+        txt_nombre1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        txt_nombre1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel6.add(txt_nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 240, -1));
 
-        txt_cedula.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_cedula.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 170, -1));
+        txt_cedula1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        txt_cedula1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel6.add(txt_cedula1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 240, -1));
 
-        jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Dirección:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 90, -1));
+        jLabel9.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("Dirección:");
+        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 70, -1));
 
-        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Teléfono:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 90, -1));
+        jLabel10.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Teléfono:");
+        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 60, -1));
 
-        txt_telefono.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_telefono.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 120, -1));
+        txt_telefono1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        txt_telefono1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel6.add(txt_telefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 240, -1));
 
-        txt_direccion.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_direccion.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 310, -1));
+        txt_direccion1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        txt_direccion1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel6.add(txt_direccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 240, -1));
 
-        jButton_actualizar.setBackground(new java.awt.Color(252, 248, 232));
-        jButton_actualizar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jButton_actualizar.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
-        jButton_actualizar.setText("GUARDAR");
-        jButton_actualizar.addActionListener(new java.awt.event.ActionListener() {
+        jButton_actualizar1.setBackground(new java.awt.Color(252, 248, 232));
+        jButton_actualizar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jButton_actualizar1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_actualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
+        jButton_actualizar1.setText("GUARDAR");
+        jButton_actualizar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
+        jButton_actualizar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_actualizarActionPerformed(evt);
+                jButton_actualizar1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 180, 140, 50));
+        jPanel6.add(jButton_actualizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 200, 30));
 
-        jButton_eliminar.setBackground(new java.awt.Color(252, 248, 232));
-        jButton_eliminar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jButton_eliminar.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/eliminar.png"))); // NOI18N
-        jButton_eliminar.setText("ELIMINAR");
-        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
+        jButton_eliminar1.setBackground(new java.awt.Color(252, 248, 232));
+        jButton_eliminar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jButton_eliminar1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_eliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/eliminar.png"))); // NOI18N
+        jButton_eliminar1.setText("ELIMINAR");
+        jButton_eliminar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
+        jButton_eliminar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_eliminarActionPerformed(evt);
+                jButton_eliminar1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 240, 140, 50));
+        jPanel6.add(jButton_eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 200, 30));
 
-        btnAtras.setBackground(new java.awt.Color(252, 248, 232));
-        btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        btnAtras.setForeground(new java.awt.Color(0, 0, 0));
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
-        btnAtras.setText("ATRÁS");
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+        btnAtras1.setBackground(new java.awt.Color(252, 248, 232));
+        btnAtras1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        btnAtras1.setForeground(new java.awt.Color(0, 0, 0));
+        btnAtras1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
+        btnAtras1.setText("ATRÁS");
+        btnAtras1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
+        btnAtras1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
+                btnAtras1ActionPerformed(evt);
             }
         });
-        jPanel3.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 140, 50));
+        jPanel6.add(btnAtras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 200, 30));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 900, 440));
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 760, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnAtrasActionPerformed
-
-    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
-
-        //        Ctrl_Tecnicos controlTecnico = new Ctrl_Tecnicos();
-        //        if (idTecnico == 0) {
-            //            JOptionPane.showMessageDialog(null, "¡Seleccione un tecnico!");
-            //        } else {
-            //            if (!controlTecnico.eliminar(idTecnico)) {
-                //                JOptionPane.showMessageDialog(null, "¡Cliente Eliminado!");
-                //                this.CargarTablaTecnicos();
-                //                this.Limpiar();
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "¡Error al eliminar técnico!");
-                //                this.Limpiar();
-                //            }
-            //        }
-    }//GEN-LAST:event_jButton_eliminarActionPerformed
 
     private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
 
@@ -238,25 +218,121 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
             //        }
     }//GEN-LAST:event_jButton_actualizarActionPerformed
 
+    private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
+
+        //        Ctrl_Tecnicos controlTecnico = new Ctrl_Tecnicos();
+        //        if (idTecnico == 0) {
+            //            JOptionPane.showMessageDialog(null, "¡Seleccione un tecnico!");
+            //        } else {
+            //            if (!controlTecnico.eliminar(idTecnico)) {
+                //                JOptionPane.showMessageDialog(null, "¡Cliente Eliminado!");
+                //                this.CargarTablaTecnicos();
+                //                this.Limpiar();
+                //            } else {
+                //                JOptionPane.showMessageDialog(null, "¡Error al eliminar técnico!");
+                //                this.Limpiar();
+                //            }
+            //        }
+    }//GEN-LAST:event_jButton_eliminarActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void jButton_actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizar1ActionPerformed
+
+        //
+        //        if (txt_nombre.getText().isEmpty() && txt_apellido.getText().isEmpty()
+            //                && txt_cedula.getText().isEmpty() && txt_telefono.getText().isEmpty() && txt_direccion.getText().isEmpty()) {
+            //            JOptionPane.showMessageDialog(null, "¡Completa todos los campos!");
+            //        } else {
+            //
+            //            Tecnicos tecnicos = new Tecnicos();
+            //            Ctrl_Tecnicos controlTecnico = new Ctrl_Tecnicos();
+            //
+            //            tecnicos.setNombre(txt_nombre.getText().trim());
+            //            tecnicos.setApellido(txt_apellido.getText().trim());
+            //            tecnicos.setDNI(txt_cedula.getText().trim());
+            //
+            //
+            //            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            //            String fechaFormateada = dateFormat.format(dc_fecha.getDate());
+            //            tecnicos.setFech_tec(fechaFormateada);
+            //
+            //            tecnicos.setDireccion(txt_direccion.getText().trim());
+            //            tecnicos.setTelefono(txt_telefono.getText().trim());
+            //            tecnicos.setEstado("Activo");
+            //
+            //            if (controlTecnico.actualizar(tecnicos, idTecnico)) {
+                //                JOptionPane.showMessageDialog(null, "¡Datos del cliente actualizados!");
+                //                this.CargarTablaTecnicos();
+                //                this.Limpiar();
+                //            } else {
+                //                JOptionPane.showMessageDialog(null, "¡Error al actualizar!");
+                //            }
+
+            //        }
+    }//GEN-LAST:event_jButton_actualizar1ActionPerformed
+
+    private void jButton_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminar1ActionPerformed
+
+        //        Ctrl_Tecnicos controlTecnico = new Ctrl_Tecnicos();
+        //        if (idTecnico == 0) {
+            //            JOptionPane.showMessageDialog(null, "¡Seleccione un tecnico!");
+            //        } else {
+            //            if (!controlTecnico.eliminar(idTecnico)) {
+                //                JOptionPane.showMessageDialog(null, "¡Cliente Eliminado!");
+                //                this.CargarTablaTecnicos();
+                //                this.Limpiar();
+                //            } else {
+                //                JOptionPane.showMessageDialog(null, "¡Error al eliminar técnico!");
+                //                this.Limpiar();
+                //            }
+            //        }
+    }//GEN-LAST:event_jButton_eliminar1ActionPerformed
+
+    private void btnAtras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtras1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnAtras1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnAtras1;
     private javax.swing.JButton jButton_actualizar;
+    private javax.swing.JButton jButton_actualizar1;
     private javax.swing.JButton jButton_eliminar;
+    private javax.swing.JButton jButton_eliminar1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     public static javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JTable jTable_clientes;
+    public static javax.swing.JTable jTable_clientes1;
     private javax.swing.JTextField txt_cedula;
+    private javax.swing.JTextField txt_cedula1;
     private javax.swing.JTextField txt_direccion;
+    private javax.swing.JTextField txt_direccion1;
     private javax.swing.JTextField txt_nombre;
+    private javax.swing.JTextField txt_nombre1;
     private javax.swing.JTextField txt_telefono;
+    private javax.swing.JTextField txt_telefono1;
     // End of variables declaration//GEN-END:variables
 
     /*

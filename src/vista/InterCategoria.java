@@ -3,7 +3,7 @@ package vista;
 import ModeloDAO.CategoriaDAO;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
-import Modelo.Categoria;
+import modelo.Categoria;
 
 /**
  *
@@ -31,7 +31,6 @@ public class InterCategoria extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         txt_descripcion = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         btnAtras = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -53,47 +52,52 @@ public class InterCategoria extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_descripcion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jPanel1.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 250, 30));
+        jPanel1.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 250, 30));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Categoría:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 430, 110));
-
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         btnAtras.setBackground(new java.awt.Color(252, 248, 232));
         btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         btnAtras.setForeground(new java.awt.Color(0, 0, 0));
         btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
         btnAtras.setText("Atrás");
-        btnAtras.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAtras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), null, null));
+        btnAtras.setContentAreaFilled(false);
+        btnAtras.setPreferredSize(null);
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtrasActionPerformed(evt);
             }
         });
-        jPanel3.add(btnAtras);
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 130, 30));
 
         jButton1.setBackground(new java.awt.Color(252, 248, 232));
         jButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
         jButton1.setText("Guardar");
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), null, null));
+        jButton1.setContentAreaFilled(false);
+        jButton1.setPreferredSize(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1);
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 140, 30));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 430, 50));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 430, 170));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -120,11 +124,6 @@ public class InterCategoria extends javax.swing.JInternalFrame {
         txt_descripcion.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_btnAtrasActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
@@ -133,7 +132,6 @@ public class InterCategoria extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField txt_descripcion;
     // End of variables declaration//GEN-END:variables
 }

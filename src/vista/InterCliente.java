@@ -4,8 +4,7 @@ import ModeloDAO.ClienteDAO;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
-import Modelo.Cliente;
-import Modelo.Cliente;
+import modelo.Cliente;
 
 /**
  *
@@ -29,118 +28,119 @@ public class InterCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txt_nombre = new javax.swing.JTextField();
-        txt_apellido = new javax.swing.JTextField();
-        txt_cedula = new javax.swing.JTextField();
-        txt_telefono = new javax.swing.JTextField();
-        txt_direccion = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        btnAtras = new javax.swing.JButton();
-        jButton_Guardar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jButton_Guardar = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txt_apellido = new javax.swing.JTextField();
+        txt_nombre = new javax.swing.JTextField();
+        txt_telefono = new javax.swing.JTextField();
+        txt_cedula = new javax.swing.JTextField();
+        txt_direccion = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Nombres:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 60, -1));
-
-        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Apellidos:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 60, -1));
-
-        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("DNI:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 60, -1));
-
-        jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Teléfono:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 60, -1));
-
-        jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Dirección:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 60, -1));
-
-        txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_nombre.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 200, -1));
-
-        txt_apellido.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_apellido.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 200, -1));
-
-        txt_cedula.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_cedula.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 200, -1));
-
-        txt_telefono.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_telefono.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 200, -1));
-
-        txt_direccion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_direccion.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 200, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 198, 89));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Menú - Clientes");
+        jLabel1.setText("MENÚ - CLIENTES");
         jPanel2.add(jLabel1);
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 30));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 30));
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnAtras.setBackground(new java.awt.Color(252, 248, 232));
-        btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        btnAtras.setForeground(new java.awt.Color(0, 0, 0));
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
-        btnAtras.setText("ATRÁS");
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 100, 30));
+        jPanel1.setBackground(new java.awt.Color(252, 248, 232));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton_Guardar.setBackground(new java.awt.Color(252, 248, 232));
         jButton_Guardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         jButton_Guardar.setForeground(new java.awt.Color(0, 0, 0));
         jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
         jButton_Guardar.setText("GUARDAR");
+        jButton_Guardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), null, null));
+        jButton_Guardar.setContentAreaFilled(false);
         jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_GuardarActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 110, 30));
+        jPanel1.add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 170, 30));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 460, 60));
+        btnAtras.setBackground(new java.awt.Color(252, 248, 232));
+        btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        btnAtras.setForeground(new java.awt.Color(0, 0, 0));
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
+        btnAtras.setText("ATRÁS");
+        btnAtras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), null, null));
+        btnAtras.setContentAreaFilled(false);
+        btnAtras.setHideActionText(true);
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 150, 30));
 
-        jPanel1.setBackground(new java.awt.Color(252, 248, 232));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 460, 250));
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Nombres:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 60, -1));
+
+        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Apellidos:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 60, -1));
+
+        jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Teléfono:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 60, -1));
+
+        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("DNI:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 30, -1));
+
+        jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("Dirección:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 60, -1));
+
+        txt_apellido.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_apellido.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 200, -1));
+
+        txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_nombre.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 200, -1));
+
+        txt_telefono.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_telefono.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 200, -1));
+
+        txt_cedula.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_cedula.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 200, -1));
+
+        txt_direccion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_direccion.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 200, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 670, 240));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,10 +156,6 @@ public class InterCliente extends javax.swing.JInternalFrame {
             if (!controlCliente.existeCliente(txt_cedula.getText().trim())) {
 
                 cliente.setNombre(txt_nombre.getText().trim());
-                cliente.setApellido(txt_apellido.getText().trim());
-                cliente.setCedula(txt_cedula.getText().trim());
-                cliente.setTelefono(txt_telefono.getText().trim());
-                cliente.setDireccion(txt_direccion.getText().trim());
                 cliente.setEstado("Activo");
 
                 if (controlCliente.guardar(cliente)) {
@@ -191,7 +187,6 @@ public class InterCliente extends javax.swing.JInternalFrame {
         }
         //metodo limpiar
         this.Limpiar();
-
     }//GEN-LAST:event_jButton_GuardarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
@@ -211,7 +206,6 @@ public class InterCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_direccion;

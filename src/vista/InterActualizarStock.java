@@ -34,101 +34,98 @@ public class InterActualizarStock extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jComboBox_producto = new javax.swing.JComboBox<>();
-        txt_cantidad_actual = new javax.swing.JTextField();
-        txt_cantidad_nueva = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        btnGuardar = new javax.swing.JButton();
-        btnAtras = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jComboBox_producto1 = new javax.swing.JComboBox<>();
+        txt_cantidad_actual1 = new javax.swing.JTextField();
+        txt_cantidad_nueva1 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        btnGuardar1 = new javax.swing.JButton();
+        btnAtras1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 198, 89));
+        jPanel4.setBackground(new java.awt.Color(255, 198, 89));
 
-        jLabel1.setBackground(jComboBox_producto.getBackground());
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Menú - Stock de Productos");
-        jPanel1.add(jLabel1);
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("MENÚ - STOCK DE PRODUCTOS");
+        jPanel4.add(jLabel2);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 30));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 30));
 
-        jPanel2.setBackground(new java.awt.Color(252, 248, 232));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel5.setBackground(new java.awt.Color(252, 248, 232));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Stock actual:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Stock actual:");
+        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Producto:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+        jLabel9.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Producto:");
+        jPanel5.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, -1));
 
-        jComboBox_producto.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jComboBox_producto.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox_producto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione producto:", "Item 2", "Item 3", "Item 4" }));
-        jComboBox_producto.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox_producto1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jComboBox_producto1.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBox_producto1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione producto:", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_producto1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox_productoActionPerformed(evt);
+                jComboBox_producto1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBox_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 180, -1));
+        jPanel5.add(jComboBox_producto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 180, -1));
 
-        txt_cantidad_actual.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        txt_cantidad_actual.setForeground(new java.awt.Color(0, 0, 0));
-        txt_cantidad_actual.setEnabled(false);
-        jPanel2.add(txt_cantidad_actual, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 180, -1));
+        txt_cantidad_actual1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_cantidad_actual1.setForeground(new java.awt.Color(0, 0, 0));
+        txt_cantidad_actual1.setEnabled(false);
+        jPanel5.add(txt_cantidad_actual1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 180, -1));
 
-        txt_cantidad_nueva.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        txt_cantidad_nueva.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(txt_cantidad_nueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 180, -1));
+        txt_cantidad_nueva1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_cantidad_nueva1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel5.add(txt_cantidad_nueva1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 180, -1));
 
-        jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Stock nuevo:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
+        jLabel10.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Stock nuevo:");
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 570, 150));
-
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnGuardar.setBackground(new java.awt.Color(252, 248, 232));
-        btnGuardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
-        btnGuardar.setText("ACTUALIZAR");
-        btnGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar1.setBackground(new java.awt.Color(252, 248, 232));
+        btnGuardar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        btnGuardar1.setForeground(new java.awt.Color(0, 0, 0));
+        btnGuardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
+        btnGuardar1.setText("ACTUALIZAR");
+        btnGuardar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), null, null));
+        btnGuardar1.setContentAreaFilled(false);
+        btnGuardar1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnGuardar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnGuardar1ActionPerformed(evt);
             }
         });
-        jPanel3.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 140, 30));
+        jPanel5.add(btnGuardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 190, 30));
 
-        btnAtras.setBackground(new java.awt.Color(252, 248, 232));
-        btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        btnAtras.setForeground(new java.awt.Color(0, 0, 0));
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
-        btnAtras.setText("ATRÁS");
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+        btnAtras1.setBackground(new java.awt.Color(252, 248, 232));
+        btnAtras1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        btnAtras1.setForeground(new java.awt.Color(0, 0, 0));
+        btnAtras1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
+        btnAtras1.setText("ATRÁS");
+        btnAtras1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), null, null));
+        btnAtras1.setContentAreaFilled(false);
+        btnAtras1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
+                btnAtras1ActionPerformed(evt);
             }
         });
-        jPanel3.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 140, 30));
+        jPanel5.add(btnAtras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 170, 30));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 180, 580, 50));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 570, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -138,44 +135,44 @@ public class InterActualizarStock extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBox_productoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-//        //validamos seleccion del producto
-//        if (!jComboBox_producto.getSelectedItem().equals("Seleccione producto:")) {
-//            //Validamos campos vacios
-//            if (!txt_cantidad_nueva.getText().isEmpty()) {
-//                //validamos que el usuario no ingrese otros caracteres no numericos
-//                boolean validacion = validar(txt_cantidad_nueva.getText().trim());
-//                if (validacion == true) {
-//                    //validar que la cantidad sea mayor cero (0)
-//                    if (Integer.parseInt(txt_cantidad_nueva.getText()) > 0) {
-//
-//                        Producto producto = new Producto();
-//                        Ctrl_Producto controlProducto = new Ctrl_Producto();
-//                        int stockActual = Integer.parseInt(txt_cantidad_actual.getText().trim());
-//                        int stockNuevo = Integer.parseInt(txt_cantidad_nueva.getText().trim());
-//
-//                        stockNuevo = stockActual + stockNuevo;
-//                        producto.setCantidad(stockNuevo);
-//                        if (controlProducto.actualizarStock(producto, idProducto)) {
-//                            JOptionPane.showMessageDialog(null, "Stock Actualizado");
-//                            jComboBox_producto.setSelectedItem("Seleccione producto:");
-//                            txt_cantidad_actual.setText("");
-//                            txt_cantidad_nueva.setText("");
-//                            this.CargarComboProductos();
-//                        } else {
-//                            JOptionPane.showMessageDialog(null, "Error al Actualizar Stock");
-//                        }
-//                    } else {
-//                        JOptionPane.showMessageDialog(null, "La cantidad no puede ser cero ni negativa");
-//                    }
-//                } else {
-//                    JOptionPane.showMessageDialog(null, "En la cantidad no se admiten caracteres no numericos");
-//                }
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Ingrese una nueva cantidad para sumar el stock del producto");
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Seleccione un producto");
-//        }
+        //        //validamos seleccion del producto
+        //        if (!jComboBox_producto.getSelectedItem().equals("Seleccione producto:")) {
+            //            //Validamos campos vacios
+            //            if (!txt_cantidad_nueva.getText().isEmpty()) {
+                //                //validamos que el usuario no ingrese otros caracteres no numericos
+                //                boolean validacion = validar(txt_cantidad_nueva.getText().trim());
+                //                if (validacion == true) {
+                    //                    //validar que la cantidad sea mayor cero (0)
+                    //                    if (Integer.parseInt(txt_cantidad_nueva.getText()) > 0) {
+                        //
+                        //                        Producto producto = new Producto();
+                        //                        Ctrl_Producto controlProducto = new Ctrl_Producto();
+                        //                        int stockActual = Integer.parseInt(txt_cantidad_actual.getText().trim());
+                        //                        int stockNuevo = Integer.parseInt(txt_cantidad_nueva.getText().trim());
+                        //
+                        //                        stockNuevo = stockActual + stockNuevo;
+                        //                        producto.setCantidad(stockNuevo);
+                        //                        if (controlProducto.actualizarStock(producto, idProducto)) {
+                            //                            JOptionPane.showMessageDialog(null, "Stock Actualizado");
+                            //                            jComboBox_producto.setSelectedItem("Seleccione producto:");
+                            //                            txt_cantidad_actual.setText("");
+                            //                            txt_cantidad_nueva.setText("");
+                            //                            this.CargarComboProductos();
+                            //                        } else {
+                            //                            JOptionPane.showMessageDialog(null, "Error al Actualizar Stock");
+                            //                        }
+                        //                    } else {
+                        //                        JOptionPane.showMessageDialog(null, "La cantidad no puede ser cero ni negativa");
+                        //                    }
+                    //                } else {
+                    //                    JOptionPane.showMessageDialog(null, "En la cantidad no se admiten caracteres no numericos");
+                    //                }
+                //            } else {
+                //                JOptionPane.showMessageDialog(null, "Ingrese una nueva cantidad para sumar el stock del producto");
+                //            }
+            //        } else {
+            //            JOptionPane.showMessageDialog(null, "Seleccione un producto");
+            //        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
@@ -183,20 +180,80 @@ public class InterActualizarStock extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
+    private void jComboBox_producto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_producto1ActionPerformed
+        this.MostrarStock();
+    }//GEN-LAST:event_jComboBox_producto1ActionPerformed
+
+    private void btnGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardar1ActionPerformed
+        //        //validamos seleccion del producto
+        //        if (!jComboBox_producto.getSelectedItem().equals("Seleccione producto:")) {
+            //            //Validamos campos vacios
+            //            if (!txt_cantidad_nueva.getText().isEmpty()) {
+                //                //validamos que el usuario no ingrese otros caracteres no numericos
+                //                boolean validacion = validar(txt_cantidad_nueva.getText().trim());
+                //                if (validacion == true) {
+                    //                    //validar que la cantidad sea mayor cero (0)
+                    //                    if (Integer.parseInt(txt_cantidad_nueva.getText()) > 0) {
+                        //
+                        //                        Producto producto = new Producto();
+                        //                        Ctrl_Producto controlProducto = new Ctrl_Producto();
+                        //                        int stockActual = Integer.parseInt(txt_cantidad_actual.getText().trim());
+                        //                        int stockNuevo = Integer.parseInt(txt_cantidad_nueva.getText().trim());
+                        //
+                        //                        stockNuevo = stockActual + stockNuevo;
+                        //                        producto.setCantidad(stockNuevo);
+                        //                        if (controlProducto.actualizarStock(producto, idProducto)) {
+                            //                            JOptionPane.showMessageDialog(null, "Stock Actualizado");
+                            //                            jComboBox_producto.setSelectedItem("Seleccione producto:");
+                            //                            txt_cantidad_actual.setText("");
+                            //                            txt_cantidad_nueva.setText("");
+                            //                            this.CargarComboProductos();
+                            //                        } else {
+                            //                            JOptionPane.showMessageDialog(null, "Error al Actualizar Stock");
+                            //                        }
+                        //                    } else {
+                        //                        JOptionPane.showMessageDialog(null, "La cantidad no puede ser cero ni negativa");
+                        //                    }
+                    //                } else {
+                    //                    JOptionPane.showMessageDialog(null, "En la cantidad no se admiten caracteres no numericos");
+                    //                }
+                //            } else {
+                //                JOptionPane.showMessageDialog(null, "Ingrese una nueva cantidad para sumar el stock del producto");
+                //            }
+            //        } else {
+            //            JOptionPane.showMessageDialog(null, "Seleccione un producto");
+            //        }
+    }//GEN-LAST:event_btnGuardar1ActionPerformed
+
+    private void btnAtras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtras1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnAtras1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnAtras1;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnGuardar1;
     private javax.swing.JComboBox<String> jComboBox_producto;
+    private javax.swing.JComboBox<String> jComboBox_producto1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField txt_cantidad_actual;
+    private javax.swing.JTextField txt_cantidad_actual1;
     private javax.swing.JTextField txt_cantidad_nueva;
+    private javax.swing.JTextField txt_cantidad_nueva1;
     // End of variables declaration//GEN-END:variables
 
     //Metodo para caragar los productos en el jComboBox

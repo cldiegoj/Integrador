@@ -27,12 +27,12 @@ public class InterGraficas extends javax.swing.JInternalFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton_Guardar = new javax.swing.JButton();
         jDateChooser_fecha_inicio = new com.toedter.calendar.JDateChooser();
         jDateChooser_fecha_fin = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jButton_Guardar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -48,18 +48,6 @@ public class InterGraficas extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Fecha Fin:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 100, -1));
-
-        jButton_Guardar.setBackground(new java.awt.Color(0, 0, 0));
-        jButton_Guardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jButton_Guardar.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/historial1.png"))); // NOI18N
-        jButton_Guardar.setText("Graficar Ventas");
-        jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_GuardarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 160, 30));
 
         jDateChooser_fecha_inicio.setBackground(new java.awt.Color(0, 102, 102));
         jDateChooser_fecha_inicio.setForeground(new java.awt.Color(255, 255, 255));
@@ -84,16 +72,32 @@ public class InterGraficas extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 30));
 
         jPanel2.setBackground(new java.awt.Color(252, 248, 232));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton_Guardar.setBackground(new java.awt.Color(0, 0, 0));
+        jButton_Guardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jButton_Guardar.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/historial1.png"))); // NOI18N
+        jButton_Guardar.setText("Graficar Ventas");
+        jButton_Guardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
+        jButton_Guardar.setContentAreaFilled(false);
+        jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_GuardarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 160, 30));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 400, 190));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarActionPerformed
-        
+
         fecha_inicio = ((JTextField) jDateChooser_fecha_inicio.getDateEditor().getUiComponent()).getText();
         fecha_fin = ((JTextField) jDateChooser_fecha_fin.getDateEditor().getUiComponent()).getText();
-        
+
         InterGraficaVentas interGraficaVentas = new InterGraficaVentas();
         jDesktopPane_menu.add(interGraficaVentas);
         int width = jDesktopPane_menu.getWidth();
@@ -102,7 +106,7 @@ public class InterGraficas extends javax.swing.JInternalFrame {
         int y = (height - interGraficaVentas.getHeight()) / 2;
         interGraficaVentas.setBounds(x, y, interGraficaVentas.getWidth(), interGraficaVentas.getHeight());
         interGraficaVentas.setVisible(true);
-               
+
     }//GEN-LAST:event_jButton_GuardarActionPerformed
 
 

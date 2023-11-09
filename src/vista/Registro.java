@@ -25,14 +25,14 @@ public class Registro extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
         cbx_rol = new javax.swing.JComboBox<>();
-        txt_dni = new javax.swing.JTextField();
-        txt_correo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txt_pwd = new javax.swing.JTextField();
-        btnPrueba = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -40,49 +40,25 @@ public class Registro extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/image-removebg-preview (5).png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         txt_nombre.setBackground(new java.awt.Color(255, 255, 255));
         txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         txt_nombre.setForeground(new java.awt.Color(0, 0, 0));
-        txt_nombre.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombres", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Franklin Gothic Medium", 0, 12))); // NOI18N
+        txt_nombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txt_nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 300, 60));
+        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 280, 30));
 
         cbx_rol.setBackground(new java.awt.Color(255, 255, 255));
         cbx_rol.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         cbx_rol.setForeground(new java.awt.Color(0, 0, 0));
-        cbx_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Empleado" }));
-        cbx_rol.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rol", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Franklin Gothic Medium", 0, 12))); // NOI18N
-        jPanel1.add(cbx_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 300, 60));
-
-        txt_dni.setBackground(new java.awt.Color(255, 255, 255));
-        txt_dni.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_dni.setForeground(new java.awt.Color(0, 0, 0));
-        txt_dni.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dni", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Franklin Gothic Medium", 0, 12))); // NOI18N
-        txt_dni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_dniActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 300, 60));
-
-        txt_correo.setBackground(new java.awt.Color(255, 255, 255));
-        txt_correo.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_correo.setForeground(new java.awt.Color(0, 0, 0));
-        txt_correo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Correo electronico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Franklin Gothic Medium", 0, 12))); // NOI18N
-        txt_correo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_correoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 300, 60));
+        cbx_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un rol", "Administrador", "Empleado" }));
+        cbx_rol.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(cbx_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 280, 30));
 
         jButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
@@ -94,7 +70,7 @@ public class Registro extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 140, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 150, 30));
 
         btnRegistrar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(0, 0, 0));
@@ -106,7 +82,7 @@ public class Registro extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, 130, 40));
+        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 150, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/x.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,7 +90,7 @@ public class Registro extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, -1, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/minimizar-signo.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -122,48 +98,51 @@ public class Registro extends javax.swing.JFrame {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, 30));
 
         txt_pwd.setBackground(new java.awt.Color(255, 255, 255));
         txt_pwd.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         txt_pwd.setForeground(new java.awt.Color(0, 0, 0));
-        txt_pwd.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contraseña", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Franklin Gothic Medium", 0, 12))); // NOI18N
+        txt_pwd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txt_pwd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_pwdActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 300, 60));
+        jPanel1.add(txt_pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 280, 30));
 
-        btnPrueba.setText("jButton2");
-        jPanel1.add(btnPrueba, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Rol:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 60, -1));
+
+        jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Contraseña:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Nombre:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombreActionPerformed
-
-    private void txt_dniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_dniActionPerformed
-
-    private void txt_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_correoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_correoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Login log = new Login();
@@ -180,12 +159,13 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-         this.setExtendedState(WIDTH);
+        this.setExtendedState(WIDTH);
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void txt_pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pwdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_pwdActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -223,16 +203,16 @@ public class Registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnPrueba;
     public javax.swing.JButton btnRegistrar;
     public javax.swing.JComboBox<String> cbx_rol;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JTextField txt_correo;
-    public javax.swing.JTextField txt_dni;
     public javax.swing.JTextField txt_nombre;
     public javax.swing.JTextField txt_pwd;
     // End of variables declaration//GEN-END:variables

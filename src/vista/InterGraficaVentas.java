@@ -108,8 +108,8 @@ public class InterGraficaVentas extends javax.swing.JInternalFrame {
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Resumen General de Ventas");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("RESUMEN GENERAL DE VENTAS");
         jPanel2.add(jLabel1);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 30));

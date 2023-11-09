@@ -6,10 +6,11 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
-import Modelo.Usuario;
 
 public class FrmMenu extends javax.swing.JFrame {
 
+    
+    
     public static JDesktopPane jDesktopPane_menu;
     
     public FrmMenu() {
