@@ -32,6 +32,7 @@ public class Registro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txt_pwd = new javax.swing.JTextField();
+        btnPrueba = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -40,7 +41,7 @@ public class Registro extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/image-removebg-preview (3).png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/image-removebg-preview (5).png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         txt_nombre.setBackground(new java.awt.Color(255, 255, 255));
@@ -86,7 +87,7 @@ public class Registro extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Regresar al login");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(153, 153, 255), new java.awt.Color(153, 153, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 198, 89), new java.awt.Color(255, 198, 89), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +99,7 @@ public class Registro extends javax.swing.JFrame {
         btnRegistrar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrar.setText("Registrar");
-        btnRegistrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(153, 153, 255), new java.awt.Color(153, 153, 255), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnRegistrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 198, 89), new java.awt.Color(255, 198, 89), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         btnRegistrar.setContentAreaFilled(false);
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +134,9 @@ public class Registro extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txt_pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 300, 60));
+
+        btnPrueba.setText("jButton2");
+        jPanel1.add(btnPrueba, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,6 +223,7 @@ public class Registro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnPrueba;
     public javax.swing.JButton btnRegistrar;
     public javax.swing.JComboBox<String> cbx_rol;
     private javax.swing.JButton jButton1;

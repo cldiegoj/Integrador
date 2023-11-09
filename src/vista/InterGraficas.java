@@ -5,10 +5,6 @@ import javax.swing.JTextField;
 import static vista.FrmMenu.jDesktopPane_menu;
 
 
-/**
- *
- * @author edison Zambrano
- */
 public class InterGraficas extends javax.swing.JInternalFrame {
     
     public static String fecha_inicio = "", fecha_fin = "";
@@ -16,7 +12,7 @@ public class InterGraficas extends javax.swing.JInternalFrame {
     public InterGraficas() {
         initComponents();
        
-        this.setTitle("Historial de Ventas - Sistema biker");
+        this.setTitle("Historial de Ventas - Lima cakes");
 
     }
 
@@ -34,27 +30,27 @@ public class InterGraficas extends javax.swing.JInternalFrame {
         jButton_Guardar = new javax.swing.JButton();
         jDateChooser_fecha_inicio = new com.toedter.calendar.JDateChooser();
         jDateChooser_fecha_fin = new com.toedter.calendar.JDateChooser();
-        jLabel_wallpaper = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setClosable(true);
         setIconifiable(true);
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Fecha inicio:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 100, -1));
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Fecha Fin:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 100, -1));
 
-        jButton_Guardar.setBackground(new java.awt.Color(0, 102, 102));
-        jButton_Guardar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jButton_Guardar.setBackground(new java.awt.Color(0, 0, 0));
+        jButton_Guardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jButton_Guardar.setForeground(new java.awt.Color(255, 255, 255));
         jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/historial1.png"))); // NOI18N
         jButton_Guardar.setText("Graficar Ventas");
@@ -63,7 +59,7 @@ public class InterGraficas extends javax.swing.JInternalFrame {
                 jButton_GuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 160, 50));
+        getContentPane().add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 160, 30));
 
         jDateChooser_fecha_inicio.setBackground(new java.awt.Color(0, 102, 102));
         jDateChooser_fecha_inicio.setForeground(new java.awt.Color(255, 255, 255));
@@ -77,18 +73,18 @@ public class InterGraficas extends javax.swing.JInternalFrame {
         jDateChooser_fecha_fin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         getContentPane().add(jDateChooser_fecha_fin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 140, -1));
 
-        jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo3.jpg"))); // NOI18N
-        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 390, 190));
-
-        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(255, 198, 89));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Gráfica de Ventas");
         jPanel1.add(jLabel1);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 30));
+
+        jPanel2.setBackground(new java.awt.Color(252, 248, 232));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 400, 190));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -117,8 +113,8 @@ public class InterGraficas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel_wallpaper;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 
 

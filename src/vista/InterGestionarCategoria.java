@@ -1,7 +1,7 @@
 package vista;
 
-import conexion.Conexion;
-import controlador.Ctrl_Categoria;
+import ConexionSQL.Conectar;
+import ModeloDAO.CategoriaDAO;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -13,7 +13,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import modelo.Categoria;
+import Modelo.Categoria;
 
 /**
  *
@@ -40,21 +40,35 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_categorias = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton_eliminar = new javax.swing.JButton();
-        jButton_actualizar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txt_descripcion = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
         btnAtras = new javax.swing.JButton();
-        jLabel_wallpaper = new javax.swing.JLabel();
+        jButton_eliminar = new javax.swing.JButton();
+        jButton_actualizar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBackground(new java.awt.Color(255, 198, 89));
+        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Menú - Gestión de Categorías");
+        jPanel4.add(jLabel1);
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 30));
+
+        jPanel2.setBackground(new java.awt.Color(252, 248, 232));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -73,74 +87,65 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable_categorias);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 330, 100));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 330, 100));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 350, 140));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 350, 140));
 
-        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Menú - Gestión de Categorías");
-        jPanel4.add(jLabel1);
-
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 30));
-
-        jButton_eliminar.setBackground(new java.awt.Color(0, 102, 102));
-        jButton_eliminar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton_eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Eliminar.png"))); // NOI18N
-        jButton_eliminar.setText("Eliminar");
-        jButton_eliminar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton_eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_eliminarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 130, 50));
-
-        jButton_actualizar.setBackground(new java.awt.Color(0, 102, 102));
-        jButton_actualizar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton_actualizar.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Guardar.png"))); // NOI18N
-        jButton_actualizar.setText("Actualizar");
-        jButton_actualizar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton_actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_actualizarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 130, 50));
-
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Descripcion:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
 
-        txt_descripcion.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        txt_descripcion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         txt_descripcion.setForeground(new java.awt.Color(0, 102, 102));
-        getContentPane().add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 240, -1));
+        jPanel2.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 240, -1));
 
-        btnAtras.setBackground(new java.awt.Color(0, 102, 102));
-        btnAtras.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        btnAtras.setForeground(new java.awt.Color(255, 255, 255));
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Atras.png"))); // NOI18N
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 580, 290));
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAtras.setBackground(new java.awt.Color(252, 248, 232));
+        btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        btnAtras.setForeground(new java.awt.Color(0, 0, 0));
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
         btnAtras.setText("Atrás");
-        btnAtras.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAtras.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtrasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 130, 50));
+        jPanel3.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 150, 30));
 
-        jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo3.jpg"))); // NOI18N
-        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 520, 210));
+        jButton_eliminar.setBackground(new java.awt.Color(252, 248, 232));
+        jButton_eliminar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jButton_eliminar.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/eliminar.png"))); // NOI18N
+        jButton_eliminar.setText("Eliminar");
+        jButton_eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_eliminarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 140, 30));
+
+        jButton_actualizar.setBackground(new java.awt.Color(252, 248, 232));
+        jButton_actualizar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jButton_actualizar.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
+        jButton_actualizar.setText("Actualizar");
+        jButton_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_actualizarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 150, 30));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 580, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,7 +153,7 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
     private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
         if (!txt_descripcion.getText().isEmpty()) {
             Categoria categoria = new Categoria();
-            Ctrl_Categoria controlCategoria = new Ctrl_Categoria();
+            CategoriaDAO controlCategoria = new CategoriaDAO();
 
             categoria.setDescripcion(txt_descripcion.getText().trim());
             if (controlCategoria.actualizar(categoria, idCategoria)) {
@@ -166,7 +171,7 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
     private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
         if (!txt_descripcion.getText().isEmpty()) {
             Categoria categoria = new Categoria();
-            Ctrl_Categoria controlCategoria = new Ctrl_Categoria();
+            CategoriaDAO controlCategoria = new CategoriaDAO();
 
             categoria.setDescripcion(txt_descripcion.getText().trim());
             if (!controlCategoria.eliminar(idCategoria)) {
@@ -193,8 +198,9 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton_eliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel_wallpaper;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     public static javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable jTable_categorias;
@@ -207,45 +213,45 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
      * *****************************************************
      */
     private void CargarTablaCategorias() {
-        Connection con = Conexion.conectar();
-        DefaultTableModel model = new DefaultTableModel();
-        String sql = "select ID_CATEGORIA, DESCRIPCION, ESTADO from CATEGORIAS;";
-        Statement st;
-        try {
-            st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            InterGestionarCategoria.jTable_categorias = new JTable(model);
-            InterGestionarCategoria.jScrollPane1.setViewportView(InterGestionarCategoria.jTable_categorias);
-
-            model.addColumn("ID_CATEGORIA");
-            model.addColumn("DESCRIPCIÓN");
-            model.addColumn("ESTADO");
-
-            while (rs.next()) {
-                Object fila[] = new Object[3];
-                for (int i = 0; i < 3; i++) {
-                    fila[i] = rs.getObject(i + 1);
-                }
-                model.addRow(fila);
-            }
-            con.close();
-        } catch (SQLException e) {
-            System.out.println("Error al llenar la tabla categorias: " + e);
-        }
-        //evento para obtener campo al cual el usuario da click
-        //y obtener la interfaz que mostrara la informacion general
-        jTable_categorias.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                int fila_point = jTable_categorias.rowAtPoint(e.getPoint());
-                int columna_point = 0;
-
-                if (fila_point > -1) {
-                    idCategoria = (int) model.getValueAt(fila_point, columna_point);
-                    EnviarDatosCategoriaSeleccionada(idCategoria);
-                }
-            }
-        });
+//        Connection con = Conexion.conectar();
+//        DefaultTableModel model = new DefaultTableModel();
+//        String sql = "select ID_CATEGORIA, DESCRIPCION, ESTADO from CATEGORIAS;";
+//        Statement st;
+//        try {
+//            st = con.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//            InterGestionarCategoria.jTable_categorias = new JTable(model);
+//            InterGestionarCategoria.jScrollPane1.setViewportView(InterGestionarCategoria.jTable_categorias);
+//
+//            model.addColumn("ID_CATEGORIA");
+//            model.addColumn("DESCRIPCIÓN");
+//            model.addColumn("ESTADO");
+//
+//            while (rs.next()) {
+//                Object fila[] = new Object[3];
+//                for (int i = 0; i < 3; i++) {
+//                    fila[i] = rs.getObject(i + 1);
+//                }
+//                model.addRow(fila);
+//            }
+//            con.close();
+//        } catch (SQLException e) {
+//            System.out.println("Error al llenar la tabla categorias: " + e);
+//        }
+//        //evento para obtener campo al cual el usuario da click
+//        //y obtener la interfaz que mostrara la informacion general
+//        jTable_categorias.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                int fila_point = jTable_categorias.rowAtPoint(e.getPoint());
+//                int columna_point = 0;
+//
+//                if (fila_point > -1) {
+//                    idCategoria = (int) model.getValueAt(fila_point, columna_point);
+//                    EnviarDatosCategoriaSeleccionada(idCategoria);
+//                }
+//            }
+//        });
     }
 
     /*
@@ -255,7 +261,7 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
      */
     private void EnviarDatosCategoriaSeleccionada(int idCategoria) {
         try {
-            Connection con = Conexion.conectar();
+            Connection con = Conectar.getConexion();
             PreparedStatement pst = con.prepareStatement(
                     "select * from CATEGORIAS where ID_CATEGORIA = '" + idCategoria + "'");
             ResultSet rs = pst.executeQuery();

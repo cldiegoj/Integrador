@@ -1,9 +1,9 @@
 
 package main;
 
-import conexion.Conectar;
-import controlador.usu_controlador;
-import modelo.Usuario;
+import ConexionSQL.Conectar;
+import ModeloDAO.UsuarioDAO;
+import Modelo.Usuario;
 import vista.Registro;
 import vista.Login;
 
@@ -16,7 +16,7 @@ public class main {
         Usuario u = new Usuario();
         Registro reg = new Registro();
         Login log = new Login();
-        controlador.usu_controlador usu_c = new usu_controlador(reg,log, u);
+        ModeloDAO.UsuarioDAO usu_c = new UsuarioDAO(reg,log, u);
         log.setVisible(true);
         
     }

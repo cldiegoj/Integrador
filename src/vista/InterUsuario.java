@@ -1,9 +1,9 @@
 package vista;
 
-import controlador.Ctrl_Usuario;
+//import controlador.Ctrl_Usuario;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
-import modelo.Usuario;
+import Modelo.Usuario;
 
 /**
  *
@@ -14,10 +14,8 @@ public class InterUsuario extends javax.swing.JInternalFrame {
     public InterUsuario() {
         initComponents();
         
-        this.setTitle("Nuevo Usuario");
+        this.setTitle("Registro de Usuario");
         
-        txt_password.setVisible(true);
-        txt_password_visible.setVisible(false);
     }
 
     /**
@@ -29,197 +27,168 @@ public class InterUsuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txt_nombre = new javax.swing.JTextField();
-        txt_apellido = new javax.swing.JTextField();
-        txt_usuario = new javax.swing.JTextField();
-        jButton_Guardar = new javax.swing.JButton();
-        txt_telefono = new javax.swing.JTextField();
-        txt_password = new javax.swing.JPasswordField();
-        jCheckBox_ver_clave = new javax.swing.JCheckBox();
-        txt_password_visible = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton_Guardar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
-        jLabel_wallpaper = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txt_apellido = new javax.swing.JTextField();
+        txt_nombre = new javax.swing.JTextField();
+        txt_usuario1 = new javax.swing.JTextField();
+        txt_telefono = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Nombre:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 90, -1));
+        jPanel1.setBackground(new java.awt.Color(252, 248, 232));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Apellido:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 90, -1));
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Menú - Nuevo Producto");
+        jPanel1.add(jLabel1);
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Usuario:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 90, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 30));
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Password:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 90, -1));
+        jPanel2.setBackground(new java.awt.Color(255, 198, 89));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Telefono:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 90, -1));
-
-        txt_nombre.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 170, -1));
-
-        txt_apellido.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        getContentPane().add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 170, -1));
-
-        txt_usuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        getContentPane().add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 170, -1));
-
-        jButton_Guardar.setBackground(new java.awt.Color(0, 102, 102));
-        jButton_Guardar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton_Guardar.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Guardar.png"))); // NOI18N
+        jButton_Guardar.setBackground(new java.awt.Color(255, 255, 255));
+        jButton_Guardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jButton_Guardar.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
         jButton_Guardar.setText("Guardar");
+        jButton_Guardar.setBorder(null);
         jButton_Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_GuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 120, 50));
+        jPanel2.add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 170, 30));
 
-        txt_telefono.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        getContentPane().add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 170, -1));
-
-        txt_password.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        getContentPane().add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 170, -1));
-
-        jCheckBox_ver_clave.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBox_ver_claveMouseClicked(evt);
-            }
-        });
-        getContentPane().add(jCheckBox_ver_clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
-
-        txt_password_visible.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        getContentPane().add(txt_password_visible, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 170, -1));
-
-        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Menú - Nuevo Producto");
-        jPanel1.add(jLabel1);
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 30));
-
-        btnAtras.setBackground(new java.awt.Color(0, 102, 102));
-        btnAtras.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        btnAtras.setForeground(new java.awt.Color(255, 255, 255));
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Atras.png"))); // NOI18N
+        btnAtras.setBackground(new java.awt.Color(255, 255, 255));
+        btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        btnAtras.setForeground(new java.awt.Color(0, 0, 0));
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
         btnAtras.setText("Atrás");
-        btnAtras.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAtras.setBorder(null);
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtrasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 120, 50));
+        jPanel2.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 170, 30));
 
-        jLabel_wallpaper.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo3.jpg"))); // NOI18N
-        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 490, 230));
+        jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setText("Nombre:");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 60, -1));
+
+        jLabel9.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("Dni:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 30, -1));
+
+        jLabel10.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Correo:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 50, 20));
+
+        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Rol:");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 30, 30));
+
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Contraseña:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 80, -1));
+
+        txt_apellido.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jPanel2.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 170, 30));
+
+        txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 170, 30));
+
+        txt_usuario1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jPanel2.add(txt_usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 170, 30));
+
+        txt_telefono.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jPanel2.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 170, 30));
+
+        jComboBox1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 170, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 590, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarActionPerformed
-        if (txt_nombre.getText().isEmpty() || txt_apellido.getText().isEmpty() || txt_usuario.getText().isEmpty()
-                || txt_password.getText().isEmpty() || txt_telefono.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Completa todos los campos");
-        } else {
-            //validamos si el usuaro ya esta registrado
-            Usuario usuario = new Usuario();
-            Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
-            if (!controlUsuario.existeUsuario(txt_usuario.getText().trim())) {
-                //enviamos datos del usuario
-                usuario.setNombre(txt_nombre.getText().trim());
-                usuario.setApellido(txt_apellido.getText().trim());
-                usuario.setUsuario(txt_usuario.getText().trim());
-                usuario.setPassword(txt_password.getText().trim());
-                usuario.setTelefono(txt_telefono.getText().trim());
-                usuario.setEstado("Activo");
-                
-                if (controlUsuario.guardar(usuario)) {
-                    JOptionPane.showMessageDialog(null, "¡Usuario Registrado!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "¡Error al registrar Usuario!");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "El Usuario ya esta registrado, ingrese otro.");
-            }
-        }
-        this.Limpiar();
-
-    }//GEN-LAST:event_jButton_GuardarActionPerformed
-
-    private void jCheckBox_ver_claveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox_ver_claveMouseClicked
-        if (jCheckBox_ver_clave.isSelected() == true) {
-            String pass = "";
-            char[] passIngresado = txt_password.getPassword();
-            for (int i = 0; i < passIngresado.length; i++) {
-                pass += passIngresado[i];
-            }
-            txt_password_visible.setText(pass);
-            txt_password.setVisible(false);
-            txt_password_visible.setVisible(true);
-        } else {
-            String passwordIngresado = txt_password_visible.getText().trim();
-            txt_password.setText(passwordIngresado);
-            txt_password.setVisible(true);
-            txt_password_visible.setVisible(false);
-        }
-    }//GEN-LAST:event_jCheckBox_ver_claveMouseClicked
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
+    private void jButton_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarActionPerformed
+        //        if (txt_nombre.getText().isEmpty() || txt_apellido.getText().isEmpty() || txt_usuario.getText().isEmpty()
+            //                || txt_password.getText().isEmpty() || txt_telefono.getText().isEmpty()) {
+            //            JOptionPane.showMessageDialog(null, "Completa todos los campos");
+            //        } else {
+            //            //validamos si el usuaro ya esta registrado
+            //            Usuario usuario = new Usuario();
+            //            Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
+            //            if (!controlUsuario.existeUsuario(txt_usuario.getText().trim())) {
+                //                //enviamos datos del usuario
+                //                usuario.setNombre(txt_nombre.getText().trim());
+                //                usuario.setApellido(txt_apellido.getText().trim());
+                //                usuario.setUsuario(txt_usuario.getText().trim());
+                //                usuario.setPassword(txt_password.getText().trim());
+                //                usuario.setTelefono(txt_telefono.getText().trim());
+                //                usuario.setEstado("Activo");
+                //
+                //                if (controlUsuario.guardar(usuario)) {
+                    //                    JOptionPane.showMessageDialog(null, "¡Usuario Registrado!");
+                    //                } else {
+                    //                    JOptionPane.showMessageDialog(null, "¡Error al registrar Usuario!");
+                    //                }
+                //            } else {
+                //                JOptionPane.showMessageDialog(null, "El Usuario ya esta registrado, ingrese otro.");
+                //            }
+            //        }
+        //        this.Limpiar();
+    }//GEN-LAST:event_jButton_GuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton jButton_Guardar;
-    private javax.swing.JCheckBox jCheckBox_ver_clave;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel_wallpaper;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_nombre;
-    private javax.swing.JPasswordField txt_password;
-    private javax.swing.JTextField txt_password_visible;
     private javax.swing.JTextField txt_telefono;
-    private javax.swing.JTextField txt_usuario;
+    private javax.swing.JTextField txt_usuario1;
     // End of variables declaration//GEN-END:variables
      /**
      *
@@ -228,8 +197,6 @@ public class InterUsuario extends javax.swing.JInternalFrame {
     private void Limpiar() {
         txt_nombre.setText("");
         txt_apellido.setText("");
-        txt_password.setText("");
-        txt_usuario.setText("");
         txt_telefono.setText("");
     }
     

@@ -1,7 +1,7 @@
 package vista;
 
-import conexion.Conexion;
-import controlador.Ctrl_RegistrarVenta;
+import ConexionSQL.Conectar;
+import ModeloDAO.RegistrarVentaDAO;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import modelo.CabeceraVenta;
+import Modelo.CabeceraVenta;
 
 /**
  *
@@ -45,26 +45,69 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnAtras = new javax.swing.JButton();
+        jButton_actualizar = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_ventas = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton_actualizar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        txt_total_pagar = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txt_fecha = new javax.swing.JTextField();
         jComboBox_cliente = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txt_fecha = new javax.swing.JTextField();
+        txt_total_pagar = new javax.swing.JTextField();
         jComboBox_estado = new javax.swing.JComboBox<>();
-        btnAtras = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBackground(new java.awt.Color(255, 198, 89));
+        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Menú - Administrador de Ventas");
+        jPanel4.add(jLabel1);
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 30));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAtras.setBackground(new java.awt.Color(252, 248, 232));
+        btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        btnAtras.setForeground(new java.awt.Color(0, 0, 0));
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
+        btnAtras.setText("Atrás");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 30));
+
+        jButton_actualizar.setBackground(new java.awt.Color(252, 248, 232));
+        jButton_actualizar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jButton_actualizar.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
+        jButton_actualizar.setText("Actualizar");
+        jButton_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_actualizarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 890, 50));
+
+        jPanel3.setBackground(new java.awt.Color(252, 248, 232));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -83,96 +126,55 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable_ventas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 710, 250));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 560, 250));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 730, 270));
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 580, 270));
 
-        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel4.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox_cliente.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jComboBox_cliente.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBox_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione cliente:", "Item 2", "Item 3", "Item 4" }));
+        jPanel3.add(jComboBox_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 170, -1));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Menú - Administrador de Ventas");
-        jPanel4.add(jLabel1);
-
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 30));
-
-        jButton_actualizar.setBackground(new java.awt.Color(0, 102, 102));
-        jButton_actualizar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton_actualizar.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Guardar.png"))); // NOI18N
-        jButton_actualizar.setText("Actualizar");
-        jButton_actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_actualizarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 50, -1, 50));
-
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Total Pagar:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 100, -1));
-
-        txt_total_pagar.setBackground(new java.awt.Color(0, 102, 102));
-        txt_total_pagar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_total_pagar.setForeground(new java.awt.Color(255, 255, 255));
-        txt_total_pagar.setEnabled(false);
-        getContentPane().add(txt_total_pagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 170, -1));
-
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Fecha:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 50, -1));
-
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Cliente:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 70, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 50, -1));
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Fecha:");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 50, -1));
+
+        txt_fecha.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_fecha.setForeground(new java.awt.Color(0, 0, 0));
+        txt_fecha.setEnabled(false);
+        jPanel3.add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 120, -1));
+
+        txt_total_pagar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_total_pagar.setForeground(new java.awt.Color(0, 0, 0));
+        txt_total_pagar.setEnabled(false);
+        jPanel3.add(txt_total_pagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 170, -1));
+
+        jComboBox_estado.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jComboBox_estado.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBox_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        jPanel3.add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 170, -1));
+
+        jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Estado:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 90, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 50, -1));
 
-        txt_fecha.setBackground(new java.awt.Color(0, 102, 102));
-        txt_fecha.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_fecha.setForeground(new java.awt.Color(255, 255, 255));
-        txt_fecha.setEnabled(false);
-        getContentPane().add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 120, -1));
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Total Pagar:");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 80, -1));
 
-        jComboBox_cliente.setBackground(new java.awt.Color(0, 102, 102));
-        jComboBox_cliente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jComboBox_cliente.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione cliente:", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, 170, -1));
-
-        jComboBox_estado.setBackground(new java.awt.Color(0, 102, 102));
-        jComboBox_estado.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jComboBox_estado.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
-        getContentPane().add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, 170, -1));
-
-        btnAtras.setBackground(new java.awt.Color(0, 102, 102));
-        btnAtras.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        btnAtras.setForeground(new java.awt.Color(255, 255, 255));
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Atras.png"))); // NOI18N
-        btnAtras.setText("Atrás");
-        btnAtras.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 110, 130, 50));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo4.jpg"))); // NOI18N
-        jLabel7.setText(" ");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 890, 390));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 890, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -180,14 +182,14 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
     private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
 
         CabeceraVenta cabeceraVenta = new CabeceraVenta();
-        Ctrl_RegistrarVenta controlRegistrarVenta = new Ctrl_RegistrarVenta();
+        RegistrarVentaDAO controlRegistrarVenta = new RegistrarVentaDAO();
         String cliente, estado;
         cliente = jComboBox_cliente.getSelectedItem().toString().trim();
         estado = jComboBox_estado.getSelectedItem().toString().trim();
 
         //obtener el id del cliente
         try {
-            Connection cn = Conexion.conectar();
+            Connection cn = ConexionSQL.Conectar.getConexion();
             PreparedStatement pst = cn.prepareStatement(
                     "select ID_CLIENTE, concat(NOMBRES, ' ', APELLIDOS) as cliente "
                     + "from CLIENTES where concat(NOMBRES, ' ', APELLIDOS) = '" + cliente + "'");
@@ -237,8 +239,9 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     public static javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable jTable_ventas;
@@ -266,12 +269,12 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
      * *****************************************************
      */
     private void CargarTablaVentas() {
-        Connection con = Conexion.conectar();
+        Connection cn = ConexionSQL.Conectar.getConexion();
         DefaultTableModel model = new DefaultTableModel();
         String sql = "SELECT cv.ID_CAB_VENTA AS id, CONCAT(c.NOMBRES, ' ', c.APELLIDOS) AS cliente, cv.VALOR_A_PAGAR AS total, cv.FECH_VENTA AS fecha, cv.ESTADO FROM CAB_VENTAS AS cv INNER JOIN CLIENTES AS c ON cv.ID_CLIENTE = c.ID_CLIENTE;";
         Statement st;
         try {
-            st = con.createStatement();
+            st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             InterGestionarVentas.jTable_ventas = new JTable(model);
             InterGestionarVentas.jScrollPane1.setViewportView(InterGestionarVentas.jTable_ventas);
@@ -298,7 +301,7 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
                 }
                 model.addRow(fila);
             }
-            con.close();
+            cn.close();
         } catch (SQLException e) {
             System.out.println("Error al llenar la tabla de ventas: " + e);
         }
@@ -326,8 +329,8 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
      */
     private void EnviarDatosVentaSeleccionada(int idVenta) {
         try {
-            Connection con = Conexion.conectar();
-            PreparedStatement pst = con.prepareStatement("SELECT cv.ID_CAB_VENTA, cv.ID_CLIENTE, CONCAT(c.NOMBRES, ' ', c.APELLIDOS) AS cliente, cv.VALOR_A_PAGAR, cv.FECH_VENTA, cv.ESTADO FROM CAB_VENTAS cv INNER JOIN CLIENTES c ON cv.ID_CLIENTE = c.ID_CLIENTE WHERE cv.ID_CAB_VENTA = '" + idVenta + "';");
+            Connection cn = ConexionSQL.Conectar.getConexion();
+            PreparedStatement pst = cn.prepareStatement("SELECT cv.ID_CAB_VENTA, cv.ID_CLIENTE, CONCAT(c.NOMBRES, ' ', c.APELLIDOS) AS cliente, cv.VALOR_A_PAGAR, cv.FECH_VENTA, cv.ESTADO FROM CAB_VENTAS cv INNER JOIN CLIENTES c ON cv.ID_CLIENTE = c.ID_CLIENTE WHERE cv.ID_CAB_VENTA = '" + idVenta + "';");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 jComboBox_cliente.setSelectedItem(rs.getString("CLIENTE"));
@@ -340,7 +343,7 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
                     jComboBox_estado.setSelectedItem("Inactivo");
                 }
             }
-            con.close();
+            cn.close();
         } catch (SQLException e) {
             System.out.println("Error al seleccionar venta: " + e);
         }
@@ -350,7 +353,7 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
     Metodo para cargar los clientes en el jComboBox
      */
     private void CargarComboClientes() {
-        Connection cn = Conexion.conectar();
+        Connection cn = ConexionSQL.Conectar.getConexion();
         String sql = "select * from CLIENTES";
         Statement st;
         try {

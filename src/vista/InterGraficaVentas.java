@@ -1,6 +1,6 @@
 package vista;
 
-import conexion.Conexion;
+import ConexionSQL.Conectar;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -10,10 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author Edison
- */
+
 public class InterGraficaVentas extends javax.swing.JInternalFrame {
 
     ArrayList<Integer> listaCantidad = new ArrayList<>();
@@ -37,7 +34,7 @@ public class InterGraficaVentas extends javax.swing.JInternalFrame {
     //Metodo para determinar la cantidad de resultados a graficar
         private int MetodoContador() {
     try {
-        Connection cn = Conexion.conectar();
+        Connection cn = ConexionSQL.Conectar.getConexion();
         String query = "SELECT FECH_VENTA, COUNT(FECH_VENTA) AS Ventas FROM CAB_VENTAS WHERE FECH_VENTA BETWEEN ? AND ? GROUP BY FECH_VENTA";
         PreparedStatement pst = cn.prepareStatement(query);
         pst.setString(1, InterGraficas.fecha_inicio);
@@ -59,7 +56,7 @@ public class InterGraficaVentas extends javax.swing.JInternalFrame {
     //Metodo para almacenar en las listas los datos a graficar
     private void MetodoAlmacenaDatos() {
         try {
-            Connection cn = Conexion.conectar();
+            Connection cn = ConexionSQL.Conectar.getConexion();
             PreparedStatement pst = cn.prepareStatement(
                     "select FECH_VENTA, count(FECH_VENTA) as Ventas from CAB_VENTAS "
                     + "where FECH_VENTA BETWEEN '" + InterGraficas.fecha_inicio + "' and '" + InterGraficas.fecha_fin + "' group by FECH_VENTA;");
@@ -107,11 +104,11 @@ public class InterGraficaVentas extends javax.swing.JInternalFrame {
         setResizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(255, 198, 89));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Resumen General de Ventas");
         jPanel2.add(jLabel1);
 

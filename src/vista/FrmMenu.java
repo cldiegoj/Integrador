@@ -1,25 +1,23 @@
 package vista;
 
-import controlador.Reportes;
+//import controlador.Reportes;
+import ModeloDAO.UsuarioDAO;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
+import Modelo.Usuario;
 
-/**
- *
- * @author Edison Zambrano - © Programador Fantama
- */
 public class FrmMenu extends javax.swing.JFrame {
 
     public static JDesktopPane jDesktopPane_menu;
-
+    
     public FrmMenu() {
         initComponents();
-        
+
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
-        this.setTitle("Menu - Sistema Biker");
+        this.setTitle("LIMA CAKES - PASTELERIA");
 
         this.setLayout(null);
         jDesktopPane_menu = new JDesktopPane();
@@ -28,11 +26,13 @@ public class FrmMenu extends javax.swing.JFrame {
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
         this.jDesktopPane_menu.setBounds(0, 0, ancho, (alto - 110));
         this.add(jDesktopPane_menu);
+        
 
     }
-        @Override
+
+    @Override
     public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("img/ventas.png"));
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imgs/panaderia.png"));
         return retValue;
     }
 
@@ -51,17 +51,16 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem_nuevo_usuario = new javax.swing.JMenuItem();
         jMenuItem_gestionar_usuario = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3_nuevo_producto = new javax.swing.JMenuItem();
         jMenuItem_gestionar_producto = new javax.swing.JMenuItem();
         jMenuItem_actualizar_stock = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem3_nuevo_productoalq = new javax.swing.JMenuItem();
-        jMenuItem_gestionar_productoalq = new javax.swing.JMenuItem();
-        jMenuItem_actualizar_stockalq = new javax.swing.JMenuItem();
         btnTecnicos = new javax.swing.JMenu();
         jMenuItem_nuevo_tecnico = new javax.swing.JMenuItem();
         jMenuItem_gestionar_tecnicos = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem_nuevo_cliente = new javax.swing.JMenuItem();
         jMenuItem_gestionar_cliente = new javax.swing.JMenuItem();
@@ -121,10 +120,11 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem_gestionar_usuario);
+        jMenu1.add(jSeparator3);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Productos.png"))); // NOI18N
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pastel.png"))); // NOI18N
         jMenu2.setText("Productos");
         jMenu2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jMenu2.setPreferredSize(new java.awt.Dimension(150, 50));
@@ -163,49 +163,16 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu2.add(jMenuItem_actualizar_stock);
         jMenu2.add(jSeparator1);
 
-        jMenuItem3_nuevo_productoalq.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jMenuItem3_nuevo_productoalq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Nuevo Producto.png"))); // NOI18N
-        jMenuItem3_nuevo_productoalq.setText("Alquiler - Nuevo Producto");
-        jMenuItem3_nuevo_productoalq.setPreferredSize(new java.awt.Dimension(200, 30));
-        jMenuItem3_nuevo_productoalq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3_nuevo_productoalqActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem3_nuevo_productoalq);
-
-        jMenuItem_gestionar_productoalq.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jMenuItem_gestionar_productoalq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Gestionar Producto.png"))); // NOI18N
-        jMenuItem_gestionar_productoalq.setText("Alquiler - Gestionar Productos");
-        jMenuItem_gestionar_productoalq.setPreferredSize(new java.awt.Dimension(200, 30));
-        jMenuItem_gestionar_productoalq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_gestionar_productoalqActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem_gestionar_productoalq);
-
-        jMenuItem_actualizar_stockalq.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jMenuItem_actualizar_stockalq.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Actualizar Stock.png"))); // NOI18N
-        jMenuItem_actualizar_stockalq.setText("Alquiler - Actualizar Stock");
-        jMenuItem_actualizar_stockalq.setPreferredSize(new java.awt.Dimension(200, 30));
-        jMenuItem_actualizar_stockalq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_actualizar_stockalqActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem_actualizar_stockalq);
-
         jMenuBar1.add(jMenu2);
 
         btnTecnicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tecnico.png"))); // NOI18N
-        btnTecnicos.setText("Tecnicos");
+        btnTecnicos.setText("Proveedores");
         btnTecnicos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnTecnicos.setPreferredSize(new java.awt.Dimension(150, 50));
 
         jMenuItem_nuevo_tecnico.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jMenuItem_nuevo_tecnico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Nuevo Tecnico.png"))); // NOI18N
-        jMenuItem_nuevo_tecnico.setText("Nuevo Tecnico");
+        jMenuItem_nuevo_tecnico.setText("Nuevo Proveedor");
         jMenuItem_nuevo_tecnico.setPreferredSize(new java.awt.Dimension(180, 30));
         jMenuItem_nuevo_tecnico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,13 +183,14 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuItem_gestionar_tecnicos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jMenuItem_gestionar_tecnicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Gestionar Clientes.png"))); // NOI18N
-        jMenuItem_gestionar_tecnicos.setText("Gestionar Tecnicos");
+        jMenuItem_gestionar_tecnicos.setText("Gestionar Proveedor");
         jMenuItem_gestionar_tecnicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem_gestionar_tecnicosActionPerformed(evt);
             }
         });
         btnTecnicos.add(jMenuItem_gestionar_tecnicos);
+        btnTecnicos.add(jSeparator4);
 
         jMenuBar1.add(btnTecnicos);
 
@@ -312,7 +280,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuItem_nueva_venta1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jMenuItem_nueva_venta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Nueva Venta.png"))); // NOI18N
-        jMenuItem_nueva_venta1.setText("Nueva Alquiler");
+        jMenuItem_nueva_venta1.setText("Gestionar insumos");
         jMenuItem_nueva_venta1.setPreferredSize(new java.awt.Dimension(200, 30));
         jMenuItem_nueva_venta1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -416,8 +384,8 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem_reportes_ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_reportes_ventasActionPerformed
-        Reportes reporte = new Reportes();
-        reporte.ReportesVentas();
+//        Reportes reporte = new Reportes();
+//        reporte.ReportesVentas();
     }//GEN-LAST:event_jMenuItem_reportes_ventasActionPerformed
 
     private void jMenuItem_nueva_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_nueva_categoriaActionPerformed
@@ -442,28 +410,6 @@ public class FrmMenu extends javax.swing.JFrame {
         interGestionarCategoria.setVisible(true);
     }//GEN-LAST:event_jMenuItem_gestionar_categoriasActionPerformed
 
-    private void jMenuItem3_nuevo_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3_nuevo_productoActionPerformed
-        InterProducto interProducto = new InterProducto();
-        int width = jDesktopPane_menu.getWidth();
-        int height = jDesktopPane_menu.getHeight();
-        int x = (width - interProducto.getWidth()) / 2;
-        int y = (height - interProducto.getHeight()) / 2;
-        interProducto.setBounds(x, y, interProducto.getWidth(), interProducto.getHeight());
-        jDesktopPane_menu.add(interProducto);
-        interProducto.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3_nuevo_productoActionPerformed
-
-    private void jMenuItem_gestionar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_gestionar_productoActionPerformed
-        InterGestionarProducto interGestionarProducto = new InterGestionarProducto();
-        int width = jDesktopPane_menu.getWidth();
-        int height = jDesktopPane_menu.getHeight();
-        int x = (width - interGestionarProducto.getWidth()) / 2;
-        int y = (height - interGestionarProducto.getHeight()) / 2;
-        interGestionarProducto.setBounds(x, y, interGestionarProducto.getWidth(), interGestionarProducto.getHeight());
-        jDesktopPane_menu.add(interGestionarProducto);
-        interGestionarProducto.setVisible(true);
-    }//GEN-LAST:event_jMenuItem_gestionar_productoActionPerformed
-
     private void jMenuItem_nuevo_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_nuevo_clienteActionPerformed
         InterCliente interCliente = new InterCliente();
         int width = jDesktopPane_menu.getWidth();
@@ -486,17 +432,6 @@ public class FrmMenu extends javax.swing.JFrame {
         interGestionarCliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem_gestionar_clienteActionPerformed
 
-    private void jMenuItem_actualizar_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_actualizar_stockActionPerformed
-        InterActualizarStock interActualizarStock = new InterActualizarStock();
-        int width = jDesktopPane_menu.getWidth();
-        int height = jDesktopPane_menu.getHeight();
-        int x = (width - interActualizarStock.getWidth()) / 2;
-        int y = (height - interActualizarStock.getHeight()) / 2;
-        jDesktopPane_menu.add(interActualizarStock);
-        interActualizarStock.setBounds(x, y, interActualizarStock.getWidth(), interActualizarStock.getHeight());
-        interActualizarStock.setVisible(true);
-    }//GEN-LAST:event_jMenuItem_actualizar_stockActionPerformed
-
     private void jMenuItem_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_cerrar_sesionActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem_cerrar_sesionActionPerformed
@@ -509,7 +444,7 @@ public class FrmMenu extends javax.swing.JFrame {
         int x = (width - interUsuario.getWidth()) / 2;
         int y = (height - interUsuario.getHeight()) / 2;
         interUsuario.setBounds(x, y, interUsuario.getWidth(), interUsuario.getHeight());
-        interUsuario.setVisible(true);    
+        interUsuario.setVisible(true);
     }//GEN-LAST:event_jMenuItem_nuevo_usuarioActionPerformed
 
     private void jMenuItem_gestionar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_gestionar_usuarioActionPerformed
@@ -542,23 +477,23 @@ public class FrmMenu extends javax.swing.JFrame {
         int x = (width - interGestionarVentas.getWidth()) / 2;
         int y = (height - interGestionarVentas.getHeight()) / 2;
         interGestionarVentas.setBounds(x, y, interGestionarVentas.getWidth(), interGestionarVentas.getHeight());
-        
+
         interGestionarVentas.setVisible(true);
     }//GEN-LAST:event_jMenuItem_gestionar_ventasActionPerformed
 
     private void jMenuItem_reportes_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_reportes_clientesActionPerformed
-        Reportes reporte = new Reportes();
-        reporte.ReportesClientes();
+//        Reportes reporte = new Reportes();
+//        reporte.ReportesClientes();
     }//GEN-LAST:event_jMenuItem_reportes_clientesActionPerformed
 
     private void jMenuItem_reportes_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_reportes_productosActionPerformed
-        Reportes reporte = new Reportes();
-        reporte.ReportesProductos();
+//        Reportes reporte = new Reportes();
+//        reporte.ReportesProductos();
     }//GEN-LAST:event_jMenuItem_reportes_productosActionPerformed
 
     private void jMenuItem_reportes_categoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_reportes_categoriasActionPerformed
-        Reportes reporte = new Reportes();
-        reporte.ReportesCategorias();
+//        Reportes reporte = new Reportes();
+//        reporte.ReportesCategorias();
     }//GEN-LAST:event_jMenuItem_reportes_categoriasActionPerformed
 
     private void jMenuItem_ver_historialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_ver_historialActionPerformed
@@ -574,72 +509,66 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMenuItem_nuevo_tecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_nuevo_tecnicoActionPerformed
         // TODO add your handling code here:
-        InterTecnicos interTecnicos = new InterTecnicos();
-        jDesktopPane_menu.add(interTecnicos);
+        InterProveedores interProveedores = new InterProveedores();
+        jDesktopPane_menu.add(interProveedores);
         int width = jDesktopPane_menu.getWidth();
         int height = jDesktopPane_menu.getHeight();
-        int x = (width - interTecnicos.getWidth()) / 2;
-        int y = (height - interTecnicos.getHeight()) / 2;
-        interTecnicos.setBounds(x, y, interTecnicos.getWidth(), interTecnicos.getHeight());
-        
-        interTecnicos.setVisible(true);
+        int x = (width - interProveedores.getWidth()) / 2;
+        int y = (height - interProveedores.getHeight()) / 2;
+        interProveedores.setBounds(x, y, interProveedores.getWidth(), interProveedores.getHeight());
+
+        interProveedores.setVisible(true);
     }//GEN-LAST:event_jMenuItem_nuevo_tecnicoActionPerformed
 
     private void jMenuItem_gestionar_tecnicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_gestionar_tecnicosActionPerformed
-        // TODO add your handling code here:
-        InterGestionarTecnico interGestionartecnico = new InterGestionarTecnico();
-        jDesktopPane_menu.add(interGestionartecnico);
+//         TODO add your handling code here:
+        InterGestionarProveedor interGestionarProveedor = new InterGestionarProveedor();
+        jDesktopPane_menu.add(interGestionarProveedor);
         int width = jDesktopPane_menu.getWidth();
         int height = jDesktopPane_menu.getHeight();
-        int x = (width - interGestionartecnico.getWidth()) / 2;
-        int y = (height - interGestionartecnico.getHeight()) / 2;
-        interGestionartecnico.setBounds(x, y, interGestionartecnico.getWidth(), interGestionartecnico.getHeight());
-        
-        interGestionartecnico.setVisible(true);
+        int x = (width - interGestionarProveedor.getWidth()) / 2;
+        int y = (height - interGestionarProveedor.getHeight()) / 2;
+        interGestionarProveedor.setBounds(x, y, interGestionarProveedor.getWidth(), interGestionarProveedor.getHeight());
+
+        interGestionarProveedor.setVisible(true);
     }//GEN-LAST:event_jMenuItem_gestionar_tecnicosActionPerformed
-
-    private void jMenuItem3_nuevo_productoalqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3_nuevo_productoalqActionPerformed
-                // TODO add your handling code here:
-        InterProducto_Alq interProductoalq = new InterProducto_Alq();
-        jDesktopPane_menu.add(interProductoalq);
-        int width = jDesktopPane_menu.getWidth();
-        int height = jDesktopPane_menu.getHeight();
-        int x = (width - interProductoalq.getWidth()) / 2;
-        int y = (height - interProductoalq.getHeight()) / 2;
-        interProductoalq.setBounds(x, y, interProductoalq.getWidth(), interProductoalq.getHeight());
-        
-        interProductoalq.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3_nuevo_productoalqActionPerformed
-
-    private void jMenuItem_actualizar_stockalqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_actualizar_stockalqActionPerformed
-                        // TODO add your handling code here:
-        InterActualizarStock_Alq actualizarstockalq = new InterActualizarStock_Alq();
-        jDesktopPane_menu.add(actualizarstockalq);
-        int width = jDesktopPane_menu.getWidth();
-        int height = jDesktopPane_menu.getHeight();
-        int x = (width - actualizarstockalq.getWidth()) / 2;
-        int y = (height - actualizarstockalq.getHeight()) / 2;
-        actualizarstockalq.setBounds(x, y, actualizarstockalq.getWidth(), actualizarstockalq.getHeight());
-        
-        actualizarstockalq.setVisible(true);
-    }//GEN-LAST:event_jMenuItem_actualizar_stockalqActionPerformed
-
-    private void jMenuItem_gestionar_productoalqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_gestionar_productoalqActionPerformed
-        // TODO add your handling code here:
-        InterGestionarAlquiler gestionaralq = new InterGestionarAlquiler();
-        jDesktopPane_menu.add(gestionaralq);
-        int width = jDesktopPane_menu.getWidth();
-        int height = jDesktopPane_menu.getHeight();
-        int x = (width - gestionaralq.getWidth()) / 2;
-        int y = (height - gestionaralq.getHeight()) / 2;
-        gestionaralq.setBounds(x, y, gestionaralq.getWidth(), gestionaralq.getHeight());
-        
-        gestionaralq.setVisible(true);
-    }//GEN-LAST:event_jMenuItem_gestionar_productoalqActionPerformed
 
     private void jMenuItem_nueva_venta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_nueva_venta1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem_nueva_venta1ActionPerformed
+
+    private void jMenuItem3_nuevo_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3_nuevo_productoActionPerformed
+        InterProducto interProducto = new InterProducto();
+        int width = jDesktopPane_menu.getWidth();
+        int height = jDesktopPane_menu.getHeight();
+        int x = (width - interProducto.getWidth()) / 2;
+        int y = (height - interProducto.getHeight()) / 2;
+        interProducto.setBounds(x, y, interProducto.getWidth(), interProducto.getHeight());
+        jDesktopPane_menu.add(interProducto);
+        interProducto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3_nuevo_productoActionPerformed
+
+    private void jMenuItem_gestionar_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_gestionar_productoActionPerformed
+        InterGestionarProducto interGestionarProducto = new InterGestionarProducto();
+        int width = jDesktopPane_menu.getWidth();
+        int height = jDesktopPane_menu.getHeight();
+        int x = (width - interGestionarProducto.getWidth()) / 2;
+        int y = (height - interGestionarProducto.getHeight()) / 2;
+        interGestionarProducto.setBounds(x, y, interGestionarProducto.getWidth(), interGestionarProducto.getHeight());
+        jDesktopPane_menu.add(interGestionarProducto);
+        interGestionarProducto.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_gestionar_productoActionPerformed
+
+    private void jMenuItem_actualizar_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_actualizar_stockActionPerformed
+        InterActualizarStock interActualizarStock = new InterActualizarStock();
+        int width = jDesktopPane_menu.getWidth();
+        int height = jDesktopPane_menu.getHeight();
+        int x = (width - interActualizarStock.getWidth()) / 2;
+        int y = (height - interActualizarStock.getHeight()) / 2;
+        jDesktopPane_menu.add(interActualizarStock);
+        interActualizarStock.setBounds(x, y, interActualizarStock.getWidth(), interActualizarStock.getHeight());
+        interActualizarStock.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_actualizar_stockActionPerformed
 
     /**
      * @param args the command line arguments
@@ -667,6 +596,7 @@ public class FrmMenu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -689,15 +619,12 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem3_nuevo_producto;
-    private javax.swing.JMenuItem jMenuItem3_nuevo_productoalq;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem_actualizar_stock;
-    private javax.swing.JMenuItem jMenuItem_actualizar_stockalq;
     private javax.swing.JMenuItem jMenuItem_cerrar_sesion;
     private javax.swing.JMenuItem jMenuItem_gestionar_categorias;
     private javax.swing.JMenuItem jMenuItem_gestionar_cliente;
     private javax.swing.JMenuItem jMenuItem_gestionar_producto;
-    private javax.swing.JMenuItem jMenuItem_gestionar_productoalq;
     private javax.swing.JMenuItem jMenuItem_gestionar_tecnicos;
     private javax.swing.JMenuItem jMenuItem_gestionar_usuario;
     private javax.swing.JMenuItem jMenuItem_gestionar_ventas;
@@ -714,5 +641,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_ver_historial;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
     // End of variables declaration//GEN-END:variables
 }
