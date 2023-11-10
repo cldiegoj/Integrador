@@ -4,7 +4,7 @@ import ModeloDAO.ClienteDAO;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
-import modelo.Cliente;
+import Modelo.Cliente;
 
 /**
  *
@@ -156,7 +156,7 @@ public class InterCliente extends javax.swing.JInternalFrame {
             if (!controlCliente.existeCliente(txt_cedula.getText().trim())) {
 
                 cliente.setNombre(txt_nombre.getText().trim());
-                cliente.setEstado("Activo");
+                cliente.setApellido("Activo");
 
                 if (controlCliente.guardar(cliente)) {
                     JOptionPane.showMessageDialog(null, "Registro Guardado");

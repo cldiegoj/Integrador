@@ -11,7 +11,7 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import conexion.Conexion;
+import ConexionSQL.Conectar;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -55,7 +55,7 @@ public class Reportes {
             tabla.addCell("Direccion");
 
             try {
-                Connection cn = Conexion.conectar();
+                Connection cn = Conectar.getConexion();
                 PreparedStatement pst = cn.prepareStatement(
                         "select ID_CLIENTE, concat(NOMBRES, ' ', APELLIDOS) as NOMBRES, DNI, TELEFONO, DIRECCION from CLIENTES");
                 ResultSet rs = pst.executeQuery();
@@ -121,7 +121,7 @@ public class Reportes {
             tabla.addCell("Categoria");
 
             try {
-                Connection cn = Conexion.conectar();
+                Connection cn = Conectar.getConexion();
                 PreparedStatement pst = cn.prepareStatement(
                         "select p.ID_PRODUCTO, p.NOM_PRODUC, p.CANTIDAD, p.PRECIO, p.DESCRIPCION, "
                                 + "p.IGV, c.DESCRIPCION as CATEGORIAS, p.ESTADO "
@@ -186,7 +186,7 @@ public class Reportes {
             tabla.addCell("Estado");
 
             try {
-                Connection cn = Conexion.conectar();
+                Connection cn = Conectar.getConexion();
                 PreparedStatement pst = cn.prepareStatement(
                         "select * from CATEGORIAS");
                 ResultSet rs = pst.executeQuery();
@@ -248,7 +248,7 @@ public class Reportes {
             tabla.addCell("Estado");
 
             try {
-                Connection cn = Conexion.conectar();
+                Connection cn = Conectar.getConexion();
                 PreparedStatement pst = cn.prepareStatement(
                         "select cv.ID_CAB_VENTA as id, concat(c.NOMBRES, ' ', c.APELLIDOS) as CLIENTES, "
                                 + "cv.VALOR_A_PAGAR as TOTAL, cv.FECH_VENTA as FECHA, cv.ESTADO "

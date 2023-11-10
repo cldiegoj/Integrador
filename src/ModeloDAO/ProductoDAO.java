@@ -23,12 +23,12 @@ public class ProductoDAO {
             PreparedStatement consulta = cn.prepareStatement("insert into PRODUCTOS values(?,?,?,?,?,?,?,?)");
             consulta.setInt(1, 0);//id
             consulta.setString(2, objeto.getNombre());
-            consulta.setInt(3, objeto.getCantidad());
+            consulta.setInt(3, objeto.getStock());
             consulta.setDouble(4, objeto.getPrecio());
             consulta.setString(5, objeto.getDescripcion());
-            consulta.setInt(6, objeto.getPorcentajeIGV());
-            consulta.setString(7, objeto.getEstado());
-            consulta.setInt(8, objeto.getIdCategoria());
+            consulta.setInt(6, objeto.getStock());
+            consulta.setString(7, objeto.getDescripcion());
+            consulta.setInt(8, objeto.getStock());
             
 
             if (consulta.executeUpdate() > 0) {
@@ -80,12 +80,12 @@ public class ProductoDAO {
 
             PreparedStatement consulta = cn.prepareStatement("update PRODUCTOS set NOM_PRODUC=?, CANTIDAD = ?, PRECIO = ?, DESCRIPCION= ?, IGV = ?, ESTADO = ?, categorias_ID_CATEGORIA = ?  where ID_PRODUCTO ='" + idProducto + "'");
             consulta.setString(1, objeto.getNombre());
-            consulta.setInt(2, objeto.getCantidad());
+            consulta.setInt(2, objeto.getStock());
             consulta.setDouble(3, objeto.getPrecio());
             consulta.setString(4, objeto.getDescripcion());
-            consulta.setInt(5, objeto.getPorcentajeIGV());
-            consulta.setString(6, objeto.getEstado());
-            consulta.setInt(7, objeto.getIdCategoria());
+            consulta.setInt(5, objeto.getStock());
+            consulta.setString(6, objeto.getDescripcion());
+            consulta.setInt(7, objeto.getStock());
            
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
@@ -132,7 +132,7 @@ public class ProductoDAO {
         Connection cn = ConexionSQL.Conectar.getConexion();
         try {
             PreparedStatement consulta = cn.prepareStatement("update PRODUCTOS set CANTIDAD=? where ID_PRODUCTO ='" + idProducto + "'");
-            consulta.setInt(1, object.getCantidad());
+            consulta.setInt(1, object.getStock());
 
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;

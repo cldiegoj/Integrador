@@ -15,12 +15,13 @@ public class ClienteDAO {
         boolean respuesta = false;
         Connection cn = ConexionSQL.Conectar.getConexion();
         try {
-            PreparedStatement consulta = cn.prepareStatement("insert into CLIENTES values(?,?,?,?,?,?,?)");
-            consulta.setInt(1, 0);//id
+            PreparedStatement consulta = cn.prepareStatement("insert into CLIENTES values(?,?,?,?,?,?)");
+            consulta.setString(1, objeto.getIdCliente());//id
             consulta.setString(2, objeto.getNombre());
-            consulta.setString(4, objeto.getDNI());
-            consulta.setString(5, objeto.getTelefono());
-            consulta.setString(7, objeto.getEstado());
+            consulta.setString(3, objeto.getApellido());
+            consulta.setInt(4, objeto.getTelefono());
+            consulta.setString(5, objeto.getDireccion());
+            consulta.setString(6, objeto.getCorreo());
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
             }
@@ -56,10 +57,10 @@ public class ClienteDAO {
             PreparedStatement consulta = cn.prepareStatement("update CLIENTES set NOMBRES = ?, APELLIDOS = ?, DNI = ?, TELEFONO= ?, DIRECCION = ?, ESTADO = ? where ID_CLIENTE ='" + idCliente + "'");
             consulta.setString(1, objeto.getNombre());
             consulta.setString(2, objeto.getApellido());
-            consulta.setString(3, objeto.getDNI());
-            consulta.setString(4, objeto.getTelefono());
+            consulta.setString(3, objeto.getApellido());
+            consulta.setString(4, objeto.getApellido());
             consulta.setString(5, objeto.getDireccion());
-            consulta.setString(6, objeto.getEstado());
+            consulta.setString(6, objeto.getApellido());
 
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;

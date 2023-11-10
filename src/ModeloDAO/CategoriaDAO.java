@@ -25,9 +25,9 @@ public class CategoriaDAO {
         try {
 
             PreparedStatement consulta = cn.prepareStatement("insert into CATEGORIAS values(?,?,?)");
-            consulta.setInt(1, 0);
-            consulta.setString(2, objeto.getDescripcion());
-            consulta.setString(3, objeto.getEstado());
+            consulta.setString(1, objeto.getIdCategoria());
+            consulta.setString(2, objeto.getNombre());
+            consulta.setString(3, objeto.getDescripcion());
 
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;

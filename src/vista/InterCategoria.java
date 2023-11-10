@@ -3,7 +3,7 @@ package vista;
 import ModeloDAO.CategoriaDAO;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
-import modelo.Categoria;
+import Modelo.Categoria;
 
 /**
  *
@@ -110,7 +110,7 @@ public class InterCategoria extends javax.swing.JInternalFrame {
         } else {
             if (!controlCategoria.existeCategoria(txt_descripcion.getText().trim())) {
                 categoria.setDescripcion(txt_descripcion.getText().trim());
-                categoria.setEstado("Activo");
+                categoria.setDescripcion("Activo");
                 if (controlCategoria.guardar(categoria)) {
                     JOptionPane.showMessageDialog(null, "Registro Guardado");
                 } else {

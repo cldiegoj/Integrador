@@ -1,102 +1,60 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Modelo;
 
 /**
  *
- * @author ediso
+ * @author djcor
  */
 public class Proveedor {
 
-    //Atributos
-    private int idProveedor;
+    private String idProveedor;
     private String nombre;
-    private String direccion;
-    private String telefono;
-    private String estado;
+    private String descripcion;
+    private int ruc;
 
-    //Constructor
     public Proveedor() {
-        this.idProveedor = 0;
-        this.nombre = "";
-        this.telefono = "";
-        this.direccion = "";
-        this.estado = "";
     }
 
-    //Constructor sobrecargado
-    public Proveedor(int idTenico, String nombre, String apellido, String dni,String fech_tec, String telefono, String direccion, String estado) {
-        
+    public Proveedor(String idProveedor, String nombre, String descripcion, int ruc) {
+        this.idProveedor = idProveedor;
         this.nombre = nombre;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.estado = estado;
+        this.descripcion = descripcion;
+        this.ruc = ruc;
     }
-    /**
-     * @return the idTecnico
-     */
-    public int getIdProveedor() {
+
+    public String getIdProveedor() {
         return idProveedor;
     }
 
-    /**
-     * @param idTecnico the idTecnico to set
-     */
-    public void setIdProveedor(int idProveedor) {
+    public void setIdProveedor(String idProveedor) {
         this.idProveedor = idProveedor;
     }
 
-    /**
-     * @return the nombre
-     */
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     * @return the direccion
-     */
-    public String getDireccion() {
-        return direccion;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    /**
-     * @param direccion the direccion to set
-     */
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    /**
-     * @return the telefono
-     */
-    public String getTelefono() {
-        return telefono;
+    public int getRuc() {
+        return ruc;
     }
 
-    /**
-     * @param telefono the telefono to set
-     */
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setRuc(int ruc) {
+        this.ruc = ruc;
     }
 
-    /**
-     * @return the estado
-     */
-    public String getEstado() {
-        return estado;
-    }
-
-    /**
-     * @param estado the estado to set
-     */
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
 }

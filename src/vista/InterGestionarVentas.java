@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import modelo.CabeceraVenta;
+import Modelo.Recibo;
 
 /**
  *
@@ -182,46 +182,46 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
 
     private void jButton_actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizar1ActionPerformed
 
-        CabeceraVenta cabeceraVenta = new CabeceraVenta();
-        RegistrarVentaDAO controlRegistrarVenta = new RegistrarVentaDAO();
-        String cliente, estado;
-        cliente = jComboBox_cliente.getSelectedItem().toString().trim();
-        estado = jComboBox_estado.getSelectedItem().toString().trim();
-
-        //obtener el id del cliente
-        try {
-            Connection cn = Conectar.getConexion();
-            PreparedStatement pst = cn.prepareStatement(
-                "select ID_CLIENTE, concat(NOMBRES, ' ', APELLIDOS) as cliente "
-                + "from CLIENTES where concat(NOMBRES, ' ', APELLIDOS) = '" + cliente + "'");
-            ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                idCliente = rs.getInt("ID_CLIENTE");
-            }
-            cn.close();
-        } catch (SQLException e) {
-            System.out.println("Error en cargar el id cliente: " + e);
-        }
-
-        //Actualizar datos
-        if (!cliente.equalsIgnoreCase("Seleccione cliente:")) {
-            cabeceraVenta.setIdCliente(idCliente);
-            if (estado.equalsIgnoreCase("Activo")) {
-                cabeceraVenta.setEstado(1);
-            } else {
-                cabeceraVenta.setEstado(0);
-            }
-
-            if (controlRegistrarVenta.actualizar(cabeceraVenta, idVenta)) {
-                JOptionPane.showMessageDialog(null, "¡Registro Actualizado!");
-                this.CargarTablaVentas();
-                this.Limpiar();
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al Actualizar");
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccione un registro para actualizar datos");
-        }
+//        Recibo cabeceraVenta = new Recibo();
+//        RegistrarVentaDAO controlRegistrarVenta = new RegistrarVentaDAO();
+//        String cliente, estado;
+//        cliente = jComboBox_cliente.getSelectedItem().toString().trim();
+//        estado = jComboBox_estado.getSelectedItem().toString().trim();
+//
+//        //obtener el id del cliente
+//        try {
+//            Connection cn = Conectar.getConexion();
+//            PreparedStatement pst = cn.prepareStatement(
+//                "select ID_CLIENTE, concat(NOMBRES, ' ', APELLIDOS) as cliente "
+//                + "from CLIENTES where concat(NOMBRES, ' ', APELLIDOS) = '" + cliente + "'");
+//            ResultSet rs = pst.executeQuery();
+//            if (rs.next()) {
+//                idCliente = rs.getInt("ID_CLIENTE");
+//            }
+//            cn.close();
+//        } catch (SQLException e) {
+//            System.out.println("Error en cargar el id cliente: " + e);
+//        }
+//
+//        //Actualizar datos
+//        if (!cliente.equalsIgnoreCase("Seleccione cliente:")) {
+//            cabeceraVenta.setTotal(idCliente);
+//            if (estado.equalsIgnoreCase("Activo")) {
+//                cabeceraVenta.setTotal(1);
+//            } else {
+//                cabeceraVenta.setTotal(0);
+//            }
+//
+//            if (controlRegistrarVenta.actualizar(cabeceraVenta, idVenta)) {
+//                JOptionPane.showMessageDialog(null, "¡Registro Actualizado!");
+//                this.CargarTablaVentas();
+//                this.Limpiar();
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Error al Actualizar");
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Seleccione un registro para actualizar datos");
+//        }
     }//GEN-LAST:event_jButton_actualizar1ActionPerformed
 
 

@@ -21,12 +21,12 @@ public class ProveedorDAO {
             PreparedStatement consulta = cn.prepareStatement("insert into TECNICOS values(?,?,?,?,?,?,?,?)");
             consulta.setInt(1, 0);//id
             consulta.setString(2, objeto.getNombre());
-            consulta.setString(3, objeto.getApellido());
-            consulta.setString(4, objeto.getDNI());
-            consulta.setString(5, objeto.getFech_tec());
-            consulta.setString(6, objeto.getDireccion());
-            consulta.setString(7, objeto.getTelefono());
-            consulta.setString(8, objeto.getEstado());
+            consulta.setString(3, objeto.getDescripcion());
+            consulta.setString(4, objeto.getDescripcion());
+            consulta.setString(5, objeto.getDescripcion());
+            consulta.setString(6, objeto.getDescripcion());
+            consulta.setString(7, objeto.getDescripcion());
+            consulta.setString(8, objeto.getDescripcion());
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
             }
@@ -61,12 +61,12 @@ public class ProveedorDAO {
 
             PreparedStatement consulta = cn.prepareStatement("update TECNICOS set NOM_TEC = ?, APE_TEC = ?, DNI = ?,FECH_TEC = ?, DIREC_TEC = ?, TELEFONO = ?, ESTADO = ? where ID_TECNICO ='" + idTecnico + "'");
             consulta.setString(1, objeto.getNombre());
-            consulta.setString(2, objeto.getApellido());
-            consulta.setString(3, objeto.getDNI());
-            consulta.setString(4, objeto.getFech_tec());
-            consulta.setString(5, objeto.getDireccion());
-            consulta.setString(6, objeto.getTelefono());
-            consulta.setString(7, objeto.getEstado());
+            consulta.setString(2, objeto.getDescripcion());
+            consulta.setString(3, objeto.getDescripcion());
+            consulta.setString(4, objeto.getDescripcion());
+            consulta.setString(5, objeto.getDescripcion());
+            consulta.setString(6, objeto.getDescripcion());
+            consulta.setString(7, objeto.getDescripcion());
 
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
