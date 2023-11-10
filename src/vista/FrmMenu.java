@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
-import modelo.Usuario;
+import Modelo.Usuario;
 
 public class FrmMenu extends javax.swing.JFrame {
 

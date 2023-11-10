@@ -3,7 +3,7 @@ package vista;
 //import controlador.Ctrl_Usuario;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
-import modelo.Usuario;
+import Modelo.Usuario;
 
 
 public class InterInsumo extends javax.swing.JInternalFrame {
