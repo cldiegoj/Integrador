@@ -48,6 +48,8 @@ public class LoginInternal extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         lbl_error_usr = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(240, 359));
 
@@ -111,6 +113,8 @@ public class LoginInternal extends javax.swing.JInternalFrame {
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/llave (1).png"))); // NOI18N
 
+        lbl_error_usr.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_error_usr.setForeground(new java.awt.Color(255, 255, 255));
         lbl_error_usr.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -189,7 +193,7 @@ public class LoginInternal extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
         );
 
         pack();
@@ -200,7 +204,7 @@ public class LoginInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Registro reg = new Registro();
+        InterUsuario reg = new InterUsuario();
         this.dispose();
         reg.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -228,8 +232,8 @@ private void login() {
                     case 1:
                         switch (estado) {
                             case 1:
-                                JOptionPane.showMessageDialog(null, "El valor de cargo es: " + cargo, "Información", JOptionPane.INFORMATION_MESSAGE);
-                                configurarMenu(true, true, true, true, true, true, true, true);
+                               
+                                configurarMenu(false, true, true, true, true, true, true, true, true);
                                 break;
                             case 0:
                                 lbl_error_usr.setText("El Administrador se encuentra inactivo");
@@ -239,8 +243,7 @@ private void login() {
                     case 2:
                         switch (estado) {
                             case 1:
-                                JOptionPane.showMessageDialog(null, "El valor de cargo es: " + cargo, "Información", JOptionPane.INFORMATION_MESSAGE);
-                                configurarMenu(false, false, true, true, false, true, true, true);
+                               configurarMenu(false, false, false, true, true, false, true, true, true);
                                 break;
                             case 2:
                                 lbl_error_usr.setText("El Vendedor se encuentra inactivo");
@@ -250,8 +253,7 @@ private void login() {
                     case 3:
                         switch (estado) {
                             case 1:
-                                JOptionPane.showMessageDialog(null, "El valor de cargo es: " + cargo, "Información", JOptionPane.INFORMATION_MESSAGE);
-                                configurarMenu(false, false, false, true, false, false, true, true);
+                                 configurarMenu(false, false, false, false, true, false, false, true, true);
                                 break;
                             case 2:
                                 lbl_error_usr.setText("El Encargado se encuentra inactivo");
@@ -294,8 +296,9 @@ private int obtenerCarCod(String usr_name) {
 }
 
 
-private void configurarMenu(boolean usuarios, boolean proveedores, boolean clientes, boolean productos,
+private void configurarMenu(boolean login, boolean usuarios, boolean proveedores, boolean clientes, boolean productos,
                             boolean categorias, boolean facturar, boolean reportes, boolean historial) {
+    FrmMenu.Menu_IniciarSesion.setEnabled(login);
     FrmMenu.Menu_Usuarios.setEnabled(usuarios);
     FrmMenu.Menu_Proveedores.setEnabled(proveedores);
     FrmMenu.Menu_Clientes.setEnabled(clientes);
