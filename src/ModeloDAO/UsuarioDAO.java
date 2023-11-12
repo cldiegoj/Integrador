@@ -31,7 +31,7 @@ public class UsuarioDAO {
             consulta.setString(5, objeto.getUsr_ape());
             consulta.setString(6, objeto.getUsr_telf());
             consulta.setInt(7, objeto.getUsr_status());
-            consulta.setInt(7, objeto.getCar_cod());
+            consulta.setInt(8, objeto.getCar_cod());
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
             }

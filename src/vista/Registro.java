@@ -4,12 +4,23 @@
  */
 package vista;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import Modelo.*;
+import ModeloDAO.*;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Registro extends javax.swing.JFrame {
 
     
     public Registro() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.CargarRol();
     }
 
     /**
@@ -23,66 +34,67 @@ public class Registro extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txt_nombre = new javax.swing.JTextField();
-        cbx_rol = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        btnRegistrar = new javax.swing.JButton();
+        txt_usr_name = new javax.swing.JTextField();
+        cbo_cargo = new javax.swing.JComboBox<>();
+        btn_Regresar = new javax.swing.JButton();
+        btn_registrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txt_pwd = new javax.swing.JTextField();
+        txt_usr_pass = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txt_usr_nom = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txt_usr_ape = new javax.swing.JTextField();
+        txt_usr_telf = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(260, 400));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
-        txt_nombre.setBackground(new java.awt.Color(255, 255, 255));
-        txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_nombre.setForeground(new java.awt.Color(0, 0, 0));
-        txt_nombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txt_nombre.addActionListener(new java.awt.event.ActionListener() {
+        txt_usr_name.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_usr_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_usr_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nombreActionPerformed(evt);
+                txt_usr_nameActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 280, 30));
+        jPanel1.add(txt_usr_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 230, 30));
 
-        cbx_rol.setBackground(new java.awt.Color(255, 255, 255));
-        cbx_rol.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        cbx_rol.setForeground(new java.awt.Color(0, 0, 0));
-        cbx_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un rol", "Administrador", "Empleado" }));
-        cbx_rol.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(cbx_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 280, 30));
+        cbo_cargo.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        cbo_cargo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(cbo_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 230, 30));
 
-        jButton1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Regresar al login");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 198, 89), new java.awt.Color(255, 198, 89), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_Regresar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        btn_Regresar.setText("Regresar al login");
+        btn_Regresar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 198, 89), new java.awt.Color(255, 198, 89), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btn_Regresar.setContentAreaFilled(false);
+        btn_Regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_RegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 150, 30));
+        jPanel1.add(btn_Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 130, 30));
 
-        btnRegistrar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        btnRegistrar.setForeground(new java.awt.Color(0, 0, 0));
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 198, 89), new java.awt.Color(255, 198, 89), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
-        btnRegistrar.setContentAreaFilled(false);
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        btn_registrar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        btn_registrar.setText("Registrar");
+        btn_registrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 198, 89), new java.awt.Color(255, 198, 89), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btn_registrar.setContentAreaFilled(false);
+        btn_registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                btn_registrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 150, 30));
+        jPanel1.add(btn_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 130, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/x.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,7 +102,7 @@ public class Registro extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/minimizar-signo.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -98,61 +110,143 @@ public class Registro extends javax.swing.JFrame {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, 30));
 
-        txt_pwd.setBackground(new java.awt.Color(255, 255, 255));
-        txt_pwd.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_pwd.setForeground(new java.awt.Color(0, 0, 0));
-        txt_pwd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txt_pwd.addActionListener(new java.awt.event.ActionListener() {
+        txt_usr_pass.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_usr_pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_usr_pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_pwdActionPerformed(evt);
+                txt_usr_passActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 280, 30));
+        jPanel1.add(txt_usr_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 230, 30));
 
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Rol:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 60, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 60, -1));
 
         jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Contraseña:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Nombre:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+        jLabel6.setText("Nombre de Usuario:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/usuario-de-perfil (2).png"))); // NOI18N
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 70, 70));
+
+        jLabel8.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel8.setText("Nombres:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
+
+        txt_usr_nom.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_usr_nom.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_usr_nom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usr_nomActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_usr_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 230, 30));
+
+        jLabel9.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel9.setText("Apellidos:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
+
+        txt_usr_ape.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_usr_ape.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_usr_ape.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usr_apeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_usr_ape, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 230, 30));
+
+        txt_usr_telf.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_usr_telf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_usr_telf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usr_telfActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_usr_telf, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 230, 30));
+
+        jLabel10.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel10.setText("Teléfono:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
+    private void txt_usr_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usr_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreActionPerformed
+    }//GEN-LAST:event_txt_usr_nameActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegresarActionPerformed
         Login log = new Login();
         this.dispose();
         log.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_RegresarActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
+         if (txt_usr_nom.getText().isEmpty() || txt_usr_ape.getText().isEmpty() || txt_usr_name.getText().isEmpty()
+                || txt_usr_pass.getText().isEmpty() || txt_usr_telf.getText().isEmpty() || cbo_cargo.getSelectedItem().equals(null)) {
+            
+                   JOptionPane.showMessageDialog(null, "Completa todos los campos");
+        } else {
+            //validamos si el usuaro ya esta registrado
+            Usuario usuario = new Usuario();
+            UsuarioDAO usuariodao = new UsuarioDAO();
+            if (!usuariodao.existeUsuario(txt_usr_name.getText().trim())) {
+                //enviamos datos del usuario
+                usuario.setUsr_name(txt_usr_name.getText().trim());
+                usuario.setUsr_pass(txt_usr_pass.getText().trim());
+                usuario.setUsr_nom(txt_usr_nom.getText().trim());
+                usuario.setUsr_ape(txt_usr_ape.getText().trim());
+                usuario.setUsr_telf(txt_usr_telf.getText().trim());
+                usuario.setUsr_status(1);
+                // Hacer algo con el índice seleccionado
+                switch (cbo_cargo.getSelectedIndex()) {
+                    case 1:
+                        // Acciones relacionadas con car_cod 1
+                        usuario.setCar_cod(1);
+                        break;
+                    case 2:
+                        // Acciones relacionadas con car_cod 2
+                        usuario.setCar_cod(2);
+                        break;
+                    case 3:
+                        // Acciones relacionadas con car_cod 3
+                        usuario.setCar_cod(2);
+                        break;
+                    default:
+                        // Manejar otros casos si es necesario
+                        break;
+                }
+                
+                
+                if (usuariodao.guardarUsuario(usuario)) {
+                    JOptionPane.showMessageDialog(null, "¡Usuario Registrado!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "¡Error al registrar Usuario!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "El Usuario ya esta registrado, ingrese otro.");
+            }
+        }
+        this.Limpiar();
+    }//GEN-LAST:event_btn_registrarActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         this.dispose();
@@ -162,9 +256,21 @@ public class Registro extends javax.swing.JFrame {
         this.setExtendedState(WIDTH);
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void txt_pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pwdActionPerformed
+    private void txt_usr_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usr_passActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_pwdActionPerformed
+    }//GEN-LAST:event_txt_usr_passActionPerformed
+
+    private void txt_usr_nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usr_nomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usr_nomActionPerformed
+
+    private void txt_usr_apeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usr_apeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usr_apeActionPerformed
+
+    private void txt_usr_telfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usr_telfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usr_telfActionPerformed
 
 
     /**
@@ -201,19 +307,62 @@ public class Registro extends javax.swing.JFrame {
             }
         });
     }
+        /**
+     *
+     * Metodo para limpiar campos
+     */
+    private void Limpiar() {
+        txt_usr_name.setText("");
+        txt_usr_pass.setText("");
+        txt_usr_nom.setText("");
+        txt_usr_ape.setText("");
+        txt_usr_telf.setText("");
+        cbo_cargo.setSelectedIndex(0);
+    }
+        /**
+     *
+     * Metodo para cargar las categorias
+     */
+    private void CargarRol() {
+        Connection cn = ConexionSQL.Conectar.getConexion();
+        String sql = "select * from cargo";
+        Statement st;
+
+        try {
+
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            cbo_cargo.removeAllItems();
+            cbo_cargo.addItem("Seleccione Cargo:");
+            while (rs.next()) {
+                cbo_cargo.addItem(rs.getString("car_nom"));
+            }
+            cn.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al cargar categorias");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnRegistrar;
-    public javax.swing.JComboBox<String> cbx_rol;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_Regresar;
+    public javax.swing.JButton btn_registrar;
+    public javax.swing.JComboBox<String> cbo_cargo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JTextField txt_nombre;
-    public javax.swing.JTextField txt_pwd;
+    public javax.swing.JTextField txt_usr_ape;
+    public javax.swing.JTextField txt_usr_name;
+    public javax.swing.JTextField txt_usr_nom;
+    public javax.swing.JTextField txt_usr_pass;
+    public javax.swing.JTextField txt_usr_telf;
     // End of variables declaration//GEN-END:variables
 }
