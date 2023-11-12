@@ -5,6 +5,8 @@
 package vista;
 
 import ModeloDAO.UsuarioDAO;
+import javax.swing.JOptionPane;
+import modelo.Usuario;
 
 public class Login extends javax.swing.JFrame {
 
@@ -68,13 +70,9 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 190, 20));
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 190, 20));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
         jTextField2.setBorder(null);
         jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 150, 30));
 
-        jPasswordField2.setBackground(new java.awt.Color(255, 255, 255));
-        jPasswordField2.setForeground(new java.awt.Color(0, 0, 0));
         jPasswordField2.setBorder(null);
         jPanel2.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 150, 30));
 
@@ -92,7 +90,6 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, 130, 30));
 
         jButton4.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("Registrarse");
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
@@ -109,34 +106,29 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 198, 89));
         jLabel2.setText("Nombre:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 198, 89));
         jLabel3.setText("Contraseña:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 190, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 190, 20));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 190, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 190, 20));
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
         txtUsuario.setBorder(null);
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 150, 30));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 150, 30));
 
-        pwdContra.setBackground(new java.awt.Color(255, 255, 255));
-        pwdContra.setForeground(new java.awt.Color(0, 0, 0));
         pwdContra.setBorder(null);
-        jPanel1.add(pwdContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 130, 30));
+        jPanel1.add(pwdContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 150, 30));
 
         btnEntrar.setBackground(new java.awt.Color(255, 153, 51));
         btnEntrar.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        btnEntrar.setForeground(new java.awt.Color(0, 0, 0));
         btnEntrar.setText("Iniciar Sesión");
         btnEntrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         btnEntrar.setContentAreaFilled(false);
@@ -146,10 +138,9 @@ public class Login extends javax.swing.JFrame {
                 btnEntrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 130, 30));
+        jPanel1.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 130, 30));
 
         jButton2.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Registrarse");
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
@@ -158,7 +149,7 @@ public class Login extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 130, 10));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 130, 10));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/x.png"))); // NOI18N
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -177,16 +168,16 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, -1, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/usuario-de-perfil (2).png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 70, 70));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 70, 70));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/ojo (2).png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, 30));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/usuario (6).png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 30));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/llave (1).png"))); // NOI18N
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, 30));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 400));
 
@@ -276,4 +267,25 @@ public class Login extends javax.swing.JFrame {
     public javax.swing.JPasswordField pwdContra;
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
+       /**
+     * metodo Iniciar Sesion
+     */
+    private void Login() {
+        if (!txt_usuario.getText().isEmpty() && !txt_password.getText().isEmpty()) {
+            Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
+            Usuario usuario = new Usuario();
+            usuario.setUsuario(txt_usuario.getText().trim());
+            usuario.setPassword(txt_password.getText().trim());
+            if (controlUsuario.loginUser(usuario)) {
+                //JOptionPane.showMessageDialog(null, "Login Correcto...");
+                FrmMenu menu = new FrmMenu();
+                menu.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario o Clave Incorrectos");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese sus credenciales");
+        }
+    }
 }
