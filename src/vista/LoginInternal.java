@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package vista;
+import ConexionSQL.Conectar;
 import ModeloDAO.*;
 import javax.swing.JOptionPane;
 import Modelo.*;
@@ -277,7 +278,7 @@ private boolean usuarioValido(Usuario usuario) {
 }
 
 private int obtenerCarCod(String usr_name) {
-    try (Connection con = ConexionSQL.Conectar.getConexion();
+    try (Connection con = Conectar.getConexion();
          PreparedStatement pst = con.prepareStatement("SELECT car_cod FROM USUARIO WHERE usr_name = ?")) {
 
         pst.setString(1, usr_name);

@@ -3,7 +3,10 @@ package vista;
 //import conexion.Conexion;
 //import controlador.Ctrl_RegistrarVenta;
 //import controlador.VentaPDF;
+import ConexionSQL.Conectar;
+import Modelo.Producto;
 import java.awt.Dimension;
+import java.awt.List;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -630,42 +633,42 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
     Metodo para cargar los clientes en el jComboBox
      */
     private void CargarComboClientes() {
-//        Connection cn = Conexion.conectar();
-//        String sql = "select * from CLIENTES";
-//        Statement st;
-//        try {
-//            st = cn.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            jComboBox_cliente.removeAllItems();
-//            jComboBox_cliente.addItem("Seleccione cliente:");
-//            while (rs.next()) {
-//                jComboBox_cliente.addItem(rs.getString("NOMBRES") + " " + rs.getString("APELLIDOS"));
-//            }
-//            cn.close();
-//        } catch (SQLException e) {
-//            System.out.println("¡Error al cargar clientes, !" + e);
-//        }
+        Connection cn = Conectar.getConexion();
+        String sql = "select * from cliente";
+        Statement st;
+        try {
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            jComboBox_cliente.removeAllItems();
+            jComboBox_cliente.addItem("Seleccione cliente:");
+            while (rs.next()) {
+                jComboBox_cliente.addItem(rs.getString(2) + " " + rs.getString(3));
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("¡Error al cargar clientes, !" + e);
+        }
     }
 
     /*
     Metodo para cargar los productos en el jComboBox
      */
     private void CargarComboProductos() {
-//        Connection cn = Conexion.conectar();
-//        String sql = "select * from PRODUCTOS";
-//        Statement st;
-//        try {
-//            st = cn.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            jComboBox_producto.removeAllItems();
-//            jComboBox_producto.addItem("Seleccione producto:");
-//            while (rs.next()) {
-//                jComboBox_producto.addItem(rs.getString("NOM_PRODUC"));
-//            }
-//            cn.close();
-//        } catch (SQLException e) {
-//            System.out.println("¡Error al cargar productos, !" + e);
-//        }
+        Connection cn = Conectar.getConexion();
+        String sql = "select * from PRODUCTO";
+        Statement st;
+        try {
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            jComboBox_producto.removeAllItems();
+            jComboBox_producto.addItem("Seleccione producto:");
+            while (rs.next()) {
+                jComboBox_producto.addItem(rs.getString(2));
+            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("¡Error al cargar productos, !" + e);
+        }
     }
 
     /*
@@ -696,24 +699,27 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         Metodo para mostrar los datos del producto seleccionado
      */
     private void DatosDelProducto() {
-//        try {
-//            String sql = "select * from PRODUCTOS where NOM_PRODUC = '" + this.jComboBox_producto.getSelectedItem() + "'";
-//            Connection cn = Conexion.conectar();
-//            Statement st;
-//            st = cn.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            while (rs.next()) {
-//                idProducto = rs.getInt("ID_PRODUCTO");
-//                nombre = rs.getString("NOM_PRODUC");
-//                cantidadProductoBBDD = rs.getInt("CANTIDAD");
-//                precioUnitario = rs.getDouble("PRECIO");
-//                porcentajeIGV = rs.getInt("IGV");
-//                this.CalcularIva(precioUnitario, porcentajeIGV);//calcula y retorna el iva
-//            }
-//
-//        } catch (SQLException e) {
-//            System.out.println("Error al obtener datos del producto, " + e);
-//        }
+        
+        try {
+            
+            String sql = "select * from PRODUCTO where prod_nom LIKE '" + this.jComboBox_producto.getSelectedItem() + "'";
+            Connection cn = Conectar.getConexion();
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            while (rs.next()) {
+                Producto p = new Producto();
+                p.setProdcod(rs.getInt(1));
+                p.setProdnom(rs.getString(2));
+                p.setStock(rs.getInt(5));
+                p.setProdpre(4);
+                porcentajeIGV = rs.getInt("IGV");
+                this.CalcularIva(precioUnitario, porcentajeIGV);//calcula y retorna el iva
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al obtener datos del producto, " + e);
+        }
     }
 
     /*
