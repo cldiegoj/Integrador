@@ -16,7 +16,7 @@ public class Conectar {
                 Class.forName("com.mysql.cj.jdbc.Driver"); 
 		String url = "jdbc:mysql://localhost/basepasteleria"; 
 		String usr = "root";
-		String psw = ""; 
+		String psw = "Password$1"; 
 		con = DriverManager.getConnection(url,usr,psw); 
 		System.out.println("ok");
 		} catch (ClassNotFoundException ex)

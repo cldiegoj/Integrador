@@ -274,8 +274,8 @@ public class Login extends javax.swing.JFrame {
         if (!txt_usuario.getText().isEmpty() && !txt_password.getText().isEmpty()) {
             UsuarioDAO usuariodao = new UsuarioDAO();
             Usuario usuario = new Usuario();
-            usuario.setUsuario(txt_usuario.getText().trim());
-            usuario.setPassword(txt_password.getText().trim());
+            usuario.setUsr_name(txt_usuario.getText().trim());
+            usuario.setUsr_pass(txt_password.getText().trim());
             if (usuariodao.loginUser(usuario)) {
                 //JOptionPane.showMessageDialog(null, "Login Correcto...");
                 FrmMenu menu = new FrmMenu();
