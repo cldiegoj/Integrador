@@ -4,9 +4,9 @@
  */
 package vista;
 
-import ModeloDAO.UsuarioDAO;
+import ModeloDAO.*;
 import javax.swing.JOptionPane;
-import modelo.Usuario;
+import Modelo.*;
 
 public class Login extends javax.swing.JFrame {
 
@@ -41,8 +41,8 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        txtUsuario = new javax.swing.JTextField();
-        pwdContra = new javax.swing.JPasswordField();
+        txt_usuario = new javax.swing.JTextField();
+        txt_password = new javax.swing.JPasswordField();
         btnEntrar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -121,11 +121,11 @@ public class Login extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 190, 20));
 
-        txtUsuario.setBorder(null);
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 150, 30));
+        txt_usuario.setBorder(null);
+        jPanel1.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 150, 30));
 
-        pwdContra.setBorder(null);
-        jPanel1.add(pwdContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 150, 30));
+        txt_password.setBorder(null);
+        jPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 150, 30));
 
         btnEntrar.setBackground(new java.awt.Color(255, 153, 51));
         btnEntrar.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
@@ -264,19 +264,19 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField jTextField2;
-    public javax.swing.JPasswordField pwdContra;
-    public javax.swing.JTextField txtUsuario;
+    public javax.swing.JPasswordField txt_password;
+    public javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
        /**
      * metodo Iniciar Sesion
      */
     private void Login() {
         if (!txt_usuario.getText().isEmpty() && !txt_password.getText().isEmpty()) {
-            Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
+            UsuarioDAO usuariodao = new UsuarioDAO();
             Usuario usuario = new Usuario();
             usuario.setUsuario(txt_usuario.getText().trim());
             usuario.setPassword(txt_password.getText().trim());
-            if (controlUsuario.loginUser(usuario)) {
+            if (usuariodao.loginUser(usuario)) {
                 //JOptionPane.showMessageDialog(null, "Login Correcto...");
                 FrmMenu menu = new FrmMenu();
                 menu.setVisible(true);
