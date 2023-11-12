@@ -14,7 +14,7 @@ public class ProductoDAO {
      * **************************************************
      * metodo para guardar un nuevo producto
      * **************************************************
-     */
+     
     public boolean guardar(Producto objeto) {
         boolean respuesta = false;
         Connection cn = ConexionSQL.Conectar.getConexion();
@@ -49,7 +49,9 @@ public class ProductoDAO {
      * metodo para consultar si el producto ya esta registrado en la BBDD
      * ********************************************************************
      */
+    /**
     public boolean existeProducto(String producto) {
+        
         boolean respuesta = false;
         String sql = "select NOM_PRODUC from PRODUCTOS where NOM_PRODUC = '" + producto + "';";
         Statement st;
@@ -73,7 +75,10 @@ public class ProductoDAO {
      * metodo para actualizar un producto
      * **************************************************
      */
+    /**
     public boolean actualizar(Producto objeto, int idProducto) {
+        /**
+    
         boolean respuesta = false;
         Connection cn = ConexionSQL.Conectar.getConexion();
         try {
@@ -94,16 +99,20 @@ public class ProductoDAO {
         } catch (SQLException e) {
             System.out.println("Error al actualizar producto: " + e);
         }
+        
         return respuesta;
     }
+    */
     
-    
+        
     /**
      * **************************************************
      * metodo para eliminar un producto
      * **************************************************
      */
+    /**
     public boolean eliminar(int idProducto) {
+        /**
         boolean respuesta = false;
         Connection cn = ConexionSQL.Conectar.getConexion();
         try {
@@ -118,8 +127,12 @@ public class ProductoDAO {
         } catch (SQLException e) {
             System.out.println("Error al eliminar producto: " + e);
         }
+        
         return respuesta;
+        
     }
+    */
+    
     
     /**
      * **************************************************
@@ -127,7 +140,11 @@ public class ProductoDAO {
      * **************************************************
      */
     
+    
+    /**
      public boolean actualizarStock(Producto object, int idProducto) {
+         
+     }
         boolean respuesta = false;
         Connection cn = ConexionSQL.Conectar.getConexion();
         try {
@@ -143,4 +160,5 @@ public class ProductoDAO {
         }
         return respuesta;
     }
+    */
 }

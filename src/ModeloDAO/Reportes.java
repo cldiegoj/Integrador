@@ -1,5 +1,5 @@
 package ModeloDAO;
-
+/**
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+*/
 
 
 public class Reportes {
@@ -27,6 +28,7 @@ public class Reportes {
     /* ********************************************************************
     * metodo para crear reportes de los clientes registrados en el sistema
     *********************************************************************** */
+    /**
     public void ReportesClientes() {
         Document documento = new Document();
         try {
@@ -84,12 +86,15 @@ public class Reportes {
         } catch (IOException ex) {
             System.out.println("Error 3 en: " + ex);
         }
+        
+        
     }
-    
+    */
     /* ********************************************************************
     * metodo para crear reportes de los productos registrados en el sistema
     *********************************************************************** */
     public void ReportesProductos() {
+/**
         Document documento = new Document();
         try {
             String ruta = System.getProperty("user.home");
@@ -155,12 +160,14 @@ public class Reportes {
         } catch (IOException ex) {
             System.out.println("Error 3 en: " + ex);
         }
+        */ 
     }
     
         /* ********************************************************************
     * metodo para crear reportes de los categorias registrados en el sistema
     *********************************************************************** */
     public void ReportesCategorias() {
+/**
         Document documento = new Document();
         try {
             String ruta = System.getProperty("user.home");
@@ -213,12 +220,14 @@ public class Reportes {
         } catch (IOException ex) {
             System.out.println("Error 3 en: " + ex);
         }
+        */
     }
     
         /* ********************************************************************
     * metodo para crear reportes de las ventas registrados en el sistema
     *********************************************************************** */
     public void ReportesVentas() {
+/**
         Document documento = new Document();
         try {
             String ruta = System.getProperty("user.home");
@@ -281,6 +290,7 @@ public class Reportes {
         } catch (IOException ex) {
             System.out.println("Error 3 en: " + ex);
         }
+        */
     }
-
+    
 }

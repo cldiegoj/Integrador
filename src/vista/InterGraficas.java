@@ -27,12 +27,12 @@ public class InterGraficas extends javax.swing.JInternalFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jDateChooser_fecha_inicio = new com.toedter.calendar.JDateChooser();
-        jDateChooser_fecha_fin = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton_Guardar = new javax.swing.JButton();
+        jDateChooser_fecha_inicio = new com.toedter.calendar.JDateChooser();
+        jDateChooser_fecha_fin = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setIconifiable(true);
@@ -40,32 +40,17 @@ public class InterGraficas extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Fecha inicio:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 100, -1));
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Fecha Fin:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 100, -1));
-
-        jDateChooser_fecha_inicio.setBackground(new java.awt.Color(0, 102, 102));
-        jDateChooser_fecha_inicio.setForeground(new java.awt.Color(255, 255, 255));
-        jDateChooser_fecha_inicio.setDateFormatString("yyyy-MM-dd");
-        jDateChooser_fecha_inicio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        getContentPane().add(jDateChooser_fecha_inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 140, -1));
-
-        jDateChooser_fecha_fin.setBackground(new java.awt.Color(0, 102, 102));
-        jDateChooser_fecha_fin.setForeground(new java.awt.Color(255, 255, 255));
-        jDateChooser_fecha_fin.setDateFormatString("yyyy-MM-dd");
-        jDateChooser_fecha_fin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        getContentPane().add(jDateChooser_fecha_fin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 140, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 198, 89));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Gráfica de Ventas");
         jPanel1.add(jLabel1);
 
@@ -76,7 +61,6 @@ public class InterGraficas extends javax.swing.JInternalFrame {
 
         jButton_Guardar.setBackground(new java.awt.Color(0, 0, 0));
         jButton_Guardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jButton_Guardar.setForeground(new java.awt.Color(0, 0, 0));
         jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/historial1.png"))); // NOI18N
         jButton_Guardar.setText("Graficar Ventas");
         jButton_Guardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
@@ -87,6 +71,8 @@ public class InterGraficas extends javax.swing.JInternalFrame {
             }
         });
         jPanel2.add(jButton_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 160, 30));
+        jPanel2.add(jDateChooser_fecha_inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 140, -1));
+        jPanel2.add(jDateChooser_fecha_fin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 140, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 400, 190));
 

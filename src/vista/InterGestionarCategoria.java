@@ -156,7 +156,7 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
-        if (!txt_descripcion.getText().isEmpty()) {
+    /**    if (!txt_descripcion.getText().isEmpty()) {
             Categoria categoria = new Categoria();
             CategoriaDAO controlCategoria = new CategoriaDAO();
 
@@ -171,9 +171,11 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione una categoría");
         }
+     */
     }//GEN-LAST:event_jButton_actualizarActionPerformed
 
     private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
+      /**
         if (!txt_descripcion.getText().isEmpty()) {
             Categoria categoria = new Categoria();
             CategoriaDAO controlCategoria = new CategoriaDAO();
@@ -189,6 +191,7 @@ public class InterGestionarCategoria extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione una categoría");
         }
+      */
     }//GEN-LAST:event_jButton_eliminarActionPerformed
 
 

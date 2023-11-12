@@ -10,7 +10,7 @@ import Modelo.Cliente;
 
 
 public class ClienteDAO {
- 
+  /**
     public boolean guardar(Cliente objeto) {
         boolean respuesta = false;
         Connection cn = ConexionSQL.Conectar.getConexion();
@@ -89,5 +89,6 @@ public class ClienteDAO {
         }
         return respuesta;
     }
+    */
 
 }

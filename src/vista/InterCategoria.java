@@ -100,7 +100,7 @@ public class InterCategoria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+/**
         Categoria categoria = new Categoria();
         CategoriaDAO controlCategoria = new CategoriaDAO();
 
@@ -122,6 +122,7 @@ public class InterCategoria extends javax.swing.JInternalFrame {
         }
         //limpiar campo
         txt_descripcion.setText("");
+        */
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

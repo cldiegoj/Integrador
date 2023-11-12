@@ -19,6 +19,7 @@ public class CategoriaDAO {
      * metodo para guardar una nueva categoria
      * **************************************************
      */
+    /**
     public boolean guardar(Categoria objeto) {
         boolean respuesta = false;
         Connection cn = ConexionSQL.Conectar.getConexion();
@@ -41,12 +42,15 @@ public class CategoriaDAO {
 
         return respuesta;
     }
-
+*/
+    
     /**
      * ********************************************************************
      * metodo para consultar si la categoria registrado ya existe
      * ********************************************************************
      */
+    
+     /**
     public boolean existeCategoria(String categoria) {
         boolean respuesta = false;
         String sql = "select DESCRIPCION from CATEGORIAS where DESCRIPCION = '" + categoria + "';";
@@ -66,11 +70,14 @@ public class CategoriaDAO {
         return respuesta;
     }
     
+      */
+    
      /**
      * **************************************************
      * metodo para actualizar una nueva categoria
      * **************************************************
      */
+    /**
     public boolean actualizar(Categoria objeto, int idCategoria) {
         boolean respuesta = false;
         Connection cn = ConexionSQL.Conectar.getConexion();
@@ -91,13 +98,15 @@ public class CategoriaDAO {
 
         return respuesta;
     }
-    
+    */
     
     /**
      * **************************************************
      * metodo para eliminar una nueva categoria
      * **************************************************
      */
+    
+    /**
     public boolean eliminar(int idCategoria) {
         boolean respuesta = false;
         Connection cn = ConexionSQL.Conectar.getConexion();
@@ -119,4 +128,6 @@ public class CategoriaDAO {
 
         return respuesta;
     }
+    
+    */
 }

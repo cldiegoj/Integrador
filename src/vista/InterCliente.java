@@ -146,7 +146,7 @@ public class InterCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarActionPerformed
-
+/**
         Cliente cliente = new Cliente();
         ClienteDAO controlCliente = new ClienteDAO();
 
@@ -187,6 +187,7 @@ public class InterCliente extends javax.swing.JInternalFrame {
         }
         //metodo limpiar
         this.Limpiar();
+        */
     }//GEN-LAST:event_jButton_GuardarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed

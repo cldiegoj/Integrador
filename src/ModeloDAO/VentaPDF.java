@@ -1,5 +1,5 @@
 package ModeloDAO;
-
+/**
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -26,10 +26,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 //import javax.swing.text.Document;
 import vista.InterFacturacion;
+*/
 
 
 public class VentaPDF {
-
+/**
     private String nombreCliente;
     private String cedulaCliente;
     private String telefonoCliente;
@@ -58,6 +59,7 @@ public class VentaPDF {
             System.out.println("Error al obtener datos del cliente: " + e);
         }
     }
+    */
 
     //metodo para generar la factura de venta
     public void generarFacturaPDF() {
