@@ -194,7 +194,7 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_usr_nameActionPerformed
 
     private void btn_RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegresarActionPerformed
-        Login log = new Login();
+        LoginInternal log = new LoginInternal();
         this.dispose();
         log.setVisible(true);
     }//GEN-LAST:event_btn_RegresarActionPerformed

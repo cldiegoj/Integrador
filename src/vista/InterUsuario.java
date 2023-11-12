@@ -1,8 +1,14 @@
 package vista;
 
-//import controlador.Ctrl_Usuario;
-import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
+import Modelo.*;
+import ModeloDAO.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -13,8 +19,7 @@ public class InterUsuario extends javax.swing.JInternalFrame {
     public InterUsuario() {
         initComponents();
         
-        this.setTitle("Registro de Usuario");
-        
+        this.CargarRol();
     }
 
     /**
@@ -26,151 +31,290 @@ public class InterUsuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        txt_usr_name = new javax.swing.JTextField();
+        cbo_cargo = new javax.swing.JComboBox<>();
+        btn_Regresar = new javax.swing.JButton();
+        btn_registrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        btnGuardar = new javax.swing.JButton();
-        btnAtras = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txt_nombre = new javax.swing.JTextField();
-        txt_contraseña = new javax.swing.JTextField();
-        cbxRol = new javax.swing.JComboBox<>();
+        txt_usr_pass = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txt_usr_nom = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txt_usr_ape = new javax.swing.JTextField();
+        txt_usr_telf = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 198, 89));
-        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("NUEVO USUARIO");
-        jPanel1.add(jLabel1);
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 30));
-
-        jPanel2.setBackground(new java.awt.Color(252, 248, 232));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(0, 0, 0));
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
-        btnGuardar.setText("Guardar");
-        btnGuardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
-        btnGuardar.setContentAreaFilled(false);
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        txt_usr_name.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_usr_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_usr_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                txt_usr_nameActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 170, 30));
+        getContentPane().add(txt_usr_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 230, 30));
 
-        btnAtras.setBackground(new java.awt.Color(255, 255, 255));
-        btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        btnAtras.setForeground(new java.awt.Color(0, 0, 0));
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
-        btnAtras.setText("Atrás");
-        btnAtras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
-        btnAtras.setContentAreaFilled(false);
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+        cbo_cargo.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        cbo_cargo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(cbo_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 230, 30));
+
+        btn_Regresar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        btn_Regresar.setText("Regresar al login");
+        btn_Regresar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 198, 89), new java.awt.Color(255, 198, 89), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btn_Regresar.setContentAreaFilled(false);
+        btn_Regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
+                btn_RegresarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 170, 30));
+        getContentPane().add(btn_Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 130, 30));
 
-        jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel12.setText("Nombre:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 60, -1));
+        btn_registrar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        btn_registrar.setText("Registrar");
+        btn_registrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 198, 89), new java.awt.Color(255, 198, 89), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btn_registrar.setContentAreaFilled(false);
+        btn_registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_registrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 130, 30));
 
-        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Rol:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 30, 30));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/x.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, 30));
 
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Contraseña:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 80, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/minimizar-signo.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, 30));
 
-        txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 170, 30));
+        txt_usr_pass.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_usr_pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_usr_pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usr_passActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_usr_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 230, 30));
 
-        txt_contraseña.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jPanel2.add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 170, 30));
+        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel4.setText("Rol:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 60, -1));
 
-        cbxRol.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        cbxRol.setForeground(new java.awt.Color(0, 0, 0));
-        cbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione rol", "Administrador", "Empleado" }));
-        jPanel2.add(cbxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 170, 30));
+        jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel5.setText("Contraseña:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 590, 270));
+        jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel6.setText("Nombre de Usuario:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/usuario-de-perfil (2).png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 70, 70));
+
+        jLabel8.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel8.setText("Nombres:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
+
+        txt_usr_nom.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_usr_nom.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_usr_nom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usr_nomActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_usr_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 230, 30));
+
+        jLabel9.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel9.setText("Apellidos:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
+
+        txt_usr_ape.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_usr_ape.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_usr_ape.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usr_apeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_usr_ape, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 230, 30));
+
+        txt_usr_telf.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_usr_telf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_usr_telf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usr_telfActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_usr_telf, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 230, 30));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 410));
+
+        jLabel10.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jLabel10.setText("Teléfono:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        //        if (txt_nombre.getText().isEmpty() || txt_apellido.getText().isEmpty() || txt_usuario.getText().isEmpty()
-            //                || txt_password.getText().isEmpty() || txt_telefono.getText().isEmpty()) {
-            //            JOptionPane.showMessageDialog(null, "Completa todos los campos");
-            //        } else {
-            //            //validamos si el usuaro ya esta registrado
-            //            Usuario usuario = new Usuario();
-            //            Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
-            //            if (!controlUsuario.existeUsuario(txt_usuario.getText().trim())) {
-                //                //enviamos datos del usuario
-                //                usuario.setNombre(txt_nombre.getText().trim());
-                //                usuario.setApellido(txt_apellido.getText().trim());
-                //                usuario.setUsuario(txt_usuario.getText().trim());
-                //                usuario.setPassword(txt_password.getText().trim());
-                //                usuario.setTelefono(txt_telefono.getText().trim());
-                //                usuario.setEstado("Activo");
-                //
-                //                if (controlUsuario.guardar(usuario)) {
-                    //                    JOptionPane.showMessageDialog(null, "¡Usuario Registrado!");
-                    //                } else {
-                    //                    JOptionPane.showMessageDialog(null, "¡Error al registrar Usuario!");
-                    //                }
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "El Usuario ya esta registrado, ingrese otro.");
-                //            }
-            //        }
-        //        this.Limpiar();
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+    private void txt_usr_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usr_nameActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usr_nameActionPerformed
+
+    private void btn_RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegresarActionPerformed
+        LoginInternal log = new LoginInternal();
         this.dispose();
-    }//GEN-LAST:event_btnAtrasActionPerformed
+        log.setVisible(true);
+    }//GEN-LAST:event_btn_RegresarActionPerformed
+
+    private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
+       if (txt_usr_nom.getText().isEmpty() || txt_usr_ape.getText().isEmpty() || txt_usr_name.getText().isEmpty()
+                || txt_usr_pass.getText().isEmpty() || txt_usr_telf.getText().isEmpty() || cbo_cargo.getSelectedItem().equals(null)) {
+            
+                   JOptionPane.showMessageDialog(null, "Completa todos los campos");
+        } else {
+            //validamos si el usuaro ya esta registrado
+            Usuario usuario = new Usuario();
+            UsuarioDAO usuariodao = new UsuarioDAO();
+            if (!usuariodao.existeUsuario(txt_usr_name.getText().trim())) {
+                //enviamos datos del usuario
+                usuario.setUsr_name(txt_usr_name.getText().trim());
+                usuario.setUsr_pass(txt_usr_pass.getText().trim());
+                usuario.setUsr_nom(txt_usr_nom.getText().trim());
+                usuario.setUsr_ape(txt_usr_ape.getText().trim());
+                usuario.setUsr_telf(txt_usr_telf.getText().trim());
+                usuario.setUsr_status(1);
+                // Hacer algo con el índice seleccionado
+                switch (cbo_cargo.getSelectedIndex()) {
+                    case 1:
+                        // Acciones relacionadas con car_cod 1
+                        usuario.setCar_cod(1);
+                        break;
+                    case 2:
+                        // Acciones relacionadas con car_cod 2
+                        usuario.setCar_cod(2);
+                        break;
+                    case 3:
+                        // Acciones relacionadas con car_cod 3
+                        usuario.setCar_cod(2);
+                        break;
+                    default:
+                        // Manejar otros casos si es necesario
+                        break;
+                }
+                
+                
+                if (usuariodao.guardarUsuario(usuario)) {
+                    JOptionPane.showMessageDialog(null, "¡Usuario Registrado!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "¡Error al registrar Usuario!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "El Usuario ya esta registrado, ingrese otro.");
+            }
+        }
+        this.Limpiar();
+    }//GEN-LAST:event_btn_registrarActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void txt_usr_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usr_passActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usr_passActionPerformed
+
+    private void txt_usr_nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usr_nomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usr_nomActionPerformed
+
+    private void txt_usr_apeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usr_apeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usr_apeActionPerformed
+
+    private void txt_usr_telfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usr_telfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usr_telfActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAtras;
-    public javax.swing.JButton btnGuardar;
-    public javax.swing.JComboBox<String> cbxRol;
+    private javax.swing.JButton btn_Regresar;
+    public javax.swing.JButton btn_registrar;
+    public javax.swing.JComboBox<String> cbo_cargo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    public javax.swing.JTextField txt_contraseña;
-    public javax.swing.JTextField txt_nombre;
+    public javax.swing.JTextField txt_usr_ape;
+    public javax.swing.JTextField txt_usr_name;
+    public javax.swing.JTextField txt_usr_nom;
+    public javax.swing.JTextField txt_usr_pass;
+    public javax.swing.JTextField txt_usr_telf;
     // End of variables declaration//GEN-END:variables
      /**
      *
      * Metodo para limpiar campos
      */
     private void Limpiar() {
-        txt_nombre.setText("");
+        txt_usr_name.setText("");
+        txt_usr_pass.setText("");
+        txt_usr_nom.setText("");
+        txt_usr_ape.setText("");
+        txt_usr_telf.setText("");
+        cbo_cargo.setSelectedIndex(0);
+    }
+
+  
+        /**
+     *
+     * Metodo para cargar las categorias
+     */
+    private void CargarRol() {
+        Connection cn = ConexionSQL.Conectar.getConexion();
+        String sql = "select * from cargo";
+        Statement st;
+
+        try {
+
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            cbo_cargo.removeAllItems();
+            cbo_cargo.addItem("Seleccione Cargo:");
+            while (rs.next()) {
+                cbo_cargo.addItem(rs.getString("car_nom"));
+            }
+            cn.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al cargar categorias");
+        }
     }
     
 }

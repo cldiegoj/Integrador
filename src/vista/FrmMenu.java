@@ -25,6 +25,16 @@ public class FrmMenu extends javax.swing.JFrame {
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
         this.jDesktopPane_menu.setBounds(0, 0, ancho, (alto - 110));
         this.add(jDesktopPane_menu);
+        FrmMenu.Menu_IniciarSesion.setEnabled(true);
+        FrmMenu.Menu_Usuarios.setEnabled(false);
+        FrmMenu.Menu_Proveedores.setEnabled(false);
+        FrmMenu.Menu_Clientes.setEnabled(false);
+        FrmMenu.Menu_Productos.setEnabled(false);
+        FrmMenu.Menu_Categorias.setEnabled(false);
+        FrmMenu.Menu_Facturar.setEnabled(false);
+        FrmMenu.Menu_Reportes.setEnabled(false);
+        FrmMenu.Menu_Historial.setEnabled(false);
+        FrmMenu.Menu_CerrarSesion.setEnabled(true);
         
 
     }
@@ -47,6 +57,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
+        Menu_IniciarSesion = new javax.swing.JMenu();
+        Login = new javax.swing.JMenuItem();
         Menu_Usuarios = new javax.swing.JMenu();
         jMenuItem_nuevo_usuario = new javax.swing.JMenuItem();
         jMenuItem_gestionar_usuario = new javax.swing.JMenuItem();
@@ -99,6 +111,20 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuBar1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuBar1.setMaximumSize(new java.awt.Dimension(1000, 32768));
         jMenuBar1.setMinimumSize(new java.awt.Dimension(1250, 30));
+
+        Menu_IniciarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
+        Menu_IniciarSesion.setText("Iniciar Sesión");
+        Menu_IniciarSesion.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
+        Login.setText("Iniciar Sesión");
+        Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginActionPerformed(evt);
+            }
+        });
+        Menu_IniciarSesion.add(Login);
+
+        jMenuBar1.add(Menu_IniciarSesion);
 
         Menu_Usuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Menu Usuarios.png"))); // NOI18N
         Menu_Usuarios.setText("Usuarios");
@@ -653,6 +679,17 @@ public class FrmMenu extends javax.swing.JFrame {
         interGestionarInsumo.setVisible(true);
     }//GEN-LAST:event_jMenuItem_nuevo_tecnico2ActionPerformed
 
+    private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
+        LoginInternal login = new LoginInternal ();
+        int width = jDesktopPane_menu.getWidth();
+        int height = jDesktopPane_menu.getHeight();
+        int x = (width - login.getWidth()) / 2;
+        int y = (height - login.getHeight()) / 2;
+        jDesktopPane_menu.add(login);
+        login.setBounds(x, y, login.getWidth(), login.getHeight());
+        login.setVisible(true);
+    }//GEN-LAST:event_LoginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -692,11 +729,13 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Login;
     public static javax.swing.JMenu Menu_Categorias;
     public static javax.swing.JMenu Menu_CerrarSesion;
     public static javax.swing.JMenu Menu_Clientes;
     public static javax.swing.JMenu Menu_Facturar;
     public static javax.swing.JMenu Menu_Historial;
+    public static javax.swing.JMenu Menu_IniciarSesion;
     public static javax.swing.JMenu Menu_Productos;
     public static javax.swing.JMenu Menu_Proveedores;
     public static javax.swing.JMenu Menu_Reportes;
