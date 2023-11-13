@@ -7,127 +7,129 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import Modelo.Categoria;
+import java.awt.List;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Edison Zambrano - © Programador Fantasma
- */
+
 public class CategoriaDAO {
-
-    /**
-     * **************************************************
-     * metodo para guardar una nueva categoria
-     * **************************************************
-     */
-    /**
-    public boolean guardar(Categoria objeto) {
-        boolean respuesta = false;
-        Connection cn = ConexionSQL.Conectar.getConexion();
+   
+    public boolean guardarCategoria(Categoria objeto) {
+    boolean respuesta = false;
+    Connection cn = Conectar.getConexion();
+    
+    // Verificar si la descripción ya existe
+    if (!existeDescripcionCategoria(objeto.getCat_des())) {
         try {
-
-            PreparedStatement consulta = cn.prepareStatement("insert into CATEGORIAS values(?,?,?)");
-            consulta.setString(1, objeto.getIdCategoria());
-            consulta.setString(2, objeto.getNombre());
-            consulta.setString(3, objeto.getDescripcion());
+            PreparedStatement consulta = cn.prepareStatement("INSERT INTO CATEGORIA VALUES(?,?,?)");
+            consulta.setString(1, null);
+            consulta.setString(2, objeto.getCat_nom());
+            consulta.setString(3, objeto.getCat_des());
 
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
             }
-
             cn.close();
-
         } catch (SQLException e) {
             System.out.println("Error al guardar categoría: " + e);
         }
-
-        return respuesta;
+    } else {
+        System.out.println("Ya existe una categoría con la misma descripción.");
     }
-*/
-    
-    /**
-     * ********************************************************************
-     * metodo para consultar si la categoria registrado ya existe
-     * ********************************************************************
-     */
-    
-     /**
-    public boolean existeCategoria(String categoria) {
-        boolean respuesta = false;
-        String sql = "select DESCRIPCION from CATEGORIAS where DESCRIPCION = '" + categoria + "';";
-        Statement st;
+    return respuesta;
+}
 
-        try {
-            Connection cn = ConexionSQL.Conectar.getConexion();
-            st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                respuesta = true;
-            }
+private boolean existeDescripcionCategoria(String descripcion) {
+    boolean respuesta = false;
+    String sql = "SELECT cat_des FROM CATEGORIA WHERE cat_des = ?";
+    
+    try (Connection cn = Conectar.getConexion();
+         PreparedStatement consulta = cn.prepareStatement(sql)) {
+        consulta.setString(1, descripcion);
+        ResultSet rs = consulta.executeQuery();
+        respuesta = rs.next();
+    } catch (SQLException e) {
+        System.out.println("Error al consultar descripción de categoría: " + e);
+    }
+    
+    return respuesta;
+}
 
-        } catch (SQLException e) {
-            System.out.println("Error al consultar categoría: " + e);
+public boolean actualizarCategoria(Categoria categoria) {
+    boolean respuesta = false;
+    Connection cn = Conectar.getConexion();
+    try {
+        PreparedStatement consulta = cn.prepareStatement(
+                "UPDATE CATEGORIA SET cat_nom = ?, cat_des = ? WHERE cat_cod = ?");
+        consulta.setString(1, categoria.getCat_nom());
+        consulta.setString(2, categoria.getCat_des());
+        consulta.setString(3, categoria.getCat_cod());
+
+        if (consulta.executeUpdate() > 0) {
+            respuesta = true;
         }
-        return respuesta;
+        cn.close();
+    } catch (SQLException e) {
+        System.out.println("Error al actualizar categoría: " + e);
     }
-    
-      */
-    
-     /**
-     * **************************************************
-     * metodo para actualizar una nueva categoria
-     * **************************************************
-     */
-    /**
-    public boolean actualizar(Categoria objeto, int idCategoria) {
+    return respuesta;
+}
+
+    public boolean eliminarCategoria(String codigoCategoria) {
         boolean respuesta = false;
-        Connection cn = ConexionSQL.Conectar.getConexion();
+        Connection cn = Conectar.getConexion();
         try {
-
-            PreparedStatement consulta = cn.prepareStatement("update CATEGORIAS set DESCRIPCION=? where ID_CATEGORIA ='" + idCategoria + "'");
-            consulta.setString(1, objeto.getDescripcion());
-           
-            if (consulta.executeUpdate() > 0) {
-                respuesta = true;
-            }
-
-            cn.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error al actualizar categoría: " + e);
-        }
-
-        return respuesta;
-    }
-    */
-    
-    /**
-     * **************************************************
-     * metodo para eliminar una nueva categoria
-     * **************************************************
-     */
-    
-    /**
-    public boolean eliminar(int idCategoria) {
-        boolean respuesta = false;
-        Connection cn = ConexionSQL.Conectar.getConexion();
-        try {
-
             PreparedStatement consulta = cn.prepareStatement(
-                    "delete from CATEGORIAS where ID_CATEGORIA ='" + idCategoria + "'");
+                    "DELETE FROM CATEGORIA WHERE cat_cod ='" + codigoCategoria + "'");
             consulta.executeUpdate();
-           
+
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
             }
-
             cn.close();
-
         } catch (SQLException e) {
             System.out.println("Error al eliminar categoría: " + e);
         }
-
         return respuesta;
     }
     
-    */
+    
+       public DefaultTableModel obtenerCategorias() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Código");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Descripción");
+
+        Connection cn = Conectar.getConexion();
+
+        String sql = "SELECT * FROM CATEGORIA";
+
+        try (PreparedStatement statement = cn.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                String catCod = resultSet.getString("cat_cod");
+                String catNom = resultSet.getString("cat_nom");
+                String catDes = resultSet.getString("cat_des");
+
+                Object[] fila = {catCod, catNom, catDes};
+                modelo.addRow(fila);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener categorías: " + e);
+        } finally {
+            try {
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar la conexión: " + e);
+            }
+        }
+
+        return modelo;
+    }
+    
 }
+    
+    
