@@ -1,4 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `basepasteleria` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `basepasteleria` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+
 USE `basepasteleria`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
@@ -21,15 +23,12 @@ USE `basepasteleria`;
 -- Table structure for table `cargo`
 --
 
-DROP TABLE IF EXISTS `cargo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cargo` (
   `car_cod` int NOT NULL,
   `car_nom` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`car_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Dumping data for table `cargo`
@@ -49,11 +48,12 @@ DROP TABLE IF EXISTS `categoria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categoria` (
-  `cat_cod` char(5) NOT NULL,
+  `cat_cod` int NOT NULL AUTO_INCREMENT,
   `cat_nom` varchar(45) DEFAULT NULL,
   `cat_des` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`cat_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,7 +80,9 @@ CREATE TABLE `cliente` (
   `cli_dir` varchar(45) DEFAULT NULL,
   `cli_cor` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`cli_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +109,8 @@ CREATE TABLE `detalle_recibo` (
   KEY `fk_detalle_producto` (`prod_cod`),
   CONSTRAINT `fk_detalle_producto` FOREIGN KEY (`prod_cod`) REFERENCES `producto` (`prod_cod`),
   CONSTRAINT `fk_detalle_recibo` FOREIGN KEY (`reb_cod`) REFERENCES `recibo` (`reb_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,7 +137,8 @@ CREATE TABLE `ingredientes` (
   KEY `fk_ingredientes_insumos` (`ins_cod`),
   CONSTRAINT `fk_ingredientes_insumos` FOREIGN KEY (`ins_cod`) REFERENCES `insumos` (`ins_cod`),
   CONSTRAINT `fk_ingredientes_producto` FOREIGN KEY (`prod_cod`) REFERENCES `producto` (`prod_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +166,8 @@ CREATE TABLE `insumos` (
   PRIMARY KEY (`ins_cod`),
   KEY `fk_insumos_proveedor` (`pro_cod`),
   CONSTRAINT `fk_insumos_proveedor` FOREIGN KEY (`pro_cod`) REFERENCES `proveedor` (`pro_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -191,7 +196,8 @@ CREATE TABLE `pago` (
   PRIMARY KEY (`pag_cod`),
   KEY `fk_pago_recibo` (`reb_cod`),
   CONSTRAINT `fk_pago_recibo` FOREIGN KEY (`reb_cod`) REFERENCES `recibo` (`reb_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,11 +222,12 @@ CREATE TABLE `producto` (
   `prod_des` varchar(45) DEFAULT NULL,
   `prod_pre` double DEFAULT NULL,
   `prod_stk` int DEFAULT NULL,
-  `cat_cod` char(5) DEFAULT NULL,
+  `cat_cod` INT,
   PRIMARY KEY (`prod_cod`),
   KEY `fk_producto_categoria` (`cat_cod`),
   CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`cat_cod`) REFERENCES `categoria` (`cat_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +252,7 @@ CREATE TABLE `proveedor` (
   `pro_des` varchar(45) DEFAULT NULL,
   `pro_ruc` int DEFAULT NULL,
   PRIMARY KEY (`pro_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -271,7 +278,7 @@ CREATE TABLE `recibo` (
   PRIMARY KEY (`reb_cod`),
   KEY `fk_recibo_cliente` (`cli_cod`),
   CONSTRAINT `fk_recibo_cliente` FOREIGN KEY (`cli_cod`) REFERENCES `cliente` (`cli_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -302,7 +309,7 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`usr_cod`),
   KEY `fk_usuario_cargo` (`car_cod`),
   CONSTRAINT `fk_usuario_cargo` FOREIGN KEY (`car_cod`) REFERENCES `cargo` (`car_cod`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
