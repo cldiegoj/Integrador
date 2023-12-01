@@ -10,7 +10,7 @@ package Modelo;
  */
 public class Proveedor {
 
-    private String idProveedor;
+    private int idProveedor;
     private String nombre;
     private String descripcion;
     private int ruc;
@@ -18,18 +18,18 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(String idProveedor, String nombre, String descripcion, int ruc) {
+    public Proveedor(int idProveedor, String nombre, String descripcion, int ruc) {
         this.idProveedor = idProveedor;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.ruc = ruc;
     }
 
-    public String getIdProveedor() {
+    public int getIdProveedor() {
         return idProveedor;
     }
 
-    public void setIdProveedor(String idProveedor) {
+    public void setIdProveedor(int idProveedor) {
         this.idProveedor = idProveedor;
     }
 

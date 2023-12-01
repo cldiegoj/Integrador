@@ -10,16 +10,17 @@ package Modelo;
  */
 public class Insumos {
 
-    private String idInsumos;
+    private int idInsumos;
     private String nombre;
     private String descripcion;
     private int stock;
-    private String idProveedor;
+    private int idProveedor;
+    private String nombreproveedor;
 
     public Insumos() {
     }
 
-    public Insumos(String idInsumos, String nombre, String descripcion, int stock, String idProveedor) {
+    public Insumos(int idInsumos, String nombre, String descripcion, int stock, int idProveedor) {
         this.idInsumos = idInsumos;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -27,11 +28,11 @@ public class Insumos {
         this.idProveedor = idProveedor;
     }
 
-    public String getIdInsumos() {
+    public int getIdInsumos() {
         return idInsumos;
     }
 
-    public void setIdInsumos(String idInsumos) {
+    public void setIdInsumos(int idInsumos) {
         this.idInsumos = idInsumos;
     }
 
@@ -59,12 +60,20 @@ public class Insumos {
         this.stock = stock;
     }
 
-    public String getIdProveedor() {
+    public int getIdProveedor() {
         return idProveedor;
     }
 
-    public void setIdProveedor(String idProveedor) {
+    public void setIdProveedor(int idProveedor) {
         this.idProveedor = idProveedor;
+    }
+
+    public String getNombreproveedor() {
+        return nombreproveedor;
+    }
+
+    public void setNombreproveedor(String nombreproveedor) {
+        this.nombreproveedor = nombreproveedor;
     }
 
 }

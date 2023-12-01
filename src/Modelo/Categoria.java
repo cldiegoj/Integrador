@@ -1,7 +1,7 @@
 package Modelo;
 
 public class Categoria {
-    private String cat_cod;
+    private int cat_cod;
     private String cat_nom;
     private String cat_des;
 
@@ -10,11 +10,11 @@ public class Categoria {
         this.cat_des = cat_des;
     }
 
-    public String getCat_cod() {
+    public int getCat_cod() {
         return cat_cod;
     }
 
-    public void setCat_cod(String cat_cod) {
+    public void setCat_cod(int cat_cod) {
         this.cat_cod = cat_cod;
     }
 

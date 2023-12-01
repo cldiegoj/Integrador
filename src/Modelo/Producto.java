@@ -13,13 +13,14 @@ public class Producto {
     private int stock;
     private String prodnom;
     private String proddes;
-    private String catcod;
+    private int catcod;
     private double prodpre;
+    private String categoria;
 
     public Producto() {
     }
 
-    public Producto(int prodcod, int stock, String prodnom, String proddes, String catcod, double prodpre) {
+    public Producto(int prodcod, int stock, String prodnom, String proddes, int catcod, double prodpre) {
         this.prodcod = prodcod;
         this.stock = stock;
         this.prodnom = prodnom;
@@ -62,11 +63,11 @@ public class Producto {
         this.proddes = proddes;
     }
 
-    public String getCatcod() {
+    public int getCatcod() {
         return catcod;
     }
 
-    public void setCatcod(String catcod) {
+    public void setCatcod(int catcod) {
         this.catcod = catcod;
     }
 
@@ -76,6 +77,14 @@ public class Producto {
 
     public void setProdpre(double prodpre) {
         this.prodpre = prodpre;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
     
     
