@@ -1,18 +1,31 @@
 package vista;
 
 //import controlador.Ctrl_Usuario;
+import ConexionSQL.Conectar;
+import Modelo.Ingrediente;
+import Modelo.Producto;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import Modelo.Usuario;
-
+import ModeloDAO.IngredienteDAO;
+import ModeloDAO.ProductoDAO;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class InterIngredientes extends javax.swing.JInternalFrame {
-    
+
     public InterIngredientes() {
         initComponents();
-        
+
         this.setTitle("Registro de ingredientes");
-        
+        this.CargarComboInsumos();
+        this.CargarComboProductos();
+        this.CargarTabla();
     }
 
     /**
@@ -32,12 +45,12 @@ public class InterIngredientes extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cbxRol = new javax.swing.JComboBox<>();
-        txt_nombre2 = new javax.swing.JTextField();
-        cbxRol1 = new javax.swing.JComboBox<>();
+        comboinsumo = new javax.swing.JComboBox<>();
+        txt_cantidad = new javax.swing.JTextField();
+        comboproducto = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaIngredientes = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -100,34 +113,34 @@ public class InterIngredientes extends javax.swing.JInternalFrame {
         jLabel2.setText("Cantidad:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 80, -1));
 
-        cbxRol.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        cbxRol.setForeground(new java.awt.Color(0, 0, 0));
-        cbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione ingrediente" }));
-        cbxRol.addActionListener(new java.awt.event.ActionListener() {
+        comboinsumo.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        comboinsumo.setForeground(new java.awt.Color(0, 0, 0));
+        comboinsumo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione ingrediente" }));
+        comboinsumo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxRolActionPerformed(evt);
+                comboinsumoActionPerformed(evt);
             }
         });
-        jPanel2.add(cbxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 170, 30));
+        jPanel2.add(comboinsumo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 170, 30));
 
-        txt_nombre2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jPanel2.add(txt_nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 100, 30));
+        txt_cantidad.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jPanel2.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 100, 30));
 
-        cbxRol1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        cbxRol1.setForeground(new java.awt.Color(0, 0, 0));
-        cbxRol1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione producto" }));
-        cbxRol1.addActionListener(new java.awt.event.ActionListener() {
+        comboproducto.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        comboproducto.setForeground(new java.awt.Color(0, 0, 0));
+        comboproducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione producto" }));
+        comboproducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxRol1ActionPerformed(evt);
+                comboproductoActionPerformed(evt);
             }
         });
-        jPanel2.add(cbxRol1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 170, 30));
+        jPanel2.add(comboproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 170, 30));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaIngredientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -138,7 +151,7 @@ public class InterIngredientes extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaIngredientes);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 7, 610, 170));
 
@@ -155,48 +168,56 @@ public class InterIngredientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        //        if (txt_nombre.getText().isEmpty() || txt_apellido.getText().isEmpty() || txt_usuario.getText().isEmpty()
-            //                || txt_password.getText().isEmpty() || txt_telefono.getText().isEmpty()) {
-            //            JOptionPane.showMessageDialog(null, "Completa todos los campos");
-            //        } else {
-            //            //validamos si el usuaro ya esta registrado
-            //            Usuario usuario = new Usuario();
-            //            Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
-            //            if (!controlUsuario.existeUsuario(txt_usuario.getText().trim())) {
-                //                //enviamos datos del usuario
-                //                usuario.setNombre(txt_nombre.getText().trim());
-                //                usuario.setApellido(txt_apellido.getText().trim());
-                //                usuario.setUsuario(txt_usuario.getText().trim());
-                //                usuario.setPassword(txt_password.getText().trim());
-                //                usuario.setTelefono(txt_telefono.getText().trim());
-                //                usuario.setEstado("Activo");
-                //
-                //                if (controlUsuario.guardar(usuario)) {
-                    //                    JOptionPane.showMessageDialog(null, "¡Usuario Registrado!");
-                    //                } else {
-                    //                    JOptionPane.showMessageDialog(null, "¡Error al registrar Usuario!");
-                    //                }
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "El Usuario ya esta registrado, ingrese otro.");
-                //            }
-            //        }
-        //        this.Limpiar();
+        String producto = comboproducto.getSelectedItem().toString().trim();
+        String insumos = comboinsumo.getSelectedItem().toString().trim();
+
+        if (txt_cantidad.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese una cantidad");
+        } else {
+            if (producto.equalsIgnoreCase("Seleccione producto:")) {
+                JOptionPane.showMessageDialog(null, "Seleccione producto");
+            } else {
+                if (insumos.equalsIgnoreCase("Seleccione Insumo:")) {
+                    JOptionPane.showMessageDialog(null, "Seleccione insumo");
+                } else {
+                    Ingrediente ingrediente = new Ingrediente();
+                    IngredienteDAO ingredientedao = new IngredienteDAO();
+                    int idinsumo = ingredientedao.buscaridinsumo(comboinsumo.getSelectedItem().toString());
+                    int idproducto = ingredientedao.buscaridproducto(comboproducto.getSelectedItem().toString());
+                    
+                    ingrediente.setCantidad(Integer.parseInt(txt_cantidad.getText()));
+                    ingrediente.setIdProducto(idproducto);
+                    ingrediente.setIdProducto(idproducto);
+
+                    if (ingredientedao.guardar(ingrediente)) {
+                        JOptionPane.showMessageDialog(null, "¡Datos del ingrediente actualizados!");
+                        this.CargarTabla();
+                        this.Limpiar();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "¡Error al guardar!");
+                    }
+                }
+            }
+        }
+
+        this.Limpiar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void cbxRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRolActionPerformed
+    private void comboinsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboinsumoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxRolActionPerformed
+    }//GEN-LAST:event_comboinsumoActionPerformed
 
-    private void cbxRol1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRol1ActionPerformed
+    private void comboproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboproductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxRol1ActionPerformed
+    }//GEN-LAST:event_comboproductoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JTable TablaIngredientes;
     private javax.swing.JButton btnAtras;
     public javax.swing.JButton btnGuardar;
-    public javax.swing.JComboBox<String> cbxRol;
-    public javax.swing.JComboBox<String> cbxRol1;
+    public javax.swing.JComboBox<String> comboinsumo;
+    public javax.swing.JComboBox<String> comboproducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -205,15 +226,78 @@ public class InterIngredientes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    public javax.swing.JTextField txt_nombre2;
+    public javax.swing.JTextField txt_cantidad;
     // End of variables declaration//GEN-END:variables
      /**
      *
      * Metodo para limpiar campos
      */
     private void Limpiar() {
-        
+        txt_cantidad.setText("");
     }
-    
+
+    private void CargarTabla() {
+        DefaultTableModel model = new DefaultTableModel();
+
+        InterIngredientes.TablaIngredientes = new JTable(model);
+        this.jScrollPane1.setViewportView(InterIngredientes.TablaIngredientes);
+
+        model.addColumn("PRODUCTO°");//ID
+        model.addColumn("INSUMO");
+        model.addColumn("CANTIDAD DE INSUMO");
+
+        Object[] fila = new Object[3];
+        IngredienteDAO ingredientedao = new IngredienteDAO();
+        List<Ingrediente> lista = ingredientedao.lista();
+
+        for (Ingrediente x : lista) {
+            fila[0] = x.getNombreproducto();
+            fila[1] = x.getNombreinsumo();
+            fila[2] = x.getCantidad();
+            model.addRow(fila);
+        }
+    }
+
+    private void CargarComboProductos() {
+
+        Connection cn = Conectar.getConexion();
+        String sql = "select * from PRODUCTO";
+        Statement st;
+        try {
+
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            comboproducto.removeAllItems();
+            comboproducto.addItem("Seleccione producto:");
+            while (rs.next()) {
+                comboproducto.addItem(rs.getString("prod_nom"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al cargar los productos en: " + e);
+        }
+
+    }
+
+    private void CargarComboInsumos() {
+
+        Connection cn = Conectar.getConexion();
+        String sql = "select * from Insumos";
+        Statement st;
+        try {
+
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            comboinsumo.removeAllItems();
+            comboinsumo.addItem("Seleccione Insumo:");
+            while (rs.next()) {
+                comboinsumo.addItem(rs.getString("ins_nom"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al cargar los productos en: " + e);
+        }
+
+    }
+
 }
