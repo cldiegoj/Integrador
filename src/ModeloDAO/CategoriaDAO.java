@@ -63,7 +63,7 @@ public boolean actualizarCategoria(Categoria categoria) {
                 "UPDATE CATEGORIA SET cat_nom = ?, cat_des = ? WHERE cat_cod = ?");
         consulta.setString(1, categoria.getCat_nom());
         consulta.setString(2, categoria.getCat_des());
-        consulta.setString(3, categoria.getCat_cod());
+        consulta.setInt(3, categoria.getCat_cod());
 
         if (consulta.executeUpdate() > 0) {
             respuesta = true;
