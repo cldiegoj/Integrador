@@ -5,10 +5,9 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-
-
-CREATE DATABASE  IF NOT EXISTS `basepasteleria`;
-USE `basepasteleria`;
+DROP DATABASE IF EXISTS basepasteleria;
+CREATE DATABASE basepasteleria;
+USE basepasteleria;
 
 
 CREATE TABLE `cargo` (
@@ -25,12 +24,16 @@ INSERT INTO `cargo` (`car_cod`, `car_nom`) VALUES
 
 
 CREATE TABLE `categoria` (
-  `cat_cod` char(5) NOT NULL,
+  `cat_cod` int PRIMARY KEY AUTO_INCREMENT,
   `cat_nom` varchar(45) DEFAULT NULL,
   `cat_des` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
+INSERT INTO `categoria` VALUES(null, 'Pasteles', 'Pasteles de cumpleaños');
+INSERT INTO `categoria` VALUES(null, 'Galletas', 'Galletas decoradas');
+INSERT INTO `categoria` VALUES(null, 'Cupcakes', 'Cupcakes decorados');
+INSERT INTO `categoria` VALUES(null, 'Postres', 'Postres individuales');
+INSERT INTO `categoria` VALUES(null, 'Dulces', 'Dulces tradicionales');
 
 CREATE TABLE `cliente` (
   `cli_cod` int(11) NOT NULL,
@@ -51,12 +54,12 @@ ALTER TABLE `cliente`
 CREATE TABLE `detalle_recibo` (
   `reb_cod` char(5) NOT NULL,
   `prod_can` int(11) DEFAULT NULL,
-  `prod_cod` char(5) DEFAULT NULL
+  `prod_cod` int 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 CREATE TABLE `ingredientes` (
-  `prod_cod` char(5) NOT NULL,
+  `prod_cod` int NOT NULL,
   `ins_cod` char(5) DEFAULT NULL,
   `ing_can` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -82,13 +85,28 @@ CREATE TABLE `pago` (
 
 
 CREATE TABLE `producto` (
-  `prod_cod` char(5) NOT NULL,
+  `prod_cod` int PRIMARY KEY AUTO_INCREMENT,
   `prod_nom` varchar(45) DEFAULT NULL,
   `prod_des` varchar(45) DEFAULT NULL,
   `prod_pre` double DEFAULT NULL,
   `prod_stk` int(11) DEFAULT NULL,
-  `cat_cod` char(5) DEFAULT NULL
+  `cat_cod` int 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Datos para la categoría 'Pasteles'
+INSERT INTO `producto` VALUES (null, 'Pastel de Chocolate', 'Delicioso pastel de chocolate', 25.99, 10, 1);
+
+-- Datos para la categoría 'Galletas'
+INSERT INTO `producto` VALUES (null, 'Galletas Navideñas', 'Galletas decoradas con motivos navideños', 12.49, 15, 2);
+
+-- Datos para la categoría 'Cupcakes'
+INSERT INTO `producto` VALUES (null, 'Cupcake de Fresa', 'Cupcake con crema de fresa', 3.99, 20, 3);
+
+-- Datos para la categoría 'Postres'
+INSERT INTO `producto` VALUES (null, 'Éclair de Vainilla', 'Éclair relleno de crema de vainilla', 4.75, 12, 4);
+
+-- Datos para la categoría 'Dulces'
+INSERT INTO `producto` VALUES (null, 'Alfajor de Maicena', 'Dulce tradicional con relleno de dulce de leche', 2.49, 30, 5);
 
 
 CREATE TABLE `proveedor` (
@@ -130,10 +148,6 @@ INSERT INTO `usuario` (`usr_cod`, `usr_name`, `usr_pass`, `usr_nom`, `usr_ape`, 
 ALTER TABLE `cargo`
   ADD PRIMARY KEY (`car_cod`);
 
-
-ALTER TABLE `categoria`
-  ADD PRIMARY KEY (`cat_cod`);
-
 ALTER TABLE `detalle_recibo`
   ADD PRIMARY KEY (`reb_cod`),
   ADD KEY `fk_detalle_producto` (`prod_cod`);
@@ -152,7 +166,6 @@ ALTER TABLE `pago`
 
 
 ALTER TABLE `producto`
-  ADD PRIMARY KEY (`prod_cod`),
   ADD KEY `fk_producto_categoria` (`cat_cod`);
 
 ALTER TABLE `proveedor`
