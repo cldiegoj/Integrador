@@ -57,7 +57,6 @@ public class InterProveedores extends javax.swing.JInternalFrame {
         jButton_Guardar.setBackground(new java.awt.Color(252, 248, 232));
         jButton_Guardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jButton_Guardar.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
         jButton_Guardar.setText("GUARDAR");
         jButton_Guardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
         jButton_Guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -71,7 +70,6 @@ public class InterProveedores extends javax.swing.JInternalFrame {
         btnAtras.setBackground(new java.awt.Color(252, 248, 232));
         btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         btnAtras.setForeground(new java.awt.Color(0, 0, 0));
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
         btnAtras.setText("ATRÁS");
         btnAtras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
         btnAtras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

@@ -2,7 +2,8 @@ package vista;
 
 import ConexionSQL.Conectar;
 import ModeloDAO.ClienteDAO;
-import java.awt.Dimension;
+import Modelo.Cliente;
+//import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -18,14 +19,15 @@ import javax.swing.table.DefaultTableModel;
 
 public class InterGestionarCliente extends javax.swing.JInternalFrame {
 
-    private int idCliente;
+    private int idCliente = 0;
 
     public InterGestionarCliente() {
         initComponents();
 
         this.setTitle("Gestionar Clientes - Lima Cakes");
         //Cargar tabla
-//        this.CargarTablaClientes();
+        this.CargarTablaClientes();
+
     }
 
     /**
@@ -44,18 +46,18 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         txt_cedula = new javax.swing.JTextField();
         txt_telefono = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_clientes = new javax.swing.JTable();
         txt_nombre = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         btnAtras1 = new javax.swing.JButton();
         jButton_actualizar1 = new javax.swing.JButton();
         jButton_eliminar1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txt_apellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txt_direccion = new javax.swing.JTextField();
+        txt_correo = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable_clientes = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -69,7 +71,7 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         jLabel1.setText("MENÚ - ADMINISTRAR CLIENTE");
         jPanel4.add(jLabel1);
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 30));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 30));
 
         jPanel2.setBackground(new java.awt.Color(252, 248, 232));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,21 +80,84 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("DNI:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 30, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 30, 20));
 
         txt_cedula.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         txt_cedula.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 310, 190, 30));
+        jPanel2.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, 210, 30));
 
         txt_telefono.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         txt_telefono.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 190, 30));
+        jPanel2.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 210, 30));
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Teléfono:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 60, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 60, -1));
+
+        txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_nombre.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 210, 30));
+
+        btnAtras1.setBackground(new java.awt.Color(252, 248, 232));
+        btnAtras1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        btnAtras1.setForeground(new java.awt.Color(0, 0, 0));
+        btnAtras1.setText("Atrás");
+        btnAtras1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
+        btnAtras1.setContentAreaFilled(false);
+        btnAtras1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtras1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAtras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 250, 120, 30));
+
+        jButton_actualizar1.setBackground(new java.awt.Color(252, 248, 232));
+        jButton_actualizar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jButton_actualizar1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_actualizar1.setText("ACTUALIZAR");
+        jButton_actualizar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
+        jButton_actualizar1.setContentAreaFilled(false);
+        jButton_actualizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_actualizar1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton_actualizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 120, 30));
+
+        jButton_eliminar1.setBackground(new java.awt.Color(252, 248, 232));
+        jButton_eliminar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        jButton_eliminar1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton_eliminar1.setText("Eliminar");
+        jButton_eliminar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
+        jButton_eliminar1.setContentAreaFilled(false);
+        jButton_eliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_eliminar1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton_eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 330, 120, 30));
+
+        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Apellidos:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 60, -1));
+
+        txt_apellido.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_apellido.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 210, 30));
+
+        jLabel7.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("Correo electronico:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 120, -1));
+
+        txt_correo.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_correo.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 210, 30));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -109,83 +174,17 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable_clientes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 820, 170));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 780, 180));
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 840, 190));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 800, 200));
 
-        txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        txt_nombre.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 210, 30));
+        jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Nombres:");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 60, -1));
 
-        jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Nombres:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 60, -1));
-
-        btnAtras1.setBackground(new java.awt.Color(252, 248, 232));
-        btnAtras1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        btnAtras1.setForeground(new java.awt.Color(0, 0, 0));
-        btnAtras1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
-        btnAtras1.setText("Atrás");
-        btnAtras1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
-        btnAtras1.setContentAreaFilled(false);
-        btnAtras1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtras1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnAtras1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 170, 30));
-
-        jButton_actualizar1.setBackground(new java.awt.Color(252, 248, 232));
-        jButton_actualizar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jButton_actualizar1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_actualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
-        jButton_actualizar1.setText("Guardar");
-        jButton_actualizar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
-        jButton_actualizar1.setContentAreaFilled(false);
-        jButton_actualizar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_actualizar1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton_actualizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 170, 30));
-
-        jButton_eliminar1.setBackground(new java.awt.Color(252, 248, 232));
-        jButton_eliminar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jButton_eliminar1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_eliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/eliminar.png"))); // NOI18N
-        jButton_eliminar1.setText("Eliminar");
-        jButton_eliminar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
-        jButton_eliminar1.setContentAreaFilled(false);
-        jButton_eliminar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_eliminar1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton_eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 170, 30));
-
-        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Apellidos:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 60, -1));
-
-        txt_apellido.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_apellido.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 210, 30));
-
-        jLabel7.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("Dirección:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 60, -1));
-
-        txt_direccion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_direccion.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 210, 30));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 920, 400));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 850, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -197,44 +196,52 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
 
     private void jButton_actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizar1ActionPerformed
 
-        //        if (txt_nombre.getText().isEmpty() && txt_cedula.getText().isEmpty() && txt_telefono.getText().isEmpty()) {
-            //            JOptionPane.showMessageDialog(null, "¡Completa todos los campos!");
-            //        } else {
-            //
-            //            Cliente cliente = new Cliente();
-            //            Ctrl_Cliente controlCliente = new Ctrl_Cliente();
-            //
-            //            cliente.setNombre(txt_nombre.getText().trim());
-            //            cliente.setCedula(txt_cedula.getText().trim());
-            //            cliente.setTelefono(txt_telefono.getText().trim());
-            //            cliente.setEstado("Activo");
-            //
-            //            if (controlCliente.actualizar(cliente, idCliente)) {
-                //                JOptionPane.showMessageDialog(null, "¡Datos del cliente actualizados!");
-                //                this.CargarTablaClientes();
-                //                this.Limpiar();
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "¡Error al actualizar!");
-                //            }
-            //
-            //        }
+        Cliente cl = new Cliente();
+        ClienteDAO controlcliente = new ClienteDAO();
+
+        if (idCliente == 0) {
+            JOptionPane.showMessageDialog(null, "¡Seleccione un Usuario!");
+        } else {
+            if (txt_nombre.getText().isEmpty() || txt_apellido.getText().isEmpty() || txt_telefono.getText().isEmpty()
+                    || txt_cedula.getText().isEmpty() || txt_correo.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "¡Completa todos los campos!");
+
+            } else {
+                cl.setNombre(txt_nombre.getText().trim());
+                cl.setApellidos(txt_apellido.getText().trim());
+                cl.setTelefono(Integer.parseInt(txt_telefono.getText().trim()));
+                cl.setDni(txt_cedula.getText().trim());
+                cl.setCorreo(txt_correo.getText().trim());
+
+                if (controlcliente.actualizar(cl, idCliente)) {
+                    JOptionPane.showMessageDialog(null, "¡Actualización Exitosa!");
+                    this.Limpiar();
+                    this.CargarTablaClientes();
+                    idCliente = 0;
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "¡Error al Actualizar cliente!");
+                }
+            }
+        }
     }//GEN-LAST:event_jButton_actualizar1ActionPerformed
 
     private void jButton_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminar1ActionPerformed
+        ClienteDAO clientedao = new ClienteDAO();
+        if (idCliente == 0) {
+            JOptionPane.showMessageDialog(null, "¡Seleccione un usuario!");
+        } else {
+            if (!clientedao.eliminar(idCliente)) {
+                JOptionPane.showMessageDialog(null, "¡Usuario Eliminado!");
+                this.CargarTablaClientes();
+                this.Limpiar();
+                idCliente = 0;
+            } else {
+                JOptionPane.showMessageDialog(null, "¡Error al eliminar usuario!");
+                this.Limpiar();
+            }
+        }
 
-        //        Ctrl_Cliente controlCliente = new Ctrl_Cliente();
-        //        if (idCliente == 0) {
-            //            JOptionPane.showMessageDialog(null, "¡Seleccione un cliente!");
-            //        } else {
-            //            if (!controlCliente.eliminar(idCliente)) {
-                //                JOptionPane.showMessageDialog(null, "¡Cliente Eliminado!");
-                //                this.CargarTablaClientes();
-                //                this.Limpiar();
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "¡Error al eliminar cliente!");
-                //                this.Limpiar();
-                //            }
-            //        }
     }//GEN-LAST:event_jButton_eliminar1ActionPerformed
 
 
@@ -243,9 +250,9 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton_actualizar1;
     private javax.swing.JButton jButton_eliminar1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
@@ -255,7 +262,7 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
     public static javax.swing.JTable jTable_clientes;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_cedula;
-    private javax.swing.JTextField txt_direccion;
+    private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables
@@ -269,80 +276,82 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
         txt_nombre.setText("");
         txt_telefono.setText("");
         txt_cedula.setText("");
+        txt_apellido.setText("");
+        txt_correo.setText("");
     }
-}
+
 
     /*
      * *****************************************************
      * metodo para mostrar todos los clientes registrados
      * *****************************************************
      */
-//    private void CargarTablaClientes() {
-//        Connection con = conexion.Conectar.getConexion();
-//        DefaultTableModel model = new DefaultTableModel();
-//        String sql = "select * from CLIENTES";
-//        Statement st;
-//        try {
-//            st = con.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            InterGestionarCliente.jTable_clientes = new JTable(model);
-//            InterGestionarCliente.jScrollPane1.setViewportView(InterGestionarCliente.jTable_clientes);
-//
-//            model.addColumn("N°");//ID
-//            model.addColumn("NOMBRES");
-//            model.addColumn("DNI");
-//            model.addColumn("TELEFONO");
-//            model.addColumn("DIRECCION");
-//            model.addColumn("ESTADO");
-//
-//            while (rs.next()) {
-//                Object fila[] = new Object[7];
-//                for (int i = 0; i < 7; i++) {
-//                    fila[i] = rs.getObject(i + 1);
-//                }
-//                model.addRow(fila);
-//            }
-//            con.close();
-//        } catch (SQLException e) {
-//            System.out.println("Error al llenar la tabla clientes: " + e);
-//        }
-//        //evento para obtener campo al cual el usuario da click
-//        //y obtener la interfaz que mostrara la informacion general
-//        jTable_clientes.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                int fila_point = jTable_clientes.rowAtPoint(e.getPoint());
-//                int columna_point = 0;
-//
-//                if (fila_point > -1) {
-//                    idCliente = (int) model.getValueAt(fila_point, columna_point);
-//                    EnviarDatosClienteSeleccionado(idCliente);//metodo
-//                }
-//            }
-//        });
-//    }
+    private void CargarTablaClientes() {
+        Connection con = ConexionSQL.Conectar.getConexion();
+        DefaultTableModel model = new DefaultTableModel();
+        String sql = "select * from cliente";
+        Statement st;
+        try {
+            st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            InterGestionarCliente.jTable_clientes = new JTable(model);
+            InterGestionarCliente.jScrollPane1.setViewportView(InterGestionarCliente.jTable_clientes);
 
+            model.addColumn("CÓDIGO");//ID
+            model.addColumn("NOMBRE");
+            model.addColumn("APELLIDOS");
+            model.addColumn("TELEFONO");
+            model.addColumn("DNI");
+            model.addColumn("CORREO ELECTRONICO");
+
+            while (rs.next()) {
+                Object fila[] = new Object[6];
+                for (int i = 0; i < 6; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al llenar la tabla usuarios: " + e);
+        }
+
+        jTable_clientes.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila_point = jTable_clientes.rowAtPoint(e.getPoint());
+                int columna_point = 0;
+
+                if (fila_point > -1) {
+                    idCliente = (int) model.getValueAt(fila_point, columna_point);
+                    EnviarDatosClienteSeleccionado(idCliente);//metodo
+                }
+            }
+        });
+    }
 
     /*
      * **************************************************
      * Metodo que envia datos seleccionados
      * **************************************************
      */
-//    private void EnviarDatosClienteSeleccionado(int idCliente) {
-////        try {
-////            Connection con = conexion.Conectar.getConexion();
-////            PreparedStatement pst = con.prepareStatement(
-////                    "select * from CLIENTES where ID_CLIENTE = '" + idCliente + "'");
-////            ResultSet rs = pst.executeQuery();
-////            if (rs.next()) {
-////                txt_nombre.setText(rs.getString("NOMBRES"));
-////                txt_cedula.setText(rs.getString("DNI"));
-////                txt_telefono.setText(rs.getString("TELEFONO"));
-////            }
-////            con.close();
-////        } catch (SQLException e) {
-////            System.out.println("Error al seleccionar cliente: " + e);
-////        }
-////    }
-//
-//}
+    private void EnviarDatosClienteSeleccionado(int idCliente) {
+        try {
+            Connection con = ConexionSQL.Conectar.getConexion();
+            PreparedStatement pst = con.prepareStatement(
+                    "select * from cliente where cli_cod = '" + idCliente + "'");
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                txt_nombre.setText(rs.getString("cli_nom"));
+                txt_apellido.setText(rs.getString("cli_ape"));
+                txt_telefono.setText(rs.getString("cli_tel"));
+                txt_cedula.setText(rs.getString("cli_dir"));
+                txt_correo.setText(rs.getString("cli_cor"));
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al seleccionar cliente: " + e);
+        }
+    }
+
+}

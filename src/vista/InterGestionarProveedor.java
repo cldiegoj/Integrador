@@ -142,7 +142,6 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         jButton_actualizar1.setBackground(new java.awt.Color(252, 248, 232));
         jButton_actualizar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jButton_actualizar1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_actualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
         jButton_actualizar1.setText("GUARDAR");
         jButton_actualizar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
         jButton_actualizar1.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +154,6 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         jButton_eliminar1.setBackground(new java.awt.Color(252, 248, 232));
         jButton_eliminar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jButton_eliminar1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_eliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/eliminar.png"))); // NOI18N
         jButton_eliminar1.setText("ELIMINAR");
         jButton_eliminar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
         jButton_eliminar1.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +166,6 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         btnAtras1.setBackground(new java.awt.Color(252, 248, 232));
         btnAtras1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         btnAtras1.setForeground(new java.awt.Color(0, 0, 0));
-        btnAtras1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
         btnAtras1.setText("ATRÁS");
         btnAtras1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
         btnAtras1.addActionListener(new java.awt.event.ActionListener() {
@@ -299,39 +296,22 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnAtras1;
-    private javax.swing.JButton jButton_actualizar;
     private javax.swing.JButton jButton_actualizar1;
-    private javax.swing.JButton jButton_eliminar;
     private javax.swing.JButton jButton_eliminar1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    public static javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JScrollPane jScrollPane2;
-    public static javax.swing.JTable jTable_clientes;
     public static javax.swing.JTable jTable_clientes1;
-    private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_cedula1;
-    private javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_direccion1;
-    private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_nombre1;
-    private javax.swing.JTextField txt_telefono;
     private javax.swing.JTextField txt_telefono1;
     // End of variables declaration//GEN-END:variables
 
@@ -341,10 +321,7 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
      * *****************************************************
      */
     private void Limpiar() {
-        txt_nombre.setText("");
-        txt_telefono.setText("");
-        txt_direccion.setText("");
-        txt_cedula.setText("");
+        
     }
 
 

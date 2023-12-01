@@ -99,7 +99,6 @@ public class InterActualizarStock extends javax.swing.JInternalFrame {
         btnGuardar1.setBackground(new java.awt.Color(252, 248, 232));
         btnGuardar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         btnGuardar1.setForeground(new java.awt.Color(0, 0, 0));
-        btnGuardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
         btnGuardar1.setText("ACTUALIZAR");
         btnGuardar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), null, null));
         btnGuardar1.setContentAreaFilled(false);
@@ -114,7 +113,6 @@ public class InterActualizarStock extends javax.swing.JInternalFrame {
         btnAtras1.setBackground(new java.awt.Color(252, 248, 232));
         btnAtras1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         btnAtras1.setForeground(new java.awt.Color(0, 0, 0));
-        btnAtras1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
         btnAtras1.setText("ATRÁS");
         btnAtras1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), null, null));
         btnAtras1.setContentAreaFilled(false);
@@ -232,27 +230,16 @@ public class InterActualizarStock extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnAtras1;
-    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnGuardar1;
-    private javax.swing.JComboBox<String> jComboBox_producto;
     private javax.swing.JComboBox<String> jComboBox_producto1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField txt_cantidad_actual;
     private javax.swing.JTextField txt_cantidad_actual1;
-    private javax.swing.JTextField txt_cantidad_nueva;
     private javax.swing.JTextField txt_cantidad_nueva1;
     // End of variables declaration//GEN-END:variables
 

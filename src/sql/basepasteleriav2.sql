@@ -1,334 +1,336 @@
-CREATE DATABASE IF NOT EXISTS `basepasteleria` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-
-
-USE `basepasteleria`;
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: basepasteleria
--- ------------------------------------------------------
--- Server version	8.0.34
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 12-11-2023 a las 22:12:08
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `cargo`
+-- Base de datos: `basepasteleria`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cargo`
+--
+
+
+CREATE DATABASE  IF NOT EXISTS `basepasteleria`;
+USE `basepasteleria`;
+
 
 CREATE TABLE `cargo` (
-  `car_cod` int NOT NULL,
-  `car_nom` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`car_cod`)
+  `car_cod` int(11) NOT NULL,
+  `car_nom` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
 --
--- Dumping data for table `cargo`
---
-
-LOCK TABLES `cargo` WRITE;
-/*!40000 ALTER TABLE `cargo` DISABLE KEYS */;
-INSERT INTO `cargo` VALUES (1,'ADMINISTRADOR'),(2,'VENDEDOR'),(3,'ENCARGADO DE ALMACEN');
-/*!40000 ALTER TABLE `cargo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `categoria`
+-- Volcado de datos para la tabla `cargo`
 --
 
-DROP TABLE IF EXISTS `categoria`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+INSERT INTO `cargo` (`car_cod`, `car_nom`) VALUES
+(1, 'ADMINISTRADOR'),
+(2, 'VENDEDOR'),
+(3, 'ENCARGADO DE ALMACEN');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categoria`
+--
+
 CREATE TABLE `categoria` (
-  `cat_cod` int NOT NULL AUTO_INCREMENT,
+  `cat_cod` char(5) NOT NULL,
   `cat_nom` varchar(45) DEFAULT NULL,
-  `cat_des` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`cat_cod`)
+  `cat_des` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `categoria`
+-- Estructura de tabla para la tabla `cliente`
 --
 
-LOCK TABLES `categoria` WRITE;
-/*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-/*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cliente`
---
-
-DROP TABLE IF EXISTS `cliente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cliente` (
-  `cli_cod` char(5) NOT NULL,
+  `cli_cod` int(11) NOT NULL,
   `cli_nom` varchar(45) DEFAULT NULL,
   `cli_ape` varchar(45) DEFAULT NULL,
-  `cli_tel` int DEFAULT NULL,
+  `cli_tel` int(11) DEFAULT NULL,
   `cli_dir` varchar(45) DEFAULT NULL,
-  `cli_cor` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`cli_cod`)
+  `cli_cor` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- --------------------------------------------------------
 
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`cli_cod`);
 
-/*!40101 SET character_set_client = @saved_cs_client */;
+ALTER TABLE `cliente`
+  MODIFY `cli_cod` int(11) NOT NULL AUTO_INCREMENT;
+
 
 --
--- Dumping data for table `cliente`
+-- Estructura de tabla para la tabla `detalle_recibo`
 --
 
-LOCK TABLES `cliente` WRITE;
-/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `detalle_recibo`
---
-
-DROP TABLE IF EXISTS `detalle_recibo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `detalle_recibo` (
   `reb_cod` char(5) NOT NULL,
-  `prod_can` int DEFAULT NULL,
-  `prod_cod` char(5) DEFAULT NULL,
-  PRIMARY KEY (`reb_cod`),
-  KEY `fk_detalle_producto` (`prod_cod`),
-  CONSTRAINT `fk_detalle_producto` FOREIGN KEY (`prod_cod`) REFERENCES `producto` (`prod_cod`),
-  CONSTRAINT `fk_detalle_recibo` FOREIGN KEY (`reb_cod`) REFERENCES `recibo` (`reb_cod`)
+  `prod_can` int(11) DEFAULT NULL,
+  `prod_cod` char(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `detalle_recibo`
+-- Estructura de tabla para la tabla `ingredientes`
 --
 
-LOCK TABLES `detalle_recibo` WRITE;
-/*!40000 ALTER TABLE `detalle_recibo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `detalle_recibo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ingredientes`
---
-
-DROP TABLE IF EXISTS `ingredientes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ingredientes` (
   `prod_cod` char(5) NOT NULL,
   `ins_cod` char(5) DEFAULT NULL,
-  `ing_can` int DEFAULT NULL,
-  PRIMARY KEY (`prod_cod`),
-  KEY `fk_ingredientes_insumos` (`ins_cod`),
-  CONSTRAINT `fk_ingredientes_insumos` FOREIGN KEY (`ins_cod`) REFERENCES `insumos` (`ins_cod`),
-  CONSTRAINT `fk_ingredientes_producto` FOREIGN KEY (`prod_cod`) REFERENCES `producto` (`prod_cod`)
+  `ing_can` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `ingredientes`
+-- Estructura de tabla para la tabla `insumos`
 --
 
-LOCK TABLES `ingredientes` WRITE;
-/*!40000 ALTER TABLE `ingredientes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ingredientes` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `insumos`
---
-
-DROP TABLE IF EXISTS `insumos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `insumos` (
   `ins_cod` char(5) NOT NULL,
   `ins_nom` varchar(45) DEFAULT NULL,
   `ins_des` varchar(45) DEFAULT NULL,
-  `ins_stk` int DEFAULT NULL,
-  `pro_cod` char(5) DEFAULT NULL,
-  PRIMARY KEY (`ins_cod`),
-  KEY `fk_insumos_proveedor` (`pro_cod`),
-  CONSTRAINT `fk_insumos_proveedor` FOREIGN KEY (`pro_cod`) REFERENCES `proveedor` (`pro_cod`)
+  `ins_stk` int(11) DEFAULT NULL,
+  `pro_cod` char(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `insumos`
+-- Estructura de tabla para la tabla `pago`
 --
 
-LOCK TABLES `insumos` WRITE;
-/*!40000 ALTER TABLE `insumos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `insumos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pago`
---
-
-DROP TABLE IF EXISTS `pago`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pago` (
   `pag_cod` char(5) NOT NULL,
   `pag_com` varchar(45) DEFAULT NULL,
   `pag_igv` double DEFAULT NULL,
   `pag_total` double DEFAULT NULL,
   `pag_fec` date DEFAULT NULL,
-  `reb_cod` char(5) DEFAULT NULL,
-  PRIMARY KEY (`pag_cod`),
-  KEY `fk_pago_recibo` (`reb_cod`),
-  CONSTRAINT `fk_pago_recibo` FOREIGN KEY (`reb_cod`) REFERENCES `recibo` (`reb_cod`)
+  `reb_cod` char(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `pago`
+-- Estructura de tabla para la tabla `producto`
 --
 
-LOCK TABLES `pago` WRITE;
-/*!40000 ALTER TABLE `pago` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pago` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `producto`
---
-
-DROP TABLE IF EXISTS `producto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `producto` (
   `prod_cod` char(5) NOT NULL,
   `prod_nom` varchar(45) DEFAULT NULL,
   `prod_des` varchar(45) DEFAULT NULL,
   `prod_pre` double DEFAULT NULL,
-  `prod_stk` int DEFAULT NULL,
-  `cat_cod` INT,
-  PRIMARY KEY (`prod_cod`),
-  KEY `fk_producto_categoria` (`cat_cod`),
-  CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`cat_cod`) REFERENCES `categoria` (`cat_cod`)
+  `prod_stk` int(11) DEFAULT NULL,
+  `cat_cod` char(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `producto`
+-- Estructura de tabla para la tabla `proveedor`
 --
 
-LOCK TABLES `producto` WRITE;
-/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `proveedor`
---
-
-DROP TABLE IF EXISTS `proveedor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `proveedor` (
   `pro_cod` char(5) NOT NULL,
   `pro_nom` varchar(45) DEFAULT NULL,
   `pro_des` varchar(45) DEFAULT NULL,
-  `pro_ruc` int DEFAULT NULL,
-  PRIMARY KEY (`pro_cod`)
+  `pro_ruc` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `proveedor`
+-- Estructura de tabla para la tabla `recibo`
 --
 
-LOCK TABLES `proveedor` WRITE;
-/*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `recibo`
---
-
-DROP TABLE IF EXISTS `recibo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `recibo` (
   `reb_cod` char(5) NOT NULL,
   `reb_fec` date DEFAULT NULL,
-  `cli_cod` char(5) DEFAULT NULL,
-  PRIMARY KEY (`reb_cod`),
-  KEY `fk_recibo_cliente` (`cli_cod`),
-  CONSTRAINT `fk_recibo_cliente` FOREIGN KEY (`cli_cod`) REFERENCES `cliente` (`cli_cod`)
+  `cli_cod` char(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `recibo`
+-- Estructura de tabla para la tabla `usuario`
 --
 
-LOCK TABLES `recibo` WRITE;
-/*!40000 ALTER TABLE `recibo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `recibo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuario`
---
-
-DROP TABLE IF EXISTS `usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuario` (
-  `usr_cod` int NOT NULL AUTO_INCREMENT,
+  `usr_cod` int(11) NOT NULL,
   `usr_name` varchar(45) NOT NULL,
   `usr_pass` varchar(45) NOT NULL,
   `usr_nom` varchar(45) NOT NULL,
   `usr_ape` varchar(45) NOT NULL,
   `usr_telf` char(9) NOT NULL,
-  `usr_status` int NOT NULL,
-  `car_cod` int NOT NULL,
-  PRIMARY KEY (`usr_cod`),
-  KEY `fk_usuario_cargo` (`car_cod`),
-  CONSTRAINT `fk_usuario_cargo` FOREIGN KEY (`car_cod`) REFERENCES `cargo` (`car_cod`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `usr_status` int(11) NOT NULL,
+  `car_cod` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'kfernandezs','Password$1','Kevin','Fernandez Salas','914233345',1,1),(3,'jfernandezs','Password$1','Jean','Fernandez Salas','987654321',1,1);
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `usuario` (`usr_cod`, `usr_name`, `usr_pass`, `usr_nom`, `usr_ape`, `usr_telf`, `usr_status`, `car_cod`) VALUES
+(1, 'kfernandezs', 'Password$1', 'Kevin', 'Fernandez Salas', '914233345', 1, 1),
+(3, 'jfernandezs', 'Password$1', 'Jean', 'Fernandez Salas', '987654321', 1, 1);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `cargo`
+--
+ALTER TABLE `cargo`
+  ADD PRIMARY KEY (`car_cod`);
+
+--
+-- Indices de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`cat_cod`);
+
+--
+-- Indices de la tabla `cliente`
+--
+
+--
+-- Indices de la tabla `detalle_recibo`
+--
+ALTER TABLE `detalle_recibo`
+  ADD PRIMARY KEY (`reb_cod`),
+  ADD KEY `fk_detalle_producto` (`prod_cod`);
+
+--
+-- Indices de la tabla `ingredientes`
+--
+ALTER TABLE `ingredientes`
+  ADD PRIMARY KEY (`prod_cod`),
+  ADD KEY `fk_ingredientes_insumos` (`ins_cod`);
+
+--
+-- Indices de la tabla `insumos`
+--
+ALTER TABLE `insumos`
+  ADD PRIMARY KEY (`ins_cod`),
+  ADD KEY `fk_insumos_proveedor` (`pro_cod`);
+
+--
+-- Indices de la tabla `pago`
+--
+ALTER TABLE `pago`
+  ADD PRIMARY KEY (`pag_cod`),
+  ADD KEY `fk_pago_recibo` (`reb_cod`);
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`prod_cod`),
+  ADD KEY `fk_producto_categoria` (`cat_cod`);
+
+--
+-- Indices de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  ADD PRIMARY KEY (`pro_cod`);
+
+--
+-- Indices de la tabla `recibo`
+--
+ALTER TABLE `recibo`
+  ADD PRIMARY KEY (`reb_cod`),
+  ADD KEY `fk_recibo_cliente` (`cli_cod`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`usr_cod`),
+  ADD KEY `fk_usuario_cargo` (`car_cod`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `usr_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `detalle_recibo`
+--
+ALTER TABLE `detalle_recibo`
+  ADD CONSTRAINT `fk_detalle_producto` FOREIGN KEY (`prod_cod`) REFERENCES `producto` (`prod_cod`),
+  ADD CONSTRAINT `fk_detalle_recibo` FOREIGN KEY (`reb_cod`) REFERENCES `recibo` (`reb_cod`);
+
+--
+-- Filtros para la tabla `ingredientes`
+--
+ALTER TABLE `ingredientes`
+  ADD CONSTRAINT `fk_ingredientes_insumos` FOREIGN KEY (`ins_cod`) REFERENCES `insumos` (`ins_cod`),
+  ADD CONSTRAINT `fk_ingredientes_producto` FOREIGN KEY (`prod_cod`) REFERENCES `producto` (`prod_cod`);
+
+--
+-- Filtros para la tabla `insumos`
+--
+ALTER TABLE `insumos`
+  ADD CONSTRAINT `fk_insumos_proveedor` FOREIGN KEY (`pro_cod`) REFERENCES `proveedor` (`pro_cod`);
+
+--
+-- Filtros para la tabla `pago`
+--
+ALTER TABLE `pago`
+  ADD CONSTRAINT `fk_pago_recibo` FOREIGN KEY (`reb_cod`) REFERENCES `recibo` (`reb_cod`);
+
+--
+-- Filtros para la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`cat_cod`) REFERENCES `categoria` (`cat_cod`);
+
+--
+-- Filtros para la tabla `recibo`
+--
+ALTER TABLE `recibo`
+  ADD CONSTRAINT `fk_recibo_cliente` FOREIGN KEY (`cli_cod`) REFERENCES `cliente` (`cli_cod`);
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `fk_usuario_cargo` FOREIGN KEY (`car_cod`) REFERENCES `cargo` (`car_cod`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2023-11-12 10:36:43

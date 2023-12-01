@@ -61,7 +61,6 @@ public class InterGraficas extends javax.swing.JInternalFrame {
 
         jButton_Guardar.setBackground(new java.awt.Color(0, 0, 0));
         jButton_Guardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/historial1.png"))); // NOI18N
         jButton_Guardar.setText("Graficar Ventas");
         jButton_Guardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
         jButton_Guardar.setContentAreaFilled(false);

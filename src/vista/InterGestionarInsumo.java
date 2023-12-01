@@ -116,7 +116,6 @@ public class InterGestionarInsumo extends javax.swing.JInternalFrame {
         jButton_actualizar.setBackground(new java.awt.Color(252, 248, 232));
         jButton_actualizar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         jButton_actualizar.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
         jButton_actualizar.setText("GUARDAR");
         jButton_actualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
         jButton_actualizar.setContentAreaFilled(false);
@@ -130,7 +129,6 @@ public class InterGestionarInsumo extends javax.swing.JInternalFrame {
         jButton_eliminar.setBackground(new java.awt.Color(252, 248, 232));
         jButton_eliminar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         jButton_eliminar.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/eliminar.png"))); // NOI18N
         jButton_eliminar.setText("ELIMINAR");
         jButton_eliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
         jButton_eliminar.setContentAreaFilled(false);
@@ -144,7 +142,6 @@ public class InterGestionarInsumo extends javax.swing.JInternalFrame {
         btnAtras.setBackground(new java.awt.Color(252, 248, 232));
         btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         btnAtras.setForeground(new java.awt.Color(0, 0, 0));
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
         btnAtras.setText("ATRÁS");
         btnAtras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
         btnAtras.setContentAreaFilled(false);

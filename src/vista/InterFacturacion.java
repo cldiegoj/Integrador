@@ -173,35 +173,28 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 30));
 
         jComboBox_cliente.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jComboBox_cliente.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione cliente:", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 250, -1));
 
         jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Cliente:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 90, -1));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Producto:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 90, -1));
 
         jComboBox_producto.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jComboBox_producto.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox_producto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione producto:", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox_producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 250, -1));
 
         txt_cliente_buscar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        txt_cliente_buscar.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txt_cliente_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 190, -1));
 
         jButton_busca_cliente.setBackground(new java.awt.Color(255, 198, 89));
         jButton_busca_cliente.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jButton_busca_cliente.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_busca_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Buscar.png"))); // NOI18N
         jButton_busca_cliente.setText("Buscar");
         jButton_busca_cliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, new java.awt.Color(0, 0, 0), null, null));
         jButton_busca_cliente.setContentAreaFilled(false);
@@ -214,8 +207,6 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
 
         jButton_añadir_producto.setBackground(new java.awt.Color(255, 198, 89));
         jButton_añadir_producto.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jButton_añadir_producto.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_añadir_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Anadir2.png"))); // NOI18N
         jButton_añadir_producto.setText("Añadir");
         jButton_añadir_producto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, new java.awt.Color(0, 0, 0), null, null));
         jButton_añadir_producto.setContentAreaFilled(false);
@@ -255,8 +246,6 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
 
         jButton_RegistrarVenta.setBackground(new java.awt.Color(255, 198, 89));
         jButton_RegistrarVenta.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jButton_RegistrarVenta.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_RegistrarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Registrar Ventas.png"))); // NOI18N
         jButton_RegistrarVenta.setText("Registrar Venta");
         jButton_RegistrarVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, new java.awt.Color(0, 0, 0), null, null));
         jButton_RegistrarVenta.setContentAreaFilled(false);
@@ -275,26 +264,21 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         getContentPane().add(txt_total_pagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, 120, -1));
 
         txt_efectivo.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        txt_efectivo.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(txt_efectivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, 120, -1));
 
         txt_cambio.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        txt_cambio.setForeground(new java.awt.Color(0, 0, 0));
         txt_cambio.setEnabled(false);
         getContentPane().add(txt_cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 430, 120, -1));
 
         jLabel10.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Cambio:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Efectivo:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Total a pagar:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, -1, -1));
 
@@ -314,23 +298,19 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         getContentPane().add(txt_iva, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 120, -1));
 
         jLabel7.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("IGV:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Descuento:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Subtotal:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
 
         jButton_calcular_cambio.setBackground(new java.awt.Color(255, 198, 89));
         jButton_calcular_cambio.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jButton_calcular_cambio.setForeground(new java.awt.Color(0, 0, 0));
         jButton_calcular_cambio.setText("Calcular");
         jButton_calcular_cambio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, new java.awt.Color(0, 0, 0), null, null));
         jButton_calcular_cambio.setContentAreaFilled(false);
@@ -343,8 +323,6 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
 
         btnAtras.setBackground(new java.awt.Color(255, 198, 89));
         btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        btnAtras.setForeground(new java.awt.Color(0, 0, 0));
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Atras.png"))); // NOI18N
         btnAtras.setText("Atrás");
         btnAtras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, new java.awt.Color(0, 0, 0), null, null));
         btnAtras.setContentAreaFilled(false);
@@ -360,7 +338,6 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Cantidad:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 80, -1));

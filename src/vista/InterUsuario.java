@@ -35,13 +35,10 @@ public class InterUsuario extends javax.swing.JInternalFrame {
         cbo_cargo = new javax.swing.JComboBox<>();
         btn_Regresar = new javax.swing.JButton();
         btn_registrar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         txt_usr_pass = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txt_usr_nom = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -89,22 +86,6 @@ public class InterUsuario extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btn_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 130, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/x.png"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, 30));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/minimizar-signo.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, 30));
-
         txt_usr_pass.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         txt_usr_pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txt_usr_pass.addActionListener(new java.awt.event.ActionListener() {
@@ -125,9 +106,6 @@ public class InterUsuario extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         jLabel6.setText("Nombre de Usuario:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/usuario-de-perfil (2).png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 70, 70));
 
         jLabel8.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         jLabel8.setText("Nombres:");
@@ -233,14 +211,6 @@ public class InterUsuario extends javax.swing.JInternalFrame {
         this.Limpiar();
     }//GEN-LAST:event_btn_registrarActionPerformed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        this.dispose();
-    }//GEN-LAST:event_jLabel1MouseClicked
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        
-    }//GEN-LAST:event_jLabel2MouseClicked
-
     private void txt_usr_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usr_passActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_usr_passActionPerformed
@@ -262,13 +232,10 @@ public class InterUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btn_Regresar;
     public javax.swing.JButton btn_registrar;
     public javax.swing.JComboBox<String> cbo_cargo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

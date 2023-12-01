@@ -138,7 +138,6 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
 
         btnAtras1.setBackground(new java.awt.Color(252, 248, 232));
         btnAtras1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        btnAtras1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
         btnAtras1.setText("Atrás");
         btnAtras1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
         btnAtras1.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +149,6 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
 
         jButton_actualizar1.setBackground(new java.awt.Color(252, 248, 232));
         jButton_actualizar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jButton_actualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
         jButton_actualizar1.setText("Actualizar");
         jButton_actualizar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, null, null));
         jButton_actualizar1.addActionListener(new java.awt.event.ActionListener() {

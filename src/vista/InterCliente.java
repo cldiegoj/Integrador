@@ -6,16 +6,13 @@ import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import Modelo.Cliente;
 
-/**
- *
- * @author ediso
- */
+
 public class InterCliente extends javax.swing.JInternalFrame {
 
     public InterCliente() {
         initComponents();
-        
-        this.setTitle("Nuevo Cliente - Sistema Biker");
+
+        this.setTitle("Nuevo Cliente - Lima Cakes");
 
     }
 
@@ -42,7 +39,7 @@ public class InterCliente extends javax.swing.JInternalFrame {
         txt_nombre = new javax.swing.JTextField();
         txt_telefono = new javax.swing.JTextField();
         txt_cedula = new javax.swing.JTextField();
-        txt_direccion = new javax.swing.JTextField();
+        txt_correo = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -63,8 +60,6 @@ public class InterCliente extends javax.swing.JInternalFrame {
 
         jButton_Guardar.setBackground(new java.awt.Color(252, 248, 232));
         jButton_Guardar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        jButton_Guardar.setForeground(new java.awt.Color(0, 0, 0));
-        jButton_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/guardar-el-archivo.png"))); // NOI18N
         jButton_Guardar.setText("GUARDAR");
         jButton_Guardar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), null, null));
         jButton_Guardar.setContentAreaFilled(false);
@@ -77,8 +72,6 @@ public class InterCliente extends javax.swing.JInternalFrame {
 
         btnAtras.setBackground(new java.awt.Color(252, 248, 232));
         btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        btnAtras.setForeground(new java.awt.Color(0, 0, 0));
-        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/volver-flecha-izquierda.png"))); // NOI18N
         btnAtras.setText("ATRÁS");
         btnAtras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), null, null));
         btnAtras.setContentAreaFilled(false);
@@ -91,54 +84,49 @@ public class InterCliente extends javax.swing.JInternalFrame {
         jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 150, 30));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nombres:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 60, -1));
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Apellidos:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 60, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 60, -1));
 
         jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Teléfono:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 60, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 60, -1));
 
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("DNI:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 30, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 30, -1));
 
         jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Dirección:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 60, -1));
+        jLabel6.setText("Correo electronico:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 60, -1));
 
         txt_apellido.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_apellido.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 200, -1));
+        txt_apellido.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 200, -1));
 
         txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_nombre.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 200, -1));
+        txt_nombre.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 200, -1));
 
         txt_telefono.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_telefono.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 200, -1));
+        txt_telefono.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 200, -1));
 
         txt_cedula.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_cedula.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 200, -1));
+        txt_cedula.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txt_cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 200, -1));
 
-        txt_direccion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_direccion.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 200, -1));
+        txt_correo.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        txt_correo.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 200, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 670, 240));
 
@@ -146,7 +134,7 @@ public class InterCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarActionPerformed
-/**
+        
         Cliente cliente = new Cliente();
         ClienteDAO controlCliente = new ClienteDAO();
 
@@ -156,7 +144,10 @@ public class InterCliente extends javax.swing.JInternalFrame {
             if (!controlCliente.existeCliente(txt_cedula.getText().trim())) {
 
                 cliente.setNombre(txt_nombre.getText().trim());
-                cliente.setApellido("Activo");
+                cliente.setApellidos(txt_apellido.getText().trim());
+                cliente.setTelefono(Integer.parseInt(txt_telefono.getText().trim()));
+                cliente.setDni(txt_cedula.getText().trim());
+                cliente.setCorreo(txt_correo.getText().trim());
 
                 if (controlCliente.guardar(cliente)) {
                     JOptionPane.showMessageDialog(null, "Registro Guardado");
@@ -164,7 +155,7 @@ public class InterCliente extends javax.swing.JInternalFrame {
                     txt_apellido.setBackground(Color.green);
                     txt_cedula.setBackground(Color.green);
                     txt_telefono.setBackground(Color.green);
-                    txt_direccion.setBackground(Color.green);
+                    txt_correo.setBackground(Color.green);
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al Guardar");
                 }
@@ -175,7 +166,7 @@ public class InterCliente extends javax.swing.JInternalFrame {
                 txt_apellido.setBackground(Color.white);
                 txt_cedula.setBackground(Color.white);
                 txt_telefono.setBackground(Color.white);
-                txt_direccion.setBackground(Color.white);
+                txt_correo.setBackground(Color.white);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Completa todos los campos");
@@ -183,11 +174,10 @@ public class InterCliente extends javax.swing.JInternalFrame {
             txt_apellido.setBackground(Color.red);
             txt_cedula.setBackground(Color.red);
             txt_telefono.setBackground(Color.red);
-            txt_direccion.setBackground(Color.red);
+            txt_correo.setBackground(Color.red);
         }
         //metodo limpiar
         this.Limpiar();
-        */
     }//GEN-LAST:event_jButton_GuardarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
@@ -209,7 +199,7 @@ public class InterCliente extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_cedula;
-    private javax.swing.JTextField txt_direccion;
+    private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables
@@ -222,7 +212,7 @@ public class InterCliente extends javax.swing.JInternalFrame {
         txt_apellido.setText("");
         txt_cedula.setText("");
         txt_telefono.setText("");
-        txt_direccion.setText("");
+        txt_correo.setText("");
     }
 
 }
