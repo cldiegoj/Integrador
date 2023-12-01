@@ -1,6 +1,11 @@
 package vista;
 
 //import controlador.Ctrl_Tecnicos;
+import Modelo.Proveedor;
+import ModeloDAO.ProveedorDAO;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 //import java.awt.Color;
 //import java.awt.Dimension;
 //import java.text.SimpleDateFormat;
@@ -10,7 +15,6 @@ package vista;
 //import java.util.Set;
 //import javax.swing.JOptionPane;
 //import modelo.Tecnicos;
-
 /**
  *
  * @author ediso
@@ -19,8 +23,8 @@ public class InterProveedores extends javax.swing.JInternalFrame {
 
     public InterProveedores() {
         initComponents();
-        
-        this.setTitle("Nuevo Cliente - Lima Cakes");
+
+        this.setTitle("Nuevo Proveedor - Lima Cakes");
 
     }
 
@@ -36,14 +40,12 @@ public class InterProveedores extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton_Guardar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        txt_DNI = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txt_telefono = new javax.swing.JTextField();
+        txt_descripcion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txt_direccion = new javax.swing.JTextField();
+        txt_ruc = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -80,16 +82,6 @@ public class InterProveedores extends javax.swing.JInternalFrame {
         });
         jPanel1.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 150, 30));
 
-        jLabel4.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("ID:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 80, -1));
-
-        txt_DNI.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_DNI.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 200, -1));
-
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -103,22 +95,22 @@ public class InterProveedores extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("Telefono:");
+        jLabel7.setText("Descripción:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 80, -1));
 
-        txt_telefono.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_telefono.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, -1));
+        txt_descripcion.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        txt_descripcion.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Dirección");
+        jLabel3.setText("RUC");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 80, -1));
 
-        txt_direccion.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_direccion.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txt_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, -1));
+        txt_ruc.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        txt_ruc.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txt_ruc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 560, 220));
 
@@ -137,48 +129,37 @@ public class InterProveedores extends javax.swing.JInternalFrame {
 
     private void jButton_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuardarActionPerformed
 
-        //        Tecnicos tecnicos = new Tecnicos();
-        //        Ctrl_Tecnicos controlTecnicos = new Ctrl_Tecnicos();
-        //        String fechaActual = "";
-        //        Date date = new Date();
-        //        fechaActual = new SimpleDateFormat("yyyy/MM/dd").format(date);
-        //        if (!txt_nombre.getText().isEmpty() && !txt_apellido.getText().isEmpty() && !txt_DNI.getText().isEmpty()) {
-            //            //JOptionPane.showMessageDialog(null, "Correcto");
-            //
-            //            if (!controlTecnicos.existeTecnico(txt_DNI.getText().trim())) {
-                //
-                //                tecnicos.setNombre(txt_nombre.getText().trim());
-                //                tecnicos.setApellido(txt_apellido.getText().trim());
-                //                tecnicos.setDNI(txt_DNI.getText().trim());
-                //                tecnicos.setFech_tec(fechaActual);
-                //                tecnicos.setDireccion(txt_direccion.getText().trim());
-                //                tecnicos.setTelefono(txt_telefono.getText().trim());
-                //               tecnicos.setEstado("Activo");
-                //
-                //                if (controlTecnicos.guardar(tecnicos)) {
-                    //                    JOptionPane.showMessageDialog(null, "Registro Guardado");
-                    //              } else {
-                    //                    JOptionPane.showMessageDialog(null, "Error al Guardar");
-                    //                }
-                //
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "El tecnico ya esta registrado en la Base de Datos.");
-                //                txt_nombre.setBackground(Color.white);
-                //                txt_apellido.setBackground(Color.white);
-                //                txt_DNI.setBackground(Color.white);
-                //                txt_telefono.setBackground(Color.white);
-                //                txt_direccion.setBackground(Color.white);
-                //            }
-            //        } else {
-            //            JOptionPane.showMessageDialog(null, "Completa todos los campos");
-            //            txt_nombre.setBackground(Color.red);
-            //            txt_apellido.setBackground(Color.red);
-            //            txt_DNI.setBackground(Color.red);
-            //            txt_telefono.setBackground(Color.red);
-            //            txt_direccion.setBackground(Color.red);
-            //        }
-        //        //metodo limpiar
-        //        this.Limpiar();
+        Proveedor proveedor = new Proveedor();
+        ProveedorDAO proveedordao = new ProveedorDAO();
+        if (!txt_nombre.getText().isEmpty() && !txt_descripcion.getText().isEmpty() && !txt_ruc.getText().isEmpty()) {
+            //JOptionPane.showMessageDialog(null, "Correcto");
+
+            if (!proveedordao.existeTecnico(txt_nombre.getText().trim())) {
+
+                proveedor.setNombre(txt_nombre.getText().trim());
+                proveedor.setDescripcion(txt_descripcion.getText().trim());
+                proveedor.setRuc(Integer.parseInt(txt_ruc.getText().trim()));
+                
+                if (proveedordao.guardar(proveedor)) {
+                    JOptionPane.showMessageDialog(null, "Registro Guardado");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error al Guardar");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "El tecnico ya esta registrado en la Base de Datos.");
+                txt_nombre.setBackground(Color.white);
+                txt_descripcion.setBackground(Color.white);
+                txt_ruc.setBackground(Color.white);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Completa todos los campos");
+            txt_nombre.setBackground(Color.red);
+            txt_descripcion.setBackground(Color.red);
+            txt_ruc.setBackground(Color.red);
+        }
+        //metodo limpiar
+        this.Limpiar();
     }//GEN-LAST:event_jButton_GuardarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
@@ -193,14 +174,12 @@ public class InterProveedores extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txt_DNI;
-    private javax.swing.JTextField txt_direccion;
+    private javax.swing.JTextField txt_descripcion;
     private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_telefono;
+    private javax.swing.JTextField txt_ruc;
     // End of variables declaration//GEN-END:variables
      /**
      *
@@ -208,10 +187,8 @@ public class InterProveedores extends javax.swing.JInternalFrame {
      */
     private void Limpiar() {
         txt_nombre.setText("");
-        
-        txt_DNI.setText("");
-        txt_telefono.setText("");
-        txt_direccion.setText("");
+        txt_descripcion.setText("");
+        txt_ruc.setText("");
     }
 
 }

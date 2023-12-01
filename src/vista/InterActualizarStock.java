@@ -1,5 +1,8 @@
 package vista;
 
+import ConexionSQL.Conectar;
+import Modelo.Producto;
+import ModeloDAO.ProductoDAO;
 import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,7 +23,6 @@ public class InterActualizarStock extends javax.swing.JInternalFrame {
     public InterActualizarStock() {
         initComponents();
         setTitle("Actualizar Stock de los Productos");
-        
 
         this.CargarComboProductos();
     }
@@ -133,48 +135,10 @@ public class InterActualizarStock extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBox_productoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        //        //validamos seleccion del producto
-        //        if (!jComboBox_producto.getSelectedItem().equals("Seleccione producto:")) {
-            //            //Validamos campos vacios
-            //            if (!txt_cantidad_nueva.getText().isEmpty()) {
-                //                //validamos que el usuario no ingrese otros caracteres no numericos
-                //                boolean validacion = validar(txt_cantidad_nueva.getText().trim());
-                //                if (validacion == true) {
-                    //                    //validar que la cantidad sea mayor cero (0)
-                    //                    if (Integer.parseInt(txt_cantidad_nueva.getText()) > 0) {
-                        //
-                        //                        Producto producto = new Producto();
-                        //                        Ctrl_Producto controlProducto = new Ctrl_Producto();
-                        //                        int stockActual = Integer.parseInt(txt_cantidad_actual.getText().trim());
-                        //                        int stockNuevo = Integer.parseInt(txt_cantidad_nueva.getText().trim());
-                        //
-                        //                        stockNuevo = stockActual + stockNuevo;
-                        //                        producto.setCantidad(stockNuevo);
-                        //                        if (controlProducto.actualizarStock(producto, idProducto)) {
-                            //                            JOptionPane.showMessageDialog(null, "Stock Actualizado");
-                            //                            jComboBox_producto.setSelectedItem("Seleccione producto:");
-                            //                            txt_cantidad_actual.setText("");
-                            //                            txt_cantidad_nueva.setText("");
-                            //                            this.CargarComboProductos();
-                            //                        } else {
-                            //                            JOptionPane.showMessageDialog(null, "Error al Actualizar Stock");
-                            //                        }
-                        //                    } else {
-                        //                        JOptionPane.showMessageDialog(null, "La cantidad no puede ser cero ni negativa");
-                        //                    }
-                    //                } else {
-                    //                    JOptionPane.showMessageDialog(null, "En la cantidad no se admiten caracteres no numericos");
-                    //                }
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "Ingrese una nueva cantidad para sumar el stock del producto");
-                //            }
-            //        } else {
-            //            JOptionPane.showMessageDialog(null, "Seleccione un producto");
-            //        }
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
@@ -183,44 +147,44 @@ public class InterActualizarStock extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBox_producto1ActionPerformed
 
     private void btnGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardar1ActionPerformed
-        //        //validamos seleccion del producto
-        //        if (!jComboBox_producto.getSelectedItem().equals("Seleccione producto:")) {
-            //            //Validamos campos vacios
-            //            if (!txt_cantidad_nueva.getText().isEmpty()) {
-                //                //validamos que el usuario no ingrese otros caracteres no numericos
-                //                boolean validacion = validar(txt_cantidad_nueva.getText().trim());
-                //                if (validacion == true) {
-                    //                    //validar que la cantidad sea mayor cero (0)
-                    //                    if (Integer.parseInt(txt_cantidad_nueva.getText()) > 0) {
-                        //
-                        //                        Producto producto = new Producto();
-                        //                        Ctrl_Producto controlProducto = new Ctrl_Producto();
-                        //                        int stockActual = Integer.parseInt(txt_cantidad_actual.getText().trim());
-                        //                        int stockNuevo = Integer.parseInt(txt_cantidad_nueva.getText().trim());
-                        //
-                        //                        stockNuevo = stockActual + stockNuevo;
-                        //                        producto.setCantidad(stockNuevo);
-                        //                        if (controlProducto.actualizarStock(producto, idProducto)) {
-                            //                            JOptionPane.showMessageDialog(null, "Stock Actualizado");
-                            //                            jComboBox_producto.setSelectedItem("Seleccione producto:");
-                            //                            txt_cantidad_actual.setText("");
-                            //                            txt_cantidad_nueva.setText("");
-                            //                            this.CargarComboProductos();
-                            //                        } else {
-                            //                            JOptionPane.showMessageDialog(null, "Error al Actualizar Stock");
-                            //                        }
-                        //                    } else {
-                        //                        JOptionPane.showMessageDialog(null, "La cantidad no puede ser cero ni negativa");
-                        //                    }
-                    //                } else {
-                    //                    JOptionPane.showMessageDialog(null, "En la cantidad no se admiten caracteres no numericos");
-                    //                }
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "Ingrese una nueva cantidad para sumar el stock del producto");
-                //            }
-            //        } else {
-            //            JOptionPane.showMessageDialog(null, "Seleccione un producto");
-            //        }
+        //validamos seleccion del producto
+        if (!jComboBox_producto1.getSelectedItem().equals("Seleccione producto:")) {
+            //Validamos campos vacios
+            if (!txt_cantidad_nueva1.getText().isEmpty()) {
+                //validamos que el usuario no ingrese otros caracteres no numericos
+                boolean validacion = validar(txt_cantidad_nueva1.getText().trim());
+                if (validacion == true) {
+                    //validar que la cantidad sea mayor cero (0)
+                    if (Integer.parseInt(txt_cantidad_nueva1.getText()) > 0) {
+
+                        Producto producto = new Producto();
+                        ProductoDAO productodao = new ProductoDAO();
+                        int stockActual = Integer.parseInt(txt_cantidad_actual1.getText().trim());
+                        int stockNuevo = Integer.parseInt(txt_cantidad_nueva1.getText().trim());
+
+                        stockNuevo = stockActual + stockNuevo;
+                        producto.setStock(stockNuevo);
+                        if (productodao.actualizarStock(producto, idProducto)) {
+                            JOptionPane.showMessageDialog(null, "Stock Actualizado");
+                            jComboBox_producto1.setSelectedItem("Seleccione producto:");
+                            txt_cantidad_actual1.setText("");
+                            txt_cantidad_nueva1.setText("");
+                            this.CargarComboProductos();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Error al Actualizar Stock");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La cantidad no puede ser cero ni negativa");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "En la cantidad no se admiten caracteres no numericos");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese una nueva cantidad para sumar el stock del producto");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un producto");
+        }
     }//GEN-LAST:event_btnGuardar1ActionPerformed
 
     private void btnAtras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtras1ActionPerformed
@@ -246,45 +210,45 @@ public class InterActualizarStock extends javax.swing.JInternalFrame {
     //Metodo para caragar los productos en el jComboBox
     private void CargarComboProductos() {
 
-//        Connection cn = Conexion.conectar();
-//        String sql = "select * from PRODUCTOS";
-//        Statement st;
-//        try {
-//
-//            st = cn.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            jComboBox_producto.removeAllItems();
-//            jComboBox_producto.addItem("Seleccione producto:");
-//            while (rs.next()) {
-//                jComboBox_producto.addItem(rs.getString("NOM_PRODUC"));
-//            }
-//
-//        } catch (SQLException e) {
-//            System.out.println("Error al cargar los productos en: " + e);
-//        }
+        Connection cn = Conectar.getConexion();
+        String sql = "select * from PRODUCTO";
+        Statement st;
+        try {
+
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            jComboBox_producto1.removeAllItems();
+            jComboBox_producto1.addItem("Seleccione producto:");
+            while (rs.next()) {
+                jComboBox_producto1.addItem(rs.getString("prod_nom"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al cargar los productos en: " + e);
+        }
 
     }
 
     //metodo para mostrar stock del producto seleccionado
     private void MostrarStock() {
-//        try {
-//
-//            Connection cn = Conexion.conectar();
-//            String sql = "select * from PRODUCTOS where NOM_PRODUC = '" + this.jComboBox_producto.getSelectedItem() + "'";
-//            Statement st;
-//            st = cn.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//
-//            if (rs.next()) {
-//                idProducto = rs.getInt("ID_PRODUCTO");
-//                cantidad = rs.getInt("CANTIDAD");
-//                txt_cantidad_actual.setText(String.valueOf(cantidad));
-//            } else {
-//                txt_cantidad_actual.setText("");
-//            }
-//        } catch (SQLException e) {
-//            System.out.println("Error al obtener stock del producto en: " + e);
-//        }
+        try {
+
+            Connection cn = Conectar.getConexion();
+            String sql = "select * from PRODUCTO where prod_nom = '" + this.jComboBox_producto1.getSelectedItem() + "'";
+            Statement st;
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                idProducto = rs.getInt("prod_cod");
+                cantidad = rs.getInt("prod_stk");
+                txt_cantidad_actual1.setText(String.valueOf(cantidad));
+            } else {
+                txt_cantidad_actual1.setText("");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener stock del producto en: " + e);
+        }
     }
 
     //metodo de validacion de caracteres no numericos

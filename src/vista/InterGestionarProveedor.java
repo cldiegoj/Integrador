@@ -1,24 +1,19 @@
 package vista;
 
-//import conexion.Conexion;
-//import controlador.Ctrl_Cliente;
-//import controlador.Ctrl_Tecnicos;
-import java.awt.Dimension;
+
+import ConexionSQL.Conectar;
+import Modelo.*;
+import ModeloDAO.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-//import modelo.Tecnicos;
 
 /**
  *
@@ -30,7 +25,7 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
 
     public InterGestionarProveedor() {
         initComponents();
-        
+
         this.setTitle("Gestionar Proveedores");
         //Cargar tabla
         this.CargarTablaTecnicos();
@@ -50,15 +45,13 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_clientes1 = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
+        jTable_proveedor = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
-        txt_nombre1 = new javax.swing.JTextField();
-        txt_cedula1 = new javax.swing.JTextField();
+        txt_nombre = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txt_telefono1 = new javax.swing.JTextField();
-        txt_direccion1 = new javax.swing.JTextField();
+        txt_descripcion = new javax.swing.JTextField();
+        txt_ruc = new javax.swing.JTextField();
         jButton_actualizar1 = new javax.swing.JButton();
         jButton_eliminar1 = new javax.swing.JButton();
         btnAtras1 = new javax.swing.JButton();
@@ -84,8 +77,8 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable_clientes1.setForeground(new java.awt.Color(0, 102, 102));
-        jTable_clientes1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_proveedor.setForeground(new java.awt.Color(0, 102, 102));
+        jTable_proveedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -93,17 +86,11 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane2.setViewportView(jTable_clientes1);
+        jScrollPane2.setViewportView(jTable_proveedor);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 660, 200));
 
         jPanel6.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 680, 220));
-
-        jLabel7.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("Id:");
-        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 30, -1));
 
         jLabel8.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -111,33 +98,29 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
         jLabel8.setText("Nombre:");
         jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 80, -1));
 
-        txt_nombre1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_nombre1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel6.add(txt_nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 240, -1));
-
-        txt_cedula1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_cedula1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel6.add(txt_cedula1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 240, -1));
+        txt_nombre.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        txt_nombre.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel6.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 240, -1));
 
         jLabel9.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("Dirección:");
+        jLabel9.setText("RUC:");
         jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 70, -1));
 
         jLabel10.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Teléfono:");
-        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 60, -1));
+        jLabel10.setText("Descripcion");
+        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 80, -1));
 
-        txt_telefono1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_telefono1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel6.add(txt_telefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 240, -1));
+        txt_descripcion.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        txt_descripcion.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel6.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 240, -1));
 
-        txt_direccion1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_direccion1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel6.add(txt_direccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 240, -1));
+        txt_ruc.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        txt_ruc.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel6.add(txt_ruc, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 240, -1));
 
         jButton_actualizar1.setBackground(new java.awt.Color(252, 248, 232));
         jButton_actualizar1.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
@@ -182,54 +165,23 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
 
     private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
 
-        //
-        //        if (txt_nombre.getText().isEmpty() && txt_apellido.getText().isEmpty()
-            //                && txt_cedula.getText().isEmpty() && txt_telefono.getText().isEmpty() && txt_direccion.getText().isEmpty()) {
-            //            JOptionPane.showMessageDialog(null, "¡Completa todos los campos!");
-            //        } else {
-            //
-            //            Tecnicos tecnicos = new Tecnicos();
-            //            Ctrl_Tecnicos controlTecnico = new Ctrl_Tecnicos();
-            //
-            //            tecnicos.setNombre(txt_nombre.getText().trim());
-            //            tecnicos.setApellido(txt_apellido.getText().trim());
-            //            tecnicos.setDNI(txt_cedula.getText().trim());
-            //
-            //
-            //            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            //            String fechaFormateada = dateFormat.format(dc_fecha.getDate());
-            //            tecnicos.setFech_tec(fechaFormateada);
-            //
-            //            tecnicos.setDireccion(txt_direccion.getText().trim());
-            //            tecnicos.setTelefono(txt_telefono.getText().trim());
-            //            tecnicos.setEstado("Activo");
-            //
-            //            if (controlTecnico.actualizar(tecnicos, idTecnico)) {
-                //                JOptionPane.showMessageDialog(null, "¡Datos del cliente actualizados!");
-                //                this.CargarTablaTecnicos();
-                //                this.Limpiar();
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "¡Error al actualizar!");
-                //            }
-
-            //        }
     }//GEN-LAST:event_jButton_actualizarActionPerformed
 
     private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
 
-        //        Ctrl_Tecnicos controlTecnico = new Ctrl_Tecnicos();
-        //        if (idTecnico == 0) {
-            //            JOptionPane.showMessageDialog(null, "¡Seleccione un tecnico!");
-            //        } else {
-            //            if (!controlTecnico.eliminar(idTecnico)) {
-                //                JOptionPane.showMessageDialog(null, "¡Cliente Eliminado!");
-                //                this.CargarTablaTecnicos();
-                //                this.Limpiar();
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "¡Error al eliminar técnico!");
-                //                this.Limpiar();
-                //            }
-            //        }
+        ProveedorDAO proveedordao = new ProveedorDAO();
+        if (idTecnico == 0) {
+            JOptionPane.showMessageDialog(null, "¡Seleccione un tecnico!");
+        } else {
+            if (!proveedordao.eliminar(idTecnico)) {
+                JOptionPane.showMessageDialog(null, "¡Cliente Eliminado!");
+                this.CargarTablaTecnicos();
+                this.Limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "¡Error al eliminar técnico!");
+                this.Limpiar();
+            }
+        }
     }//GEN-LAST:event_jButton_eliminarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
@@ -239,54 +191,44 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
 
     private void jButton_actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizar1ActionPerformed
 
-        //
-        //        if (txt_nombre.getText().isEmpty() && txt_apellido.getText().isEmpty()
-            //                && txt_cedula.getText().isEmpty() && txt_telefono.getText().isEmpty() && txt_direccion.getText().isEmpty()) {
-            //            JOptionPane.showMessageDialog(null, "¡Completa todos los campos!");
-            //        } else {
-            //
-            //            Tecnicos tecnicos = new Tecnicos();
-            //            Ctrl_Tecnicos controlTecnico = new Ctrl_Tecnicos();
-            //
-            //            tecnicos.setNombre(txt_nombre.getText().trim());
-            //            tecnicos.setApellido(txt_apellido.getText().trim());
-            //            tecnicos.setDNI(txt_cedula.getText().trim());
-            //
-            //
-            //            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            //            String fechaFormateada = dateFormat.format(dc_fecha.getDate());
-            //            tecnicos.setFech_tec(fechaFormateada);
-            //
-            //            tecnicos.setDireccion(txt_direccion.getText().trim());
-            //            tecnicos.setTelefono(txt_telefono.getText().trim());
-            //            tecnicos.setEstado("Activo");
-            //
-            //            if (controlTecnico.actualizar(tecnicos, idTecnico)) {
-                //                JOptionPane.showMessageDialog(null, "¡Datos del cliente actualizados!");
-                //                this.CargarTablaTecnicos();
-                //                this.Limpiar();
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "¡Error al actualizar!");
-                //            }
+        if (txt_nombre.getText().isEmpty() && txt_descripcion.getText().isEmpty()
+                && txt_ruc.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "¡Completa todos los campos!");
+        } else {
 
-            //        }
+            Proveedor proveedor = new Proveedor();
+            ProveedorDAO proveedordao = new ProveedorDAO();
+
+            proveedor.setNombre(txt_nombre.getText().trim());
+            proveedor.setDescripcion(txt_descripcion.getText().trim());
+            proveedor.setRuc(Integer.parseInt(txt_ruc.getText().trim()));
+
+            if (proveedordao.actualizar(proveedor, idTecnico)) {
+                JOptionPane.showMessageDialog(null, "¡Datos del proveedor actualizados!");
+                this.CargarTablaTecnicos();
+                this.Limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "¡Error al actualizar!");
+            }
+
+        }
     }//GEN-LAST:event_jButton_actualizar1ActionPerformed
 
     private void jButton_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminar1ActionPerformed
 
-        //        Ctrl_Tecnicos controlTecnico = new Ctrl_Tecnicos();
-        //        if (idTecnico == 0) {
-            //            JOptionPane.showMessageDialog(null, "¡Seleccione un tecnico!");
-            //        } else {
-            //            if (!controlTecnico.eliminar(idTecnico)) {
-                //                JOptionPane.showMessageDialog(null, "¡Cliente Eliminado!");
-                //                this.CargarTablaTecnicos();
-                //                this.Limpiar();
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "¡Error al eliminar técnico!");
-                //                this.Limpiar();
-                //            }
-            //        }
+        ProveedorDAO proveedordao = new ProveedorDAO();
+        if (idTecnico == 0) {
+            JOptionPane.showMessageDialog(null, "¡Seleccione un proveedor!");
+        } else {
+            if (!proveedordao.eliminar(idTecnico)) {
+                JOptionPane.showMessageDialog(null, "¡Proveedor Eliminado!");
+                this.CargarTablaTecnicos();
+                this.Limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "¡Error al eliminar proveedor!");
+                this.Limpiar();
+            }
+        }
     }//GEN-LAST:event_jButton_eliminar1ActionPerformed
 
     private void btnAtras1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtras1ActionPerformed
@@ -301,18 +243,16 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton_eliminar1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     public static javax.swing.JScrollPane jScrollPane2;
-    public static javax.swing.JTable jTable_clientes1;
-    private javax.swing.JTextField txt_cedula1;
-    private javax.swing.JTextField txt_direccion1;
-    private javax.swing.JTextField txt_nombre1;
-    private javax.swing.JTextField txt_telefono1;
+    public static javax.swing.JTable jTable_proveedor;
+    private javax.swing.JTextField txt_descripcion;
+    private javax.swing.JTextField txt_nombre;
+    private javax.swing.JTextField txt_ruc;
     // End of variables declaration//GEN-END:variables
 
     /*
@@ -321,7 +261,7 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
      * *****************************************************
      */
     private void Limpiar() {
-        
+
     }
 
 
@@ -331,50 +271,42 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
      * *****************************************************
      */
     private void CargarTablaTecnicos() {
-//        Connection con = Conexion.conectar();
-//        DefaultTableModel model = new DefaultTableModel();
-//        String sql = "select * from TECNICOS";
-//        Statement st;
-//        try {
-//            st = con.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            InterGestionarProveedor.jTable_clientes = new JTable(model);
-//            InterGestionarProveedor.jScrollPane1.setViewportView(InterGestionarProveedor.jTable_clientes);
-//
-//            model.addColumn("N°");//ID
-//            model.addColumn("NOMBRES");
-//            model.addColumn("APELLIDOS");
-//            model.addColumn("DNI");
-//            model.addColumn("FECHA DE NAC.");
-//            model.addColumn("DIRECCION");
-//            model.addColumn("TELEFONO");
-//            model.addColumn("ESTADO");
-//
-//            while (rs.next()) {
-//                Object fila[] = new Object[8];
-//                for (int i = 0; i < 8; i++) {
-//                    fila[i] = rs.getObject(i + 1);
-//                }
-//                model.addRow(fila);
-//            }
-//            con.close();
-//        } catch (SQLException e) {
-//            System.out.println("Error al llenar la tabla de técnicos: " + e);
-//        }
-//        //evento para obtener campo al cual el usuario da click
-//        //y obtener la interfaz que mostrara la informacion general
-//        jTable_clientes.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                int fila_point = jTable_clientes.rowAtPoint(e.getPoint());
-//                int columna_point = 0;
-//
-//                if (fila_point > -1) {
-//                    idTecnico = (int) model.getValueAt(fila_point, columna_point);
-//                    EnviarDatosTecnicoSeleccionado(idTecnico);//metodo
-//                }
-//            }
-//        });
+        DefaultTableModel model = new DefaultTableModel();
+        InterGestionarProveedor.jTable_proveedor = new JTable(model);
+        InterGestionarProveedor.jScrollPane2.setViewportView(InterGestionarProveedor.jTable_proveedor);
+        
+        model.addColumn("N°");//ID
+        model.addColumn("NOMBRE");
+        model.addColumn("DESCRIPCION:");
+        model.addColumn("RUC");
+        
+        Object[] fila = new Object[6];
+        ProveedorDAO proveedordao = new ProveedorDAO();
+        List<Proveedor> lista = proveedordao.lista();
+
+        for (Proveedor x : lista) {
+            fila[0] = x.getIdProveedor();
+            fila[1] = x.getNombre();
+            fila[2] = x.getDescripcion();
+            fila[3] = x.getRuc();
+            model.addRow(fila);
+        }
+        
+        
+        //evento para obtener campo al cual el usuario da click
+        //y obtener la interfaz que mostrara la informacion general
+        jTable_proveedor.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila_point = jTable_proveedor.rowAtPoint(e.getPoint());
+                int columna_point = 0;
+
+                if (fila_point > -1) {
+                    idTecnico = (int) model.getValueAt(fila_point, columna_point);
+                    EnviarDatosTecnicoSeleccionado(idTecnico);//metodo
+                }
+            }
+        });
     }
 
 
@@ -383,25 +315,22 @@ public class InterGestionarProveedor extends javax.swing.JInternalFrame {
      * Metodo que envia datos seleccionados
      * **************************************************
      */
-    private void EnviarDatosTecnicoSeleccionado(int idTecnico) {
-//        try {
-//            Connection con = Conexion.conectar();
-//            PreparedStatement pst = con.prepareStatement(
-//                    "select * from TECNICOS where ID_TECNICO = '" + idTecnico + "'");
-//            ResultSet rs = pst.executeQuery();
-//            if (rs.next()) {
-//                txt_nombre.setText(rs.getString("NOM_TEC"));
-//                txt_apellido.setText(rs.getString("APE_TEC"));
-//                txt_cedula.setText(rs.getString("DNI"));
-//                dc_fecha.setDate(rs.getDate("FECH_TEC"));
-//                txt_direccion.setText(rs.getString("DIREC_TEC"));
-//                txt_telefono.setText(rs.getString("TELEFONO"));
-//                
-//            }
-//            con.close();
-//        } catch (SQLException e) {
-//            System.out.println("Error al seleccionar cliente: " + e);
-//        }
+    private void EnviarDatosTecnicoSeleccionado(int idProveedor) {
+        try {
+            Connection con = Conectar.getConexion();
+            PreparedStatement pst = con.prepareStatement(
+                    "select * from proveedor where pro_cod= '" + idProveedor + "'");
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                txt_nombre.setText(rs.getString("pro_nom"));
+                txt_descripcion.setText(rs.getString("pro_des"));
+                txt_ruc.setText(Integer.toString(rs.getInt("pro_ruc")));
+
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al seleccionar proveedor: " + e);
+        }
     }
 
 }

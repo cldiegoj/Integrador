@@ -1,8 +1,9 @@
 package vista;
 
-//import conexion.Conexion;
-//import controlador.Ctrl_Cliente;
-//import controlador.Ctrl_Usuario;
+
+import ConexionSQL.Conectar;
+import Modelo.Insumos;
+import Modelo.Producto;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -18,20 +19,25 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 //import modelo.Cliente;
 import Modelo.Usuario;
-
+import ModeloDAO.InsumoDAO;
+import ModeloDAO.ProductoDAO;
+import java.awt.HeadlessException;
+import java.util.List;
+import static vista.InterGestionarProducto.jTable_productos;
 
 public class InterGestionarInsumo extends javax.swing.JInternalFrame {
 
-    private int idUsuario = 0;
+    private int idInsumo;
+    int obtenerIdCategoriaCombo = 0;
 
     public InterGestionarInsumo() {
         initComponents();
-        
-        this.setTitle("Gestionar Ingredientes");
-        //Cargar tabla
-//        this.CargarTablaUsuarios();
 
-          }
+        this.setTitle("Gestionar Insumos");
+        this.CargarTablaInsumos();
+        this.CargarComboProveedor();
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,15 +56,15 @@ public class InterGestionarInsumo extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
-        txt_dni = new javax.swing.JTextField();
-        txt_correo = new javax.swing.JTextField();
+        txt_descripcion = new javax.swing.JTextField();
+        txt_stock = new javax.swing.JTextField();
         jButton_actualizar = new javax.swing.JButton();
         jButton_eliminar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_usuarios = new javax.swing.JTable();
-        cbxRol = new javax.swing.JComboBox<>();
+        jTable_insumos = new javax.swing.JTable();
+        comboproveedor = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -102,16 +108,16 @@ public class InterGestionarInsumo extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 80, -1));
 
         txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        txt_nombre.setForeground(new java.awt.Color(255, 255, 255));
+        txt_nombre.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 280, -1));
 
-        txt_dni.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        txt_dni.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(txt_dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 280, -1));
+        txt_descripcion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_descripcion.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 280, -1));
 
-        txt_correo.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        txt_correo.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.add(txt_correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 280, -1));
+        txt_stock.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        txt_stock.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(txt_stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 280, -1));
 
         jButton_actualizar.setBackground(new java.awt.Color(252, 248, 232));
         jButton_actualizar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
@@ -156,7 +162,7 @@ public class InterGestionarInsumo extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable_usuarios.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_insumos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -167,24 +173,24 @@ public class InterGestionarInsumo extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable_usuarios.setEnabled(false);
-        jTable_usuarios.setFillsViewportHeight(true);
-        jTable_usuarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable_usuarios);
+        jTable_insumos.setEnabled(false);
+        jTable_insumos.setFillsViewportHeight(true);
+        jTable_insumos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(jTable_insumos);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 600, 170));
 
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 630, 190));
 
-        cbxRol.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        cbxRol.setForeground(new java.awt.Color(0, 0, 0));
-        cbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione proveedor" }));
-        cbxRol.addActionListener(new java.awt.event.ActionListener() {
+        comboproveedor.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
+        comboproveedor.setForeground(new java.awt.Color(0, 0, 0));
+        comboproveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione proveedor" }));
+        comboproveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxRolActionPerformed(evt);
+                comboproveedorActionPerformed(evt);
             }
         });
-        jPanel3.add(cbxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 280, 20));
+        jPanel3.add(comboproveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 280, 20));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 710, 390));
 
@@ -192,53 +198,58 @@ public class InterGestionarInsumo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
-//        Usuario usuario = new Usuario();
-//        Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
-//
-//        if (idUsuario == 0) {
-//            JOptionPane.showMessageDialog(null, "¡Seleccione un Usuario!");
-//        } else {
-//            if (txt_nombre.getText().isEmpty() || txt_apellido.getText().isEmpty() || txt_usuario.getText().isEmpty()
-//                    || txt_password.getText().isEmpty() || txt_telefono.getText().isEmpty()) {
-//                JOptionPane.showMessageDialog(null, "¡Completa todos los campos!");
-//
-//            } else {
-//                usuario.setNombre(txt_nombre.getText().trim());
-//                usuario.setApellido(txt_apellido.getText().trim());
-//                usuario.setUsuario(txt_usuario.getText().trim());
-//                usuario.setPassword(txt_password.getText().trim());
-//                usuario.setTelefono(txt_telefono.getText().trim());
-//                usuario.setEstado("Activo");
-//                
-//                if(controlUsuario.actualizar(usuario, idUsuario)){
-//                    JOptionPane.showMessageDialog(null, "¡Actualizacion Exitosa!");
-//                    this.Limpiar();
-//                    this.CargarTablaUsuarios();
-//                    idUsuario = 0;
-//                    
-//                }else{
-//                    JOptionPane.showMessageDialog(null, "¡Error al Actualizar usuario!");
-//                }
-//            }
-//        }
+        Insumos insumo = new Insumos();
+        InsumoDAO insumodao = new InsumoDAO();
+        String proveedor = "";
+        proveedor = comboproveedor.getSelectedItem().toString().trim();
+
+        //validar campos
+        if (txt_nombre.getText().isEmpty() || txt_descripcion.getText().isEmpty() || txt_stock.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Complete todos los campos");
+        } else {
+            if (proveedor.equalsIgnoreCase("Seleccione proveedor:")) {
+                JOptionPane.showMessageDialog(null, "Seleccione proveedor");
+            } else {
+                try {
+                    insumo.setNombre(txt_nombre.getText().trim());
+                    insumo.setStock(Integer.parseInt(txt_stock.getText().trim()));
+                    insumo.setDescripcion(txt_descripcion.getText().trim());
+
+                    //idcategoria - cargar metodo que obtiene el id de categoria
+                    this.IdProveedor();
+                    insumo.setIdProveedor(obtenerIdCategoriaCombo);
+
+                    if (insumodao.actualizar(insumo, idInsumo)) {
+                        JOptionPane.showMessageDialog(null, "Registro Actualizado");
+                        this.CargarComboProveedor();
+                        this.CargarTablaInsumos();
+                        this.Limpiar();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error al Actualizar");
+                    }
+                } catch (HeadlessException | NumberFormatException e) {
+                    System.out.println("Error en: " + e);
+                }
+            }
+
+        }
     }//GEN-LAST:event_jButton_actualizarActionPerformed
 
     private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
 
-//        Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
-//        if (idUsuario == 0) {
-//            JOptionPane.showMessageDialog(null, "¡Seleccione un usuario!");
-//        } else {
-//            if (!controlUsuario.eliminar(idUsuario)) {
-//                JOptionPane.showMessageDialog(null, "¡Usuario Eliminado!");
-//                this.CargarTablaUsuarios();
-//                this.Limpiar();
-//                idUsuario = 0;
-//            } else {
-//                JOptionPane.showMessageDialog(null, "¡Error al eliminar usuario!");
-//                this.Limpiar();
-//            }
-//        }
+        InsumoDAO insumodao = new InsumoDAO();
+        if (idInsumo == 0) {
+            JOptionPane.showMessageDialog(null, "¡Seleccione un Producto!");
+        } else {
+            if (!insumodao.eliminar(idInsumo)) {
+                JOptionPane.showMessageDialog(null, "¡Producto Eliminado!");
+                this.CargarTablaInsumos();
+                this.CargarComboProveedor();
+                this.Limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "¡Error al eliminar producto!");
+            }
+        }
     }//GEN-LAST:event_jButton_eliminarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
@@ -246,14 +257,14 @@ public class InterGestionarInsumo extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
-    private void cbxRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRolActionPerformed
+    private void comboproveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboproveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxRolActionPerformed
+    }//GEN-LAST:event_comboproveedorActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
-    public javax.swing.JComboBox<String> cbxRol;
+    public javax.swing.JComboBox<String> comboproveedor;
     private javax.swing.JButton jButton_actualizar;
     private javax.swing.JButton jButton_eliminar;
     private javax.swing.JLabel jLabel1;
@@ -265,10 +276,10 @@ public class InterGestionarInsumo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     public static javax.swing.JScrollPane jScrollPane1;
-    public static javax.swing.JTable jTable_usuarios;
-    public javax.swing.JTextField txt_correo;
-    public javax.swing.JTextField txt_dni;
+    public static javax.swing.JTable jTable_insumos;
+    public javax.swing.JTextField txt_descripcion;
     public javax.swing.JTextField txt_nombre;
+    public javax.swing.JTextField txt_stock;
     // End of variables declaration//GEN-END:variables
 
     /*
@@ -278,8 +289,8 @@ public class InterGestionarInsumo extends javax.swing.JInternalFrame {
      */
     private void Limpiar() {
         txt_nombre.setText("");
-        txt_dni.setText("");
-        txt_correo.setText("");
+        txt_descripcion.setText("");
+        txt_stock.setText("");
     }
 
 
@@ -288,75 +299,126 @@ public class InterGestionarInsumo extends javax.swing.JInternalFrame {
      * metodo para mostrar todos los clientes registrados
      * *****************************************************
      */
-//    private void CargarTablaUsuarios() {
-//        Connection con = Conexion.conectar();
-//        DefaultTableModel model = new DefaultTableModel();
-//        String sql = "select * from USUARIOS";
-//        Statement st;
-//        try {
-//            st = con.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            InterGestionarUsuario.jTable_usuarios = new JTable(model);
-//            InterGestionarUsuario.jScrollPane1.setViewportView(InterGestionarUsuario.jTable_usuarios);
-//
-//            model.addColumn("N°");//ID
-//            model.addColumn("NOMBRES");
-//            model.addColumn("APELLIDOS");
-//            model.addColumn("USUARIOS");
-//            model.addColumn("PASSWORD");
-//            model.addColumn("TELEFONO");
-//            model.addColumn("ESTADO");
-//
-//            while (rs.next()) {
-//                Object fila[] = new Object[7];
-//                for (int i = 0; i < 7; i++) {
-//                    fila[i] = rs.getObject(i + 1);
-//                }
-//                model.addRow(fila);
-//            }
-//            con.close();
-//        } catch (SQLException e) {
-//            System.out.println("Error al llenar la tabla usuarios: " + e);
-//        }
-//        //evento para obtener campo al cual el usuario da click
-//        //y obtener la interfaz que mostrara la informacion general
-//        jTable_usuarios.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                int fila_point = jTable_usuarios.rowAtPoint(e.getPoint());
-//                int columna_point = 0;
-//
-//                if (fila_point > -1) {
-//                    idUsuario = (int) model.getValueAt(fila_point, columna_point);
-//                    EnviarDatosUsuarioSeleccionado(idUsuario);//metodo
-//                }
-//            }
-//        });
-//    }
+    private void CargarTablaInsumos() {
+        DefaultTableModel model = new DefaultTableModel();
 
+        InterGestionarInsumo.jTable_insumos = new JTable(model);
+        InterGestionarInsumo.jScrollPane1.setViewportView(InterGestionarInsumo.jTable_insumos);
 
+        model.addColumn("N°");//ID
+        model.addColumn("NOMBRE");
+        model.addColumn("DESCRIPCION:");
+        model.addColumn("STOCK");
+        model.addColumn("PROVEEDOR");
+        
+        
+        Object[] fila = new Object[5];
+        InsumoDAO insumodao = new InsumoDAO();
+        List<Insumos> lista = insumodao.lista();
+
+        for (Insumos x : lista) {
+            fila[0] = x.getIdInsumos();
+            fila[1] = x.getNombre();
+            fila[2] = x.getDescripcion();
+            fila[3] = x.getStock();
+            fila[4] = x.getNombreproveedor();
+            model.addRow(fila);
+        }
+
+        //evento para obtener campo al cual el usuario da click
+        //y obtener la interfaz que mostrara la informacion general
+        jTable_insumos.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila_point = jTable_insumos.rowAtPoint(e.getPoint());
+                int columna_point = 0;
+
+                if (fila_point > -1) {
+                    idInsumo = (int) model.getValueAt(fila_point, columna_point);
+                    EnviarDatosInsumoSeleccionado(idInsumo);//metodo
+                }
+            }
+        });
+    }
     /*
      * **************************************************
      * Metodo que envia datos seleccionados
      * **************************************************
      */
-//    private void EnviarDatosUsuarioSeleccionado(int idUsuario) {
-//        try {
-//            Connection con = Conexion.conectar();
-//            PreparedStatement pst = con.prepareStatement(
-//                    "select * from USUARIOS where ID_USUARIO = '" + idUsuario + "'");
-//            ResultSet rs = pst.executeQuery();
-//            if (rs.next()) {
-//                txt_nombre.setText(rs.getString("NOMBRES"));
-//                txt_apellido.setText(rs.getString("APELLIDOS"));
-//                txt_usuario.setText(rs.getString("USUARIOS"));
-//                txt_password.setText(rs.getString("PASSWORD"));
-//                txt_telefono.setText(rs.getString("TELEFONO"));
-//            }
-//            con.close();
-//        } catch (SQLException e) {
-//            System.out.println("Error al seleccionar usuario: " + e);
-//        }
-//    }
+    private void EnviarDatosInsumoSeleccionado(int idInsumo) {
+        try {
+            Connection con = Conectar.getConexion();
+            PreparedStatement pst = con.prepareStatement(
+                    "select * from insumos where ins_cod = '" + idInsumo + "'");
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                txt_nombre.setText(rs.getString("ins_nom"));
+                txt_descripcion.setText(rs.getString("ins_des"));
+                txt_stock.setText(rs.getString("ins_stk"));
+                int idCate = rs.getInt("pro_cod");
+                comboproveedor.setSelectedItem(relacionarCategoria(idCate));
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al seleccionar usuario: " + e);
+        }
+    }
+    
+    String descripcionProveedor;
+    
+    private String relacionarCategoria(int idProveedor) {
 
+        String sql = "select pro_nom from proveedor where pro_cod= '" + idProveedor + "'";
+        Statement st;
+        try {
+            Connection cn = Conectar.getConexion();
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                descripcionProveedor = rs.getString("pro_nom");
+            }
+            cn.close();
+
+        } catch (SQLException e) {
+            System.out.println("¡Error al obtener el ID de la categoria!");
+        }
+        return descripcionProveedor;
+    }
+    
+    private void CargarComboProveedor() {
+        Connection cn = Conectar.getConexion();
+        String sql = "select pro_nom from proveedor";
+        Statement st;
+
+        try {
+
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            comboproveedor.removeAllItems();
+            comboproveedor.addItem("Seleccione proveedor:");
+            while (rs.next()) {
+                comboproveedor.addItem(rs.getString("pro_nom"));
+            }
+            cn.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al cargar categorias");
+        }
+    }
+    
+     private int IdProveedor() {
+        String sql = "select * from proveedor where pro_nom = '" + this.comboproveedor.getSelectedItem() + "'";
+        Statement st;
+        try {
+            Connection cn = Conectar.getConexion();
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                obtenerIdCategoriaCombo = rs.getInt("pro_cod");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obener id categoria");
+        }
+        return obtenerIdCategoriaCombo;
+    }
 }

@@ -1,8 +1,5 @@
 package vista;
-//
-//import conexion.Conexion;
-//import controlador.Ctrl_Categoria;
-//import controlador.Ctrl_Producto;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
@@ -18,8 +15,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-//import modelo.Categoria;
-//import modelo.Producto;
+import ModeloDAO.*;
+import Modelo.*;
+import ConexionSQL.*;
+import java.util.List;
 
 /**
  *
@@ -32,13 +31,11 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
 
     public InterGestionarProducto() {
         initComponents();
-        
+
         this.setTitle("Gestionar Productos");
         //Cargar tabla
         this.CargarTablaProductos();
         this.CargarComboCategoria();
-
-        
 
     }
 
@@ -136,10 +133,10 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         txt_cantidad.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         txt_cantidad.setForeground(new java.awt.Color(255, 255, 255));
         txt_cantidad.setEnabled(false);
-        jPanel2.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 70, 30));
+        jPanel2.add(txt_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, 90, 30));
 
         txt_nombre.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_nombre.setForeground(new java.awt.Color(255, 255, 255));
+        txt_nombre.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 190, 30));
 
         jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
@@ -173,11 +170,11 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 80, 20));
 
         txt_precio.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_precio.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, -1, 30));
+        txt_precio.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 100, 30));
 
         txt_descripcion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
-        txt_descripcion.setForeground(new java.awt.Color(255, 255, 255));
+        txt_descripcion.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 190, 30));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -208,19 +205,19 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_eliminarActionPerformed
-        //        Ctrl_Producto controlProducto = new Ctrl_Producto();
-        //        if (idProducto == 0) {
-            //            JOptionPane.showMessageDialog(null, "¡Seleccione un Producto!");
-            //        } else {
-            //            if (!controlProducto.eliminar(idProducto)) {
-                //                JOptionPane.showMessageDialog(null, "¡Producto Eliminado!");
-                //                this.CargarTablaProductos();
-                //                this.CargarComboCategoria();
-                //                this.Limpiar();
-                //            } else {
-                //                JOptionPane.showMessageDialog(null, "¡Error al eliminar producto!");
-                //            }
-            //        }
+        ProductoDAO productodao = new ProductoDAO();
+        if (idProducto == 0) {
+            JOptionPane.showMessageDialog(null, "¡Seleccione un Producto!");
+        } else {
+            if (!productodao.eliminar(idProducto)) {
+                JOptionPane.showMessageDialog(null, "¡Producto Eliminado!");
+                this.CargarTablaProductos();
+                this.CargarComboCategoria();
+                this.Limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "¡Error al eliminar producto!");
+            }
+        }
     }//GEN-LAST:event_jButton_eliminarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
@@ -230,79 +227,64 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
 
     private void jButton_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_actualizarActionPerformed
 
-        //        Producto producto = new Producto();
-        //        Ctrl_Producto controlProducto = new Ctrl_Producto();
-        //        String iva = "";
-        //        String categoria = "";
-        //        iva = jComboBox_iva.getSelectedItem().toString().trim();
-        //        categoria = jComboBox_categoria.getSelectedItem().toString().trim();
-        //
-        //        //validar campos
-        //        if (txt_nombre.getText().isEmpty() || txt_cantidad.getText().isEmpty() || txt_precio.getText().isEmpty()) {
-            //            JOptionPane.showMessageDialog(null, "Complete todos los campos");
-            //        } else {
-            //            if (iva.equalsIgnoreCase("Seleccione iva:")) {
-                //                JOptionPane.showMessageDialog(null, "Seleccione iva.");
-                //            } else {
-                //                if (categoria.equalsIgnoreCase("Seleccione categoria:")) {
-                    //                    JOptionPane.showMessageDialog(null, "Seleccione categoria");
-                    //                } else {
-                    //                    try {
-                        //                        producto.setNombre(txt_nombre.getText().trim());
-                        //                        producto.setCantidad(Integer.parseInt(txt_cantidad.getText().trim()));
-                        //                        String precioTXT = "";
-                        //                        double Precio = 0.0;
-                        //                        precioTXT = txt_precio.getText().trim();
-                        //                        boolean aux = false;
-                        //                        /*
-                        //                            *Si el usuario ingresa , (coma) como punto decimal,
-                        //                            lo transformamos a punto (.)
-                        //                         */
-                        //                        for (int i = 0; i < precioTXT.length(); i++) {
-                            //                            if (precioTXT.charAt(i) == ',') {
-                                //                                String precioNuevo = precioTXT.replace(",", ".");
-                                //                                Precio = Double.parseDouble(precioNuevo);
-                                //                                aux = true;
-                                //                            }
-                            //                        }
-                        //                        //evaluar la condicion
-                        //                        if (aux == true) {
-                            //                            producto.setPrecio(Precio);
-                            //                        } else {
-                            //                            Precio = Double.parseDouble(precioTXT);
-                            //                            producto.setPrecio(Precio);
-                            //                        }
-                        //
-                        //                        producto.setDescripcion(txt_descripcion.getText().trim());
-                        //                        //Porcentaje IVA
-                        //                        if (iva.equalsIgnoreCase("No grava iva")) {
-                            //                            producto.setPorcentajeIGV(0);
-                            //                        } else if (iva.equalsIgnoreCase("12%")) {
-                            //                            producto.setPorcentajeIGV(12);
-                            //                        } else if (iva.equalsIgnoreCase("14%")) {
-                            //                            producto.setPorcentajeIGV(14);
-                            //                        }
-                        //
-                        //                        //idcategoria - cargar metodo que obtiene el id de categoria
-                        //                        this.IdCategoria();
-                        //                        producto.setIdCategoria(obtenerIdCategoriaCombo);
-                        //                        producto.setEstado("Activo");
-                        //
-                        //                        if (controlProducto.actualizar(producto, idProducto)) {
-                            //                            JOptionPane.showMessageDialog(null, "Registro Actualizado");
-                            //                            this.CargarComboCategoria();
-                            //                            this.CargarTablaProductos();
-                            //                            this.jComboBox_iva.setSelectedItem("Seleccione IGV:");
-                            //                            this.Limpiar();
-                            //                        } else {
-                            //                            JOptionPane.showMessageDialog(null, "Error al Actualizar");
-                            //                        }
-                        //                    } catch (HeadlessException | NumberFormatException e) {
-                        //                        System.out.println("Error en: " + e);
-                        //                    }
-                    //                }
-                //            }
-            //        }
+        Producto producto = new Producto();
+        ProductoDAO productodao = new ProductoDAO();
+        String categoria = "";
+        categoria = jComboBox_categoria.getSelectedItem().toString().trim();
+
+        //validar campos
+        if (txt_nombre.getText().isEmpty() || txt_cantidad.getText().isEmpty() || txt_precio.getText().isEmpty() || txt_descripcion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Complete todos los campos");
+        } else {
+            if (categoria.equalsIgnoreCase("Seleccione categoria:")) {
+                JOptionPane.showMessageDialog(null, "Seleccione categoria");
+            } else {
+                try {
+                    producto.setProdnom(txt_nombre.getText().trim());
+                    producto.setStock(Integer.parseInt(txt_cantidad.getText().trim()));
+                    String precioTXT = "";
+                    double Precio = 0.0;
+                    precioTXT = txt_precio.getText().trim();
+                    boolean aux = false;
+                    /*
+                                    *Si el usuario ingresa , (coma) como punto decimal,
+                                    lo transformamos a punto (.)
+                     */
+                    for (int i = 0; i < precioTXT.length(); i++) {
+                        if (precioTXT.charAt(i) == ',') {
+                            String precioNuevo = precioTXT.replace(",", ".");
+                            Precio = Double.parseDouble(precioNuevo);
+                            aux = true;
+                        }
+                    }
+                    //evaluar la condicion
+                    if (aux == true) {
+                        producto.setProdpre(Precio);
+                    } else {
+                        Precio = Double.parseDouble(precioTXT);
+                        producto.setProdpre(Precio);
+                    }
+
+                    producto.setProddes(txt_descripcion.getText().trim());
+
+                    //idcategoria - cargar metodo que obtiene el id de categoria
+                    this.IdCategoria();
+                    producto.setCatcod(obtenerIdCategoriaCombo);
+
+                    if (productodao.actualizar(producto, idProducto)) {
+                        JOptionPane.showMessageDialog(null, "Registro Actualizado");
+                        this.CargarComboCategoria();
+                        this.CargarTablaProductos();
+                        this.Limpiar();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error al Actualizar");
+                    }
+                } catch (HeadlessException | NumberFormatException e) {
+                    System.out.println("Error en: " + e);
+                }
+            }
+
+        }
     }//GEN-LAST:event_jButton_actualizarActionPerformed
 
 
@@ -347,23 +329,24 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
      * *****************************************************
      */
     private void CargarComboCategoria() {
-//        Connection cn = Conexion.conectar();
-//        String sql = "select * from CATEGORIAS";
-//        Statement st;
-//        try {
-//
-//            st = cn.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            jComboBox_categoria.removeAllItems();
-//            jComboBox_categoria.addItem("Seleccione categoria:");
-//            while (rs.next()) {
-//                jComboBox_categoria.addItem(rs.getString("descripcion"));
-//            }
-//            cn.close();
-//
-//        } catch (SQLException e) {
-//            System.out.println("¡Error al cargar categorias!");
-//        }
+        Connection cn = Conectar.getConexion();
+        String sql = "select cat_cod, cat_nom, cat_des from CATEGORIA";
+        Statement st;
+
+        try {
+
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            jComboBox_categoria.removeAllItems();
+            jComboBox_categoria.addItem("Seleccione categoria:");
+            while (rs.next()) {
+                jComboBox_categoria.addItem(rs.getString("cat_nom"));
+            }
+            cn.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al cargar categorias");
+        }
     }
 
     /*
@@ -373,65 +356,49 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
      */
     String descripcionCategoria = "";
     double precio = 0.0;
-    int porcentajeIva = 0;
-    double IVA = 0;
 
     private void CargarTablaProductos() {
-//        Connection con = Conexion.conectar();
-//        DefaultTableModel model = new DefaultTableModel();
-//        String sql = "select p.ID_PRODUCTO, p.NOM_PRODUC, p.CANTIDAD, p.PRECIO, p.DESCRIPCION, p.IGV, c.DESCRIPCION, p.ESTADO from PRODUCTOS As p, CATEGORIAS As c where p.categorias_ID_CATEGORIA = c.ID_CATEGORIA;";
-//        Statement st;
-//        try {
-//            st = con.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            InterGestionarProducto.jTable_productos = new JTable(model);
-//            InterGestionarProducto.jScrollPane1.setViewportView(InterGestionarProducto.jTable_productos);
-//
-//            model.addColumn("N°");//ID
-//            model.addColumn("NOMBRE");
-//            model.addColumn("CANTIDAD");
-//            model.addColumn("PRECIO");
-//            model.addColumn("DESCRIPCION:");
-//            model.addColumn("IGV");
-//            model.addColumn("CATEGORIA");
-//            model.addColumn("ESTADO");
-//
-//            while (rs.next()) {
-//
-//                precio = rs.getDouble("PRECIO");
-//                porcentajeIva = rs.getInt("IGV");
-//
-//                Object fila[] = new Object[8];
-//                for (int i = 0; i < 8; i++) {
-//
-//                    if (i == 5) {
-//                        this.calcularIGV(precio, porcentajeIva);//metodo
-//                        fila[i] = IVA;
-//                        rs.getObject(i + 1);
-//                    } else {
-//                        fila[i] = rs.getObject(i + 1);
-//                    }
-//                }
-//                model.addRow(fila);
-//            }
-//            con.close();
-//        } catch (SQLException e) {
-//            System.out.println("Error al llenar la tabla productos: " + e);
-//        }
-//        //evento para obtener campo al cual el usuario da click
-//        //y obtener la interfaz que mostrara la informacion general
-//        jTable_productos.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                int fila_point = jTable_productos.rowAtPoint(e.getPoint());
-//                int columna_point = 0;
-//
-//                if (fila_point > -1) {
-//                    idProducto = (int) model.getValueAt(fila_point, columna_point);
-//                    EnviarDatosProductoSeleccionado(idProducto);//metodo
-//                }
-//            }
-//        });
+        DefaultTableModel model = new DefaultTableModel();
+
+        InterGestionarProducto.jTable_productos = new JTable(model);
+        InterGestionarProducto.jScrollPane1.setViewportView(InterGestionarProducto.jTable_productos);
+
+        model.addColumn("N°");//ID
+        model.addColumn("NOMBRE");
+        model.addColumn("CANTIDAD");
+        model.addColumn("PRECIO");
+        model.addColumn("DESCRIPCION:");
+        model.addColumn("CATEGORIA");
+        
+        
+        Object[] fila = new Object[6];
+        ProductoDAO productodao = new ProductoDAO();
+        List<Producto> lista = productodao.lista();
+
+        for (Producto x : lista) {
+            fila[0] = x.getProdcod();
+            fila[1] = x.getProdnom();
+            fila[2] = x.getStock();
+            fila[3] = x.getProdpre();
+            fila[4] = x.getProddes();
+            fila[5] = x.getCategoria();
+            model.addRow(fila);
+        }
+
+        //evento para obtener campo al cual el usuario da click
+        //y obtener la interfaz que mostrara la informacion general
+        jTable_productos.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int fila_point = jTable_productos.rowAtPoint(e.getPoint());
+                int columna_point = 0;
+
+                if (fila_point > -1) {
+                    idProducto = (int) model.getValueAt(fila_point, columna_point);
+                    EnviarDatosProductoSeleccionado(idProducto);//metodo
+                }
+            }
+        });
     }
 
     /*
@@ -439,64 +406,29 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
      * Metodo para calcular Iva
      * **************************************************
      */
-    private double calcularIGV(double precio, int iva) {
-        int p_iva = iva;
-        switch (p_iva) {
-            case 0:
-                IVA = 0.0;
-                break;
-            case 12:
-                IVA = precio * 0.12;
-                break;
-            case 14:
-                IVA = precio * 0.14;
-                break;
-            default:
-                break;
-        }
-        //redondear decimales
-        IVA = (double) Math.round(IVA * 100) / 100;
-        return IVA;
-    }
-
-    /*
+ /*
      * **************************************************
      * Metodo que envia datos seleccionados
      * **************************************************
      */
     private void EnviarDatosProductoSeleccionado(int idProducto) {
-//        try {
-//            Connection con = Conexion.conectar();
-//            PreparedStatement pst = con.prepareStatement(
-//                    "select * from PRODUCTOS where ID_PRODUCTO = '" + idProducto + "'");
-//            ResultSet rs = pst.executeQuery();
-//            if (rs.next()) {
-//                txt_nombre.setText(rs.getString("NOM_PRODUC"));
-//                txt_cantidad.setText(rs.getString("CANTIDAD"));
-//                txt_precio.setText(rs.getString("PRECIO"));
-//                txt_descripcion.setText(rs.getString("DESCRIPCION"));
-//                int iva = rs.getInt("IGV");
-//                switch (iva) {
-//                    case 0:
-//                        jComboBox_iva.setSelectedItem("No grava IGV");
-//                        break;
-//                    case 12:
-//                        jComboBox_iva.setSelectedItem("12%");
-//                        break;
-//                    case 14:
-//                        jComboBox_iva.setSelectedItem("14%");
-//                        break;
-//                    default:
-//                        jComboBox_iva.setSelectedItem("Seleccione IGV:");
-//                        break;
-//                }
-//                int idCate = rs.getInt("categorias_ID_CATEGORIA");
-//                jComboBox_categoria.setSelectedItem(relacionarCategoria(idCate));
-//            }
-//            con.close();
-//        } catch (SQLException e) {
-//            System.out.println("Error al seleccionar producto: " + e);
-//        }
+        try {
+            Connection con = Conectar.getConexion();
+            PreparedStatement pst = con.prepareStatement(
+                    "select prod_nom, prod_stk, prod_pre, prod_des, cat_cod from PRODUCTO where prod_cod= '" + idProducto + "'");
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                txt_nombre.setText(rs.getString(1));
+                txt_cantidad.setText(rs.getString(2));
+                txt_precio.setText(rs.getString(3));
+                txt_descripcion.setText(rs.getString(4));
+                int idCate = rs.getInt(5);
+                jComboBox_categoria.setSelectedItem(relacionarCategoria(idCate));
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("Error al seleccionar producto: " + e);
+        }
     }
 
     /*
@@ -504,42 +436,42 @@ public class InterGestionarProducto extends javax.swing.JInternalFrame {
      * Metodo para relacionar categorias
      * **************************************************
      */
-    private void relacionarCategoria(int idCategoria) {
+    private String relacionarCategoria(int idCategoria) {
 
-//        String sql = "select DESCRIPCION from CATEGORIAS where ID_CATEGORIA = '" + idCategoria + "'";
-//        Statement st;
-//        try {
-//            Connection cn = Conexion.conectar();
-//            st = cn.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            while (rs.next()) {
-//                descripcionCategoria = rs.getString("DESCRIPCION");
-//            }
-//            cn.close();
-//
-//        } catch (SQLException e) {
-//            System.out.println("¡Error al obtener el ID de la categoria!");
-//        }
-//        return descripcionCategoria;
+        String sql = "select cat_nom from CATEGORIA where cat_cod= '" + idCategoria + "'";
+        Statement st;
+        try {
+            Connection cn = Conectar.getConexion();
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                descripcionCategoria = rs.getString("cat_nom");
+            }
+            cn.close();
+
+        } catch (SQLException e) {
+            System.out.println("¡Error al obtener el ID de la categoria!");
+        }
+        return descripcionCategoria;
     }
 
     /**
      *
      * Metodo para obtener id categoria
      */
-    private void IdCategoria() {
-//        String sql = "select * from CATEGORIAS where DESCRIPCION = '" + this.jComboBox_categoria.getSelectedItem() + "'";
-//        Statement st;
-//        try {
-//            Connection cn = Conexion.conectar();
-//            st = cn.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            while (rs.next()) {
-//                obtenerIdCategoriaCombo = rs.getInt("ID_CATEGORIA");
-//            }
-//        } catch (SQLException e) {
-//            System.out.println("Error al obener id categoria");
-//        }
-//        return obtenerIdCategoriaCombo;
+    private int IdCategoria() {
+        String sql = "select * from CATEGORIA where cat_nom = '" + this.jComboBox_categoria.getSelectedItem() + "'";
+        Statement st;
+        try {
+            Connection cn = Conectar.getConexion();
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                obtenerIdCategoriaCombo = rs.getInt("cat_cod");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obener id categoria");
+        }
+        return obtenerIdCategoriaCombo;
     }
 }
