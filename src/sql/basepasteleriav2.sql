@@ -60,17 +60,17 @@ CREATE TABLE `detalle_recibo` (
 
 CREATE TABLE `ingredientes` (
   `prod_cod` int NOT NULL,
-  `ins_cod` char(5) DEFAULT NULL,
+  `ins_cod` int,
   `ing_can` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 CREATE TABLE `insumos` (
-  `ins_cod` char(5) NOT NULL,
+  `ins_cod` int PRIMARY KEY AUTO_INCREMENT,
   `ins_nom` varchar(45) DEFAULT NULL,
   `ins_des` varchar(45) DEFAULT NULL,
   `ins_stk` int(11) DEFAULT NULL,
-  `pro_cod` char(5) DEFAULT NULL
+  `pro_cod` int
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
@@ -110,12 +110,13 @@ INSERT INTO `producto` VALUES (null, 'Alfajor de Maicena', 'Dulce tradicional co
 
 
 CREATE TABLE `proveedor` (
-  `pro_cod` char(5) NOT NULL,
+  `pro_cod` int  PRIMARY KEY AUTO_INCREMENT,
   `pro_nom` varchar(45) DEFAULT NULL,
   `pro_des` varchar(45) DEFAULT NULL,
   `pro_ruc` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `proveedor` VALUES (null, 'Bimbo','Panes, Masas',291020221);
 
 
 CREATE TABLE `recibo` (
@@ -157,7 +158,6 @@ ALTER TABLE `ingredientes`
   ADD KEY `fk_ingredientes_insumos` (`ins_cod`);
 
 ALTER TABLE `insumos`
-  ADD PRIMARY KEY (`ins_cod`),
   ADD KEY `fk_insumos_proveedor` (`pro_cod`);
 
 ALTER TABLE `pago`
@@ -168,8 +168,6 @@ ALTER TABLE `pago`
 ALTER TABLE `producto`
   ADD KEY `fk_producto_categoria` (`cat_cod`);
 
-ALTER TABLE `proveedor`
-  ADD PRIMARY KEY (`pro_cod`);
 
 
 ALTER TABLE `recibo`
