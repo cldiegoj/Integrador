@@ -18,13 +18,10 @@ public class CategoriaDAO {
     boolean respuesta = false;
     Connection cn = Conectar.getConexion();
     
-    // Verificar si la descripción ya existe
-    if (!existeDescripcionCategoria(objeto.getCat_des())) {
         try {
-            PreparedStatement consulta = cn.prepareStatement("INSERT INTO CATEGORIA VALUES(?,?,?)");
-            consulta.setString(1, null);
-            consulta.setString(2, objeto.getCat_nom());
-            consulta.setString(3, objeto.getCat_des());
+            PreparedStatement consulta = cn.prepareStatement("insert into categoria values(null,?,?)");
+            consulta.setString(1, objeto.getCat_nom());
+            consulta.setString(2, objeto.getCat_des());
 
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
@@ -33,38 +30,38 @@ public class CategoriaDAO {
         } catch (SQLException e) {
             System.out.println("Error al guardar categoría: " + e);
         }
-    } else {
-        System.out.println("Ya existe una categoría con la misma descripción.");
-    }
+    
     return respuesta;
 }
 
-private boolean existeDescripcionCategoria(String descripcion) {
+public boolean existeCategoria(String categoria) {
     boolean respuesta = false;
-    String sql = "SELECT cat_des FROM CATEGORIA WHERE cat_des = ?";
-    
-    try (Connection cn = Conectar.getConexion();
-         PreparedStatement consulta = cn.prepareStatement(sql)) {
-        consulta.setString(1, descripcion);
-        ResultSet rs = consulta.executeQuery();
-        respuesta = rs.next();
-    } catch (SQLException e) {
-        System.out.println("Error al consultar descripción de categoría: " + e);
-    }
-    
-    return respuesta;
+    String sql = "SELECT cat_nom FROM categoria WHERE cat_nom = '"+ categoria +"';";
+    Statement st;
+        
+    try {
+            Connection cn = Conectar.getConexion();
+            st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                respuesta = true;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al consultar categoria: " + e);
+        }
+        return respuesta;
 }
 
-public boolean actualizarCategoria(Categoria categoria) {
+public boolean actualizarCategoria(Categoria objeto, int idCategoria) {
     boolean respuesta = false;
     Connection cn = Conectar.getConexion();
     try {
         PreparedStatement consulta = cn.prepareStatement(
-                "UPDATE CATEGORIA SET cat_nom = ?, cat_des = ? WHERE cat_cod = ?");
-        consulta.setString(1, categoria.getCat_nom());
-        consulta.setString(2, categoria.getCat_des());
-        consulta.setInt(3, categoria.getCat_cod());
-
+                "update categoria set cat_nom = ?, cat_des = ? where cat_cod='" + idCategoria + "'");
+        consulta.setString(1, objeto.getCat_nom());
+        consulta.setString(2, objeto.getCat_des());
+            
         if (consulta.executeUpdate() > 0) {
             respuesta = true;
         }
@@ -75,12 +72,12 @@ public boolean actualizarCategoria(Categoria categoria) {
     return respuesta;
 }
 
-    public boolean eliminarCategoria(String codigoCategoria) {
+    public boolean eliminarCategoria(int idCategoria) {
         boolean respuesta = false;
         Connection cn = Conectar.getConexion();
         try {
             PreparedStatement consulta = cn.prepareStatement(
-                    "DELETE FROM CATEGORIA WHERE cat_cod ='" + codigoCategoria + "'");
+                    "delete from categoria where cat_cod ='" + idCategoria + "'");
             consulta.executeUpdate();
 
             if (consulta.executeUpdate() > 0) {

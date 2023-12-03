@@ -5,6 +5,9 @@ public class Categoria {
     private String cat_nom;
     private String cat_des;
 
+    public Categoria() {
+    }
+
     public Categoria(String cat_nom, String cat_des) {
         this.cat_nom = cat_nom;
         this.cat_des = cat_des;

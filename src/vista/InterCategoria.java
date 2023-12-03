@@ -29,10 +29,12 @@ public class InterCategoria extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        txt_descripcion = new javax.swing.JTextField();
+        txt_nombre_cat = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnAtras = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txt_descripcion = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -50,12 +52,12 @@ public class InterCategoria extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(252, 248, 232));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_descripcion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
-        jPanel1.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 250, 30));
+        txt_nombre_cat.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jPanel1.add(txt_nombre_cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 250, 30));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jLabel2.setText("Categoría:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         btnAtras.setBackground(new java.awt.Color(252, 248, 232));
         btnAtras.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
@@ -81,6 +83,13 @@ public class InterCategoria extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 140, 30));
 
+        jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jLabel3.setText("Descripción:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        txt_descripcion.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
+        jPanel1.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 250, 30));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 430, 170));
 
         pack();
@@ -92,18 +101,18 @@ public class InterCategoria extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-/**
+
         Categoria categoria = new Categoria();
         CategoriaDAO controlCategoria = new CategoriaDAO();
 
         //validamos camoos vacios
-        if (txt_descripcion.getText().isEmpty()) {
+        if (txt_nombre_cat.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Complete  todos los campos");
         } else {
-            if (!controlCategoria.existeCategoria(txt_descripcion.getText().trim())) {
-                categoria.setDescripcion(txt_descripcion.getText().trim());
-                categoria.setDescripcion("Activo");
-                if (controlCategoria.guardar(categoria)) {
+            if (!controlCategoria.existeCategoria(txt_nombre_cat.getText().trim())) {
+                categoria.setCat_nom(txt_nombre_cat.getText().trim());
+                categoria.setCat_des(txt_descripcion.getText().trim());
+                if (controlCategoria.guardarCategoria(categoria)) {
                     JOptionPane.showMessageDialog(null, "Registro Guardado");
                 } else {
                     JOptionPane.showMessageDialog(null, "Error al Guardar");
@@ -113,8 +122,9 @@ public class InterCategoria extends javax.swing.JInternalFrame {
             }
         }
         //limpiar campo
+        txt_nombre_cat.setText("");
         txt_descripcion.setText("");
-        */
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -123,8 +133,10 @@ public class InterCategoria extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txt_descripcion;
+    private javax.swing.JTextField txt_nombre_cat;
     // End of variables declaration//GEN-END:variables
 }
