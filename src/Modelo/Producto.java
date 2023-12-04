@@ -9,6 +9,7 @@ package Modelo;
  * @author kevfe
  */
 public class Producto {
+
     private int prodcod;
     private int stock;
     private String prodnom;
@@ -21,6 +22,7 @@ public class Producto {
     }
 
     public Producto(int prodcod, int stock, String prodnom, String proddes, int catcod, double prodpre) {
+   
         this.prodcod = prodcod;
         this.stock = stock;
         this.prodnom = prodnom;
@@ -28,7 +30,7 @@ public class Producto {
         this.catcod = catcod;
         this.prodpre = prodpre;
     }
-    
+
     
     
     public int getProdcod() {
@@ -86,6 +88,4 @@ public class Producto {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
-    
 }

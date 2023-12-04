@@ -9,9 +9,6 @@ import java.sql.Statement;
 import Modelo.Recibo;
 import Modelo.Detalle_Recibo;
 
-/**
- * @author edison
- */
 public class RegistrarVentaDAO {
     
     //ultimo id de la cabecera

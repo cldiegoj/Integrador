@@ -140,8 +140,6 @@ public class ProductoDAO {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         return lista;
-
     }
 }

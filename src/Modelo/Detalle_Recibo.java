@@ -8,20 +8,25 @@ package Modelo;
  *
  * @author djcor
  */
-public class Detalle_Recibo {
+public class Detalle_Recibo extends Producto{
 
     private String idDetalle;
     private int cantidad;
-    private String idProducto;
+    private Producto producto;
+    private double subtotal;
+    
 
     public Detalle_Recibo() {
     }
 
-    public Detalle_Recibo(String idDetalle, int cantidad, String idProducto) {
+    public Detalle_Recibo(String idDetalle, int cantidad, Producto producto, double subtotal) {
         this.idDetalle = idDetalle;
         this.cantidad = cantidad;
-        this.idProducto = idProducto;
+        this.producto = producto;
+        this.subtotal = subtotal;
     }
+
+    
 
     public String getIdDetalle() {
         return idDetalle;
@@ -39,12 +44,32 @@ public class Detalle_Recibo {
         this.cantidad = cantidad;
     }
 
-    public String getIdProducto() {
-        return idProducto;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setIdProducto(String idProducto) {
-        this.idProducto = idProducto;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+   
+    public double precioSubtotal() {
+        return cantidad*super.getProdpre();
+    }
+    
+  
+    public Object[] registrarItem(){
+        Object[] Fila ={idDetalle,super.getProdcod(),super.getProdnom(),cantidad, super.getProdpre(), precioSubtotal()};
+        return Fila;
+    }
+
 
 }

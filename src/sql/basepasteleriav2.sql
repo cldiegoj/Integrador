@@ -47,6 +47,7 @@ CREATE TABLE `cliente` (
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`cli_cod`);
 
+
 ALTER TABLE `cliente`
   MODIFY `cli_cod` int(11) NOT NULL AUTO_INCREMENT;
 
@@ -71,16 +72,6 @@ CREATE TABLE `insumos` (
   `ins_des` varchar(45) DEFAULT NULL,
   `ins_stk` int(11) DEFAULT NULL,
   `pro_cod` int
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
-CREATE TABLE `pago` (
-  `pag_cod` char(5) NOT NULL,
-  `pag_com` varchar(45) DEFAULT NULL,
-  `pag_igv` double DEFAULT NULL,
-  `pag_total` double DEFAULT NULL,
-  `pag_fec` date DEFAULT NULL,
-  `reb_cod` char(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
@@ -122,7 +113,8 @@ INSERT INTO `proveedor` VALUES (null, 'Bimbo','Panes, Masas',291020221);
 CREATE TABLE `recibo` (
   `reb_cod` char(5) NOT NULL,
   `reb_fec` date DEFAULT NULL,
-  `cli_cod` int(11) DEFAULT NULL
+  `cli_cod` int(11) DEFAULT NULL,
+  `reb_total_final` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
@@ -143,7 +135,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`usr_cod`, `usr_name`, `usr_pass`, `usr_nom`, `usr_ape`, `usr_telf`, `usr_status`, `car_cod`) VALUES
 (1, 'kfernandezs', 'Password$1', 'Kevin', 'Fernandez Salas', '914233345', 1, 1),
-(3, 'jfernandezs', 'Password$1', 'Jean', 'Fernandez Salas', '987654321', 1, 1);
+(3, 'jfernandezs', 'Password$1', 'Jean', 'Fernandez Salas', '987654321', 1, 1),
+(4, 'jnunezc', 'jfnc', 'Jessica', 'Nuñez Cabrera', '913239543', 1, 1);
 
 
 ALTER TABLE `cargo`
@@ -160,15 +153,8 @@ ALTER TABLE `ingredientes`
 ALTER TABLE `insumos`
   ADD KEY `fk_insumos_proveedor` (`pro_cod`);
 
-ALTER TABLE `pago`
-  ADD PRIMARY KEY (`pag_cod`),
-  ADD KEY `fk_pago_recibo` (`reb_cod`);
-
-
 ALTER TABLE `producto`
   ADD KEY `fk_producto_categoria` (`cat_cod`);
-
-
 
 ALTER TABLE `recibo`
   ADD PRIMARY KEY (`reb_cod`),
@@ -178,9 +164,6 @@ ALTER TABLE `recibo`
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`usr_cod`),
   ADD KEY `fk_usuario_cargo` (`car_cod`);
-
-
-
 
 ALTER TABLE `usuario`
   MODIFY `usr_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
@@ -199,13 +182,8 @@ ALTER TABLE `insumos`
   ADD CONSTRAINT `fk_insumos_proveedor` FOREIGN KEY (`pro_cod`) REFERENCES `proveedor` (`pro_cod`);
 
 
-ALTER TABLE `pago`
-  ADD CONSTRAINT `fk_pago_recibo` FOREIGN KEY (`reb_cod`) REFERENCES `recibo` (`reb_cod`);
-
-
 ALTER TABLE `producto`
   ADD CONSTRAINT `fk_producto_categoria` FOREIGN KEY (`cat_cod`) REFERENCES `categoria` (`cat_cod`);
-
 
 
 ALTER TABLE `recibo`
