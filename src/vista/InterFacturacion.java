@@ -169,6 +169,11 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
 
         cbx_cliente.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         cbx_cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione cliente", "Item 2", "Item 3", "Item 4" }));
+        cbx_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_clienteActionPerformed(evt);
+            }
+        });
         jPanel2.add(cbx_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 430, 30));
 
         jButton_calcular_cambio.setBackground(new java.awt.Color(255, 198, 89));
@@ -212,6 +217,11 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         txt_total_pagar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         txt_total_pagar.setForeground(new java.awt.Color(255, 255, 255));
         txt_total_pagar.setEnabled(false);
+        txt_total_pagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_total_pagarActionPerformed(evt);
+            }
+        });
         jPanel2.add(txt_total_pagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 120, 30));
 
         jLabel9.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
@@ -256,7 +266,6 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable_productos.setForeground(new java.awt.Color(0, 0, 0));
         jTable_productos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -297,7 +306,6 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 60, 20));
 
         txt_precio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_precio.setForeground(new java.awt.Color(0, 0, 0));
         txt_precio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel2.add(txt_precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 90, 30));
 
@@ -356,9 +364,9 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
     private void jButton_añadir_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_añadir_productoActionPerformed
 
         Detalle_Recibo dr = new Detalle_Recibo();
-
         try {
             dr.setIdDetalle(this.txt_recibo.getText());
+            dr.setProdcod(Integer.parseInt(this.txt_codigoProducto.getText()));
 //            dr.set(this.txt_recibo.getText());
             dr.setProdnom(this.jComboBox_producto.getSelectedItem().toString());
             dr.setCantidad(Integer.parseInt(this.spnCantidad.getValue().toString()));
@@ -435,6 +443,77 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTable_productosMouseClicked
 
     private void jButton_RegistrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RegistrarVentaActionPerformed
+        DefaultTableModel tablaProductos = (DefaultTableModel) jTable_productos.getModel();
+        int fila = tablaProductos.getRowCount();
+
+        Date fechaActual = new Date();
+        java.sql.Date sqlFechaActual = new java.sql.Date(fechaActual.getTime());
+
+        Connection cn = null;
+
+        try {
+            if (!cbx_cliente.getSelectedItem().equals("Seleccione cliente")) {
+                cn = Conectar.getConexion();
+                try {
+                    cn.setAutoCommit(false);
+                    
+                    // Insertar recibo
+                    String sql1 = "INSERT INTO recibo (reb_cod, reb_fec, cli_cod, reb_total_final) VALUES (?,?, ?, ?)";
+                    PreparedStatement st = cn.prepareStatement(sql1, Statement.RETURN_GENERATED_KEYS);
+                    
+                    double totalPagar = Double.parseDouble(txt_total_pagar.getText().replace(',', '.'));
+                    
+                    st.setString(1, txt_recibo.getText());
+                    st.setDate(2, sqlFechaActual);
+                    st.setInt(3, ObtenerIdCliente());
+                    st.setDouble(4, totalPagar);
+                    System.out.println(st);
+                    st.executeUpdate();
+
+                    for (int i = 0; i < fila; i++) {
+                        String sql2 = "INSERT INTO detalle_recibo (reb_cod, prod_can, prod_cod) VALUES (?, ?, ?)";
+                        PreparedStatement st2 = cn.prepareStatement(sql2);
+                        Object prod_id = tablaProductos.getValueAt(i, 1);
+                        Object cant_prod = tablaProductos.getValueAt(i, 3);
+
+                        st2.setString(1, txt_recibo.getText());
+                        st2.setInt(2, Integer.parseInt(cant_prod.toString()));
+                        st2.setInt(3, Integer.parseInt(prod_id.toString()));
+                        System.out.println(st2);
+                        st2.executeUpdate();
+                    }
+
+                    // Confirmar la transacción
+                    cn.commit();
+                    JOptionPane.showMessageDialog(this, "Venta registrada con éxito", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    this.cbx_cliente.setSelectedIndex(0);
+                    this.jComboBox_producto.setSelectedIndex(0);
+                    this.spnCantidad.setValue(0);
+                    this.txt_precio.setText("");
+                    this.labelTotal.setText("");
+                    this.txt_recibo.setText("R-");
+                } catch (SQLException e) {
+                    // Deshacer la transacción en caso de error
+                    if (cn != null) {
+                        cn.rollback();
+                    }
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "Error al registrar la venta", "Error", JOptionPane.ERROR_MESSAGE);
+                } finally {
+                    // Cerrar la conexión
+                    if (cn != null) {
+                        cn.close();
+                    }
+                }
+            } else{
+                System.out.println("Seleccione un cliente por favor");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error general", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+      
 
         //        CabeceraVenta cabeceraVenta = new CabeceraVenta();
         //        DetalleVenta detalleVenta = new DetalleVenta();
@@ -562,6 +641,14 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Selecciona una fila para eliminar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btn_eliminarfilaActionPerformed
+
+    private void cbx_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_clienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_clienteActionPerformed
+
+    private void txt_total_pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_total_pagarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_total_pagarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -749,20 +836,24 @@ public class InterFacturacion extends javax.swing.JInternalFrame {
     /*
     Metodo para obtener id del cliente
      */
-    private void ObtenerIdCliente() {
-//        try {
-//            String sql = "select * from CLIENTES where concat(NOMBRES,' ',APELLIDOS) = '" + this.jComboBox_cliente.getSelectedItem() + "'";
-//            Connection cn = Conexion.conectar();
-//            Statement st;
-//            st = cn.createStatement();
-//            ResultSet rs = st.executeQuery(sql);
-//            while (rs.next()) {
-//                idCliente = rs.getInt("ID_CLIENTE");
-//            }
-//
-//        } catch (SQLException e) {
-//            System.out.println("Error al obtener id del cliente, " + e);
-//        }
+    private int ObtenerIdCliente() {
+        int idCliente = -1;
+        try {
+            String sql = "SELECT cli_cod FROM cliente WHERE concat(cli_nom,' ',cli_ape) LIKE ?";
+            Connection cn = Conectar.getConexion();
+            try (PreparedStatement st = cn.prepareStatement(sql)) {
+                st.setString(1, this.cbx_cliente.getSelectedItem().toString());
+                ResultSet rs = st.executeQuery();
+                if (rs.next()) {
+                    idCliente = rs.getInt("cli_cod");
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al obtener id del cliente: " + e);
+            }
+        } catch (Exception e) {
+            System.out.println("Error general en ObtenerIdCliente: " + e);
+        }
+        return idCliente;
     }
 
     //metodo para restar la cantidad (stock) de los productos vendidos

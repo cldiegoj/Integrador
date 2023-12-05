@@ -116,6 +116,11 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
 
         txt_fecha.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         txt_fecha.setEnabled(false);
+        txt_fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_fechaActionPerformed(evt);
+            }
+        });
         jPanel3.add(txt_fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 170, 30));
 
         txt_total_pagar.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
@@ -124,6 +129,11 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
 
         jComboBox_estado.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
         jComboBox_estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        jComboBox_estado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_estadoActionPerformed(evt);
+            }
+        });
         jPanel3.add(jComboBox_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 170, 30));
 
         jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
@@ -211,6 +221,14 @@ public class InterGestionarVentas extends javax.swing.JInternalFrame {
 //            JOptionPane.showMessageDialog(null, "Seleccione un registro para actualizar datos");
 //        }
     }//GEN-LAST:event_jButton_actualizar1ActionPerformed
+
+    private void jComboBox_estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_estadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_estadoActionPerformed
+
+    private void txt_fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_fechaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
