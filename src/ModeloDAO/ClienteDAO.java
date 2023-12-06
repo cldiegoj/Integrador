@@ -15,13 +15,12 @@ public class ClienteDAO {
         boolean respuesta = false;
         Connection cn = Conectar.getConexion();
         try {
-            PreparedStatement consulta = cn.prepareStatement("insert into cliente values(?,?,?,?,?,?)");
-            consulta.setInt(1, 0);
-            consulta.setString(2, objeto.getNombre());
-            consulta.setString(3, objeto.getApellidos());
-            consulta.setInt(4, objeto.getTelefono());
-            consulta.setString(5, objeto.getDni());// en la columna cli_dir
-            consulta.setString(6, objeto.getCorreo());
+            PreparedStatement consulta = cn.prepareStatement("insert into cliente values(null,?,?,?,?,?)");
+            consulta.setString(1, objeto.getNombre());
+            consulta.setString(2, objeto.getApellidos());
+            consulta.setInt(3, objeto.getTelefono());
+            consulta.setString(4, objeto.getDireccion());
+            consulta.setString(5, objeto.getCorreo());// en la columna cli_dir
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
             }
@@ -58,7 +57,7 @@ public class ClienteDAO {
             consulta.setString(1, objeto.getNombre());
             consulta.setString(2, objeto.getApellidos());
             consulta.setInt(3, objeto.getTelefono());
-            consulta.setString(4, objeto.getDni());
+            consulta.setString(4, objeto.getDireccion());
             consulta.setString(5, objeto.getCorreo());
 
             if (consulta.executeUpdate() > 0) {

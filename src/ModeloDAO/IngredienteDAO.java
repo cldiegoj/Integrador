@@ -25,7 +25,7 @@ public class IngredienteDAO {
         Connection cn = Conectar.getConexion();
         try {
 
-            PreparedStatement consulta = cn.prepareStatement("INSERT INTO ingredientes (prod_cod, ins_cod, ing_can) VALUES (?, ?, ?);");
+            PreparedStatement consulta = cn.prepareStatement("INSERT INTO ingredientes (ing_cod,prod_cod, ins_cod, ing_can) VALUES (null, ?, ?, ?);");
             consulta.setInt(1, objeto.getIdProducto());
             consulta.setInt(2, objeto.getIdInsumo());
             consulta.setInt(3, objeto.getCantidad());
