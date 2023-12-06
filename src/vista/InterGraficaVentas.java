@@ -23,7 +23,7 @@ public class InterGraficaVentas extends javax.swing.JInternalFrame {
     public InterGraficaVentas() {
         initComponents();
         this.setSize(new Dimension(550, 650));
-        this.setTitle("Historial de Ventas - Sistema Biker");
+        this.setTitle("Historial de Ventas - LIMA CAKES");
         this.MetodoContador();
         vector_fechaVenta = new String[cantidadResultados];
         vector_estatus_cantidad = new int[cantidadResultados];
@@ -35,7 +35,7 @@ public class InterGraficaVentas extends javax.swing.JInternalFrame {
         private int MetodoContador() {
     try {
         Connection cn = ConexionSQL.Conectar.getConexion();
-        String query = "SELECT FECH_VENTA, COUNT(FECH_VENTA) AS Ventas FROM CAB_VENTAS WHERE FECH_VENTA BETWEEN ? AND ? GROUP BY FECH_VENTA";
+        String query = "SELECT reb_fec, COUNT(reb_fec) AS Ventas FROM recibo WHERE reb_fec BETWEEN ? AND ? GROUP BY reb_fec";
         PreparedStatement pst = cn.prepareStatement(query);
         pst.setString(1, InterGraficas.fecha_inicio);
         pst.setString(2, InterGraficas.fecha_fin);
@@ -58,8 +58,8 @@ public class InterGraficaVentas extends javax.swing.JInternalFrame {
         try {
             Connection cn = ConexionSQL.Conectar.getConexion();
             PreparedStatement pst = cn.prepareStatement(
-                    "select FECH_VENTA, count(FECH_VENTA) as Ventas from CAB_VENTAS "
-                    + "where FECH_VENTA BETWEEN '" + InterGraficas.fecha_inicio + "' and '" + InterGraficas.fecha_fin + "' group by FECH_VENTA;");
+                    "select reb_fec, count(reb_fec) as Ventas from recibo"
+                    + "where reb_fec BETWEEN '" + InterGraficas.fecha_inicio + "' and '" + InterGraficas.fecha_fin + "' group by reb_fec;");
             ResultSet rs = pst.executeQuery();
             int contador = 0;
             while (rs.next()) {
