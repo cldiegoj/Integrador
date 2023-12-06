@@ -11,14 +11,14 @@ public class Cliente {
     private String nombre;
     private String apellidos;
     private int telefono;
-    private String dni;
+    private String direccion;
     private String correo;
 
     public Cliente() {
         this.idCliente = 0;
         this.nombre = "";
         this.apellidos = "";
-        this.dni = "";
+        this.direccion = "";
         this.telefono = 0;
         this.correo = "";
     }
@@ -28,7 +28,7 @@ public class Cliente {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
-        this.dni = dni;
+        this.direccion = dni;
         this.correo = correo;
     }
     
@@ -72,11 +72,13 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getDni() {
-        return dni;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
+
+
 }
