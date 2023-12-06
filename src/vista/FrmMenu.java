@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
 import Modelo.Usuario;
+import ModeloDAO.Reportes;
 
 public class FrmMenu extends javax.swing.JFrame {
 
@@ -430,8 +431,8 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem_reportes_ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_reportes_ventasActionPerformed
-//        Reportes reporte = new Reportes();
-//        reporte.ReportesVentas();
+        Reportes reporte = new Reportes();
+        reporte.ReportesVentas();
     }//GEN-LAST:event_jMenuItem_reportes_ventasActionPerformed
 
     private void jMenuItem_nueva_categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_nueva_categoriaActionPerformed
@@ -528,18 +529,18 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem_gestionar_ventasActionPerformed
 
     private void jMenuItem_reportes_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_reportes_clientesActionPerformed
-//        Reportes reporte = new Reportes();
-//        reporte.ReportesClientes();
+        Reportes reporte = new Reportes();
+        reporte.ReportesClientes();
     }//GEN-LAST:event_jMenuItem_reportes_clientesActionPerformed
 
     private void jMenuItem_reportes_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_reportes_productosActionPerformed
-//        Reportes reporte = new Reportes();
-//        reporte.ReportesProductos();
+        Reportes reporte = new Reportes();
+        reporte.ReportesProductos();
     }//GEN-LAST:event_jMenuItem_reportes_productosActionPerformed
 
     private void jMenuItem_reportes_categoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_reportes_categoriasActionPerformed
-//        Reportes reporte = new Reportes();
-//        reporte.ReportesCategorias();
+        Reportes reporte = new Reportes();
+        reporte.ReportesCategorias();
     }//GEN-LAST:event_jMenuItem_reportes_categoriasActionPerformed
 
     private void jMenuItem_ver_historialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_ver_historialActionPerformed
