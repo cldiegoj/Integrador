@@ -36,7 +36,7 @@ INSERT INTO `categoria` VALUES(null, 'Postres', 'Postres individuales');
 INSERT INTO `categoria` VALUES(null, 'Dulces', 'Dulces tradicionales');
 
 CREATE TABLE `cliente` (
-  `cli_cod` int(11) NOT NULL,
+  `cli_cod` int(11) PRIMARY KEY AUTO_INCREMENT,
   `cli_nom` varchar(45) DEFAULT NULL,
   `cli_ape` varchar(45) DEFAULT NULL,
   `cli_tel` int(11) DEFAULT NULL,
@@ -44,12 +44,12 @@ CREATE TABLE `cliente` (
   `cli_cor` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`cli_cod`);
 
+INSERT INTO `cliente` VALUES(null, 'Fabian', 'Escalante', 966021521, 'Industrias Inodoras','fabian.es@gmail.com');
+INSERT INTO `cliente` VALUES(null, 'Manuel', 'Vidal', 962951521, 'Domingo Nieto 122','manuel02v@gmail.com');
+INSERT INTO `cliente` VALUES(null, 'Sebastian', 'Morales', 983021521, 'Av. Garzon 291','sebas@gmail.com');
+INSERT INTO `cliente` VALUES(null, 'Marco', 'Castro', 966053521, 'Av. Brasil 120','marcoc@gmail.com');
 
-ALTER TABLE `cliente`
-  MODIFY `cli_cod` int(11) NOT NULL AUTO_INCREMENT;
 
 
 CREATE TABLE `detalle_recibo` (
@@ -60,9 +60,10 @@ CREATE TABLE `detalle_recibo` (
 
 
 CREATE TABLE `ingredientes` (
-  `prod_cod` int NOT NULL,
-  `ins_cod` int,
-  `ing_can` int(11) DEFAULT NULL
+  `ing_cod` int PRIMARY KEY AUTO_INCREMENT,
+  `prod_cod` int ,
+  `ins_cod` int ,
+  `ing_can` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
@@ -73,6 +74,10 @@ CREATE TABLE `insumos` (
   `ins_stk` int(11) DEFAULT NULL,
   `pro_cod` int
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `insumos` VALUES(null,'Pan de Molde','Pan de Molde 120g',10,1 ); 
+INSERT INTO `insumos` VALUES(null,'Kit-Kat','Chocolate Kit-Kat',15,2 ); 
+INSERT INTO `insumos` VALUES(null,'Leche Gloria','Latas de leche gloria',50,3 ); 
 
 
 CREATE TABLE `producto` (
@@ -108,6 +113,8 @@ CREATE TABLE `proveedor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `proveedor` VALUES (null, 'Bimbo','Panes, Masas',291020221);
+INSERT INTO `proveedor` VALUES (null, 'Nestle','Alimentos y bebidas',21223232);
+INSERT INTO `proveedor` VALUES (null, 'Gloria','Lacteos',25928102);
 
 
 CREATE TABLE `recibo` (
@@ -136,7 +143,9 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`usr_cod`, `usr_name`, `usr_pass`, `usr_nom`, `usr_ape`, `usr_telf`, `usr_status`, `car_cod`) VALUES
 (1, 'kfernandezs', 'Password$1', 'Kevin', 'Fernandez Salas', '914233345', 1, 1),
 (3, 'jfernandezs', 'Password$1', 'Jean', 'Fernandez Salas', '987654321', 1, 1),
-(4, 'jnunezc', 'jfnc', 'Jessica', 'Nuñez Cabrera', '913239543', 1, 1);
+(4, 'jnunezc', 'jfnc', 'Jessica', 'Nuñez Cabrera', '913239543', 1, 1),
+(5, 'diegoj', '1234', 'Diego', 'Cornejo', '966089151', 1, 1);
+
 
 
 ALTER TABLE `cargo`
@@ -146,9 +155,6 @@ ALTER TABLE `detalle_recibo`
   ADD PRIMARY KEY (`reb_cod`),
   ADD KEY `fk_detalle_producto` (`prod_cod`);
 
-ALTER TABLE `ingredientes`
-  ADD PRIMARY KEY (`prod_cod`),
-  ADD KEY `fk_ingredientes_insumos` (`ins_cod`);
 
 ALTER TABLE `insumos`
   ADD KEY `fk_insumos_proveedor` (`pro_cod`);
