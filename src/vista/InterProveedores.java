@@ -89,7 +89,7 @@ public class InterProveedores extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 80, -1));
 
         txt_nombre.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_nombre.setForeground(new java.awt.Color(255, 255, 255));
+        txt_nombre.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 200, -1));
 
         jLabel7.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
@@ -99,7 +99,12 @@ public class InterProveedores extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 80, -1));
 
         txt_descripcion.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_descripcion.setForeground(new java.awt.Color(255, 255, 255));
+        txt_descripcion.setForeground(new java.awt.Color(0, 0, 0));
+        txt_descripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_descripcionActionPerformed(evt);
+            }
+        });
         jPanel1.add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 14)); // NOI18N
@@ -109,7 +114,7 @@ public class InterProveedores extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 80, -1));
 
         txt_ruc.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        txt_ruc.setForeground(new java.awt.Color(255, 255, 255));
+        txt_ruc.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(txt_ruc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 200, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 560, 220));
@@ -166,6 +171,10 @@ public class InterProveedores extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void txt_descripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_descripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_descripcionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

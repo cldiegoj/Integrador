@@ -186,8 +186,10 @@ public class InterIngredientes extends javax.swing.JInternalFrame {
                     int idproducto = ingredientedao.buscaridproducto(comboproducto.getSelectedItem().toString());
                     
                     ingrediente.setCantidad(Integer.parseInt(txt_cantidad.getText()));
+                    ingrediente.setIdInsumo(idinsumo);
                     ingrediente.setIdProducto(idproducto);
-                    ingrediente.setIdProducto(idproducto);
+                    System.out.println("id producto" + idproducto);
+                    System.out.println("id insumo" + idinsumo);
 
                     if (ingredientedao.guardar(ingrediente)) {
                         JOptionPane.showMessageDialog(null, "¡Datos del ingrediente actualizados!");

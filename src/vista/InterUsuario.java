@@ -43,6 +43,7 @@ public class InterUsuario extends javax.swing.JInternalFrame {
         txt_usr_nom = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txt_usr_ape = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         txt_usr_telf = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -132,6 +133,9 @@ public class InterUsuario extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(txt_usr_ape, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 230, 30));
+
+        jLabel2.setText("Telefono:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, -1, -1));
 
         txt_usr_telf.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 12)); // NOI18N
         txt_usr_telf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -233,6 +237,7 @@ public class InterUsuario extends javax.swing.JInternalFrame {
     public javax.swing.JButton btn_registrar;
     public javax.swing.JComboBox<String> cbo_cargo;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

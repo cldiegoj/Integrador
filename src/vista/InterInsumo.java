@@ -221,6 +221,7 @@ public class InterInsumo extends javax.swing.JInternalFrame {
     private void Limpiar() {
         txt_nombre.setText("");
         txt_descripcion.setText("");
+        txt_stock.setText("");
     }
 
     private void CargarComboCategorias() {

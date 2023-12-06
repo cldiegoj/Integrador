@@ -210,7 +210,7 @@ public class InterGestionarCliente extends javax.swing.JInternalFrame {
                 cl.setNombre(txt_nombre.getText().trim());
                 cl.setApellidos(txt_apellido.getText().trim());
                 cl.setTelefono(Integer.parseInt(txt_telefono.getText().trim()));
-                cl.setDni(txt_cedula.getText().trim());
+                cl.setDireccion(txt_cedula.getText().trim());
                 cl.setCorreo(txt_correo.getText().trim());
 
                 if (controlcliente.actualizar(cl, idCliente)) {
